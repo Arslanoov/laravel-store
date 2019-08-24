@@ -19,7 +19,9 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "barryvdh/laravel-debugbar": "^3.1"
     },
     "config": {
         "optimize-autoloader": true,
@@ -51,6 +53,11 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
