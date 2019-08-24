@@ -36,7 +36,9 @@ class RegisterController extends Controller
 
     public function verify($token)
     {
-        if (!$user = User::where('verify_token', $token)->first()) {
+        $user = $this->service->findUserByToken($token);
+
+        if (!$user) {
             return redirect()->route('login')->with('error', 'Sorry your link cannot be identified.');
         }
 
