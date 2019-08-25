@@ -32,3 +32,10 @@ Breadcrumbs::register('cabinet.home', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push('Cabinet', route('cabinet.home'));
 });
+
+// Admin
+
+Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Admin', route('admin.home'));
+});
