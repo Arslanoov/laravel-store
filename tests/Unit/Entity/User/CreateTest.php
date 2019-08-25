@@ -43,8 +43,6 @@ class CreateTest extends TestCase
         $this->assertNotEmpty($user->verify_token);
         $this->assertNotEmpty($user->password);
 
-        $this->assertEmpty($user->verify_token);
-
         $this->assertTrue($user->isWait());
         $this->assertFalse($user->isActive());
     }

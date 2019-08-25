@@ -15,7 +15,7 @@ class User extends Authenticatable
     public const STATUS_ACTIVE = 'Active';
 
     protected $fillable = [
-        'name', 'email', 'password', 'status'
+        'name', 'email', 'password', 'status', 'verify_token'
     ];
 
     protected $hidden = [

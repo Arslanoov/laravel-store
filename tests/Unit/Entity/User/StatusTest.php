@@ -42,29 +42,4 @@ class StatusTest extends TestCase
         $this->assertTrue($user->isWait());
         $this->assertFalse($user->isActive());
     }
-
-    public function testAlreadyActivated(): void
-    {
-        $user = User::register(
-            $name = 'name',
-            $email = 'email',
-            $password = 'password'
-        );
-
-        $this->expectExceptionMessage('User is already activated.');
-
-        $user->verify();
-    }
-
-    public function testAlreadyDrafted(): void
-    {
-        $user = User::new(
-            $name = 'name',
-            $email = 'email'
-        );
-
-        $this->expectExceptionMessage('User is already drafted.');
-
-        $user->draft();
-    }
 }
