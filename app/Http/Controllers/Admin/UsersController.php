@@ -28,8 +28,9 @@ class UsersController extends Controller
         $users = $query->paginate(20);
 
         $statuses = $this->service->getStatuses();
+        $roles = $this->service->getRoles();
 
-        return view('admin.users.index', compact('users', 'statuses'));
+        return view('admin.users.index', compact('users', 'statuses', 'roles'));
     }
 
     public function create()
@@ -52,15 +53,16 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         $statuses = $this->service->getStatuses();
+        $roles = $this->service->getRoles();
 
-        return view('admin.users.edit', compact('user', 'statuses'));
+        return view('admin.users.edit', compact('user', 'statuses', 'roles'));
     }
 
     public function update(UpdateRequest $request, User $user)
     {
         $this->service->update($request, $user);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.show', $user);
     }
 
     public function destroy(User $user)
@@ -74,14 +76,14 @@ class UsersController extends Controller
     {
         $this->service->verify($user);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.show', $user);
     }
 
     public function draft(User $user)
     {
         $this->service->draft($user);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.show', $user);
     }
 
     private function search(Request $request, Builder $query): Builder

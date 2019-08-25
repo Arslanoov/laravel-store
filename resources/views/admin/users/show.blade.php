@@ -49,6 +49,22 @@
                 @endif
             </td>
         </tr>
+        <tr>
+            <th>Role</th>
+            <td>
+                @if ($user->isAdmin())
+                    <span class="badge badge-danger">Admin</span>
+                @endif
+
+                @if ($user->isManager())
+                    <span class="badge badge-info">Manager</span>
+                @endif
+
+                @if ($user->isUser())
+                    <span class="badge badge-secondary">User</span>
+                @endif
+            </td>
+        </tr>
         <tbody>
         </tbody>
     </table>

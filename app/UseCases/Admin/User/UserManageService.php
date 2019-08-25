@@ -7,12 +7,14 @@ use App\Command\Admin\User\Update\Command as UserUpdateCommand;
 use App\Command\Admin\User\Remove\Command as UserRemoveCommand;
 use App\Command\Auth\Verify\Command as UserVerifyCommand;
 use App\Command\Admin\User\Draft\Command as UserDraftCommand;
+use App\Command\Admin\User\Role\Command as UserChangeRoleCommand;
 use App\Command\CommandBus;
 use App\Query\QueryBus;
 use App\Entity\User\User;
 use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Query\User\Find\FindUsersQuery;
+use App\Query\User\GetUserRolesQuery;
 use App\Query\User\GetUserStatusesQuery;
 
 class UserManageService
@@ -33,6 +35,10 @@ class UserManageService
 
     public function update(UpdateRequest $request, User $user): void
     {
+        if ($request['role'] !== $user->role) {
+            $this->commandBus->handle(new UserChangeRoleCommand($user, $request['role']));
+        }
+
         $this->commandBus->handle(new UserUpdateCommand($request, $user));
     }
 
@@ -61,5 +67,11 @@ class UserManageService
     {
         $statuses = $this->queryBus->query(new GetUserStatusesQuery());
         return $statuses;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->queryBus->query(new GetUserRolesQuery());
+        return $roles;
     }
 }

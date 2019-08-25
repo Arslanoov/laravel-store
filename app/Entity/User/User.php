@@ -140,4 +140,13 @@ class User extends Authenticatable
             User::STATUS_ACTIVE => 'Active',
         ];
     }
+
+    public static function rolesList(): array
+    {
+        return [
+            User::ROLE_USER => 'User',
+            User::ROLE_MANAGER => 'Manager',
+            User::ROLE_ADMIN => 'Admin'
+        ];
+    }
 }
