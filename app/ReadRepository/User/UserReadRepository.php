@@ -23,4 +23,10 @@ class UserReadRepository
         $user = User::where('email', $email)->first();
         return $user;
     }
+
+    public function getAll()
+    {
+        $users = User::orderByDesc('id');
+        return $users;
+    }
 }

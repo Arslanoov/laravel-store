@@ -47,6 +47,16 @@ class User extends Authenticatable
         ]);
     }
 
+    public static function newActive(string $name, string $email, string $password): self
+    {
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
     public function verify(): void
     {
         if ($this->isActive()) {
@@ -79,5 +89,13 @@ class User extends Authenticatable
     public function isActive(): bool
     {
         return $this->status == self::STATUS_ACTIVE;
+    }
+
+    public static function statusesList(): array
+    {
+        return [
+            User::STATUS_WAIT => 'Waiting',
+            User::STATUS_ACTIVE => 'Active',
+        ];
     }
 }
