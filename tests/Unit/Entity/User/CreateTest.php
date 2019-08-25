@@ -25,6 +25,10 @@ class CreateTest extends TestCase
 
         $this->assertTrue($user->isActive());
         $this->assertFalse($user->isWait());
+
+        $this->assertTrue($user->isUser());
+        $this->assertFalse($user->isManager());
+        $this->assertFalse($user->isAdmin());
     }
 
     public function testRegister(): void
@@ -45,5 +49,9 @@ class CreateTest extends TestCase
 
         $this->assertTrue($user->isWait());
         $this->assertFalse($user->isActive());
+
+        $this->assertTrue($user->isUser());
+        $this->assertFalse($user->isManager());
+        $this->assertFalse($user->isAdmin());
     }
 }

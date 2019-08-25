@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 use DomainException;
+use Psr\Log\InvalidArgumentException;
 
 class User extends Authenticatable
 {
@@ -14,8 +15,12 @@ class User extends Authenticatable
     public const STATUS_WAIT = 'Wait';
     public const STATUS_ACTIVE = 'Active';
 
+    public const ROLE_USER = 'User';
+    public const ROLE_MANAGER = 'Manager';
+    public const ROLE_ADMIN = 'Admin';
+
     protected $fillable = [
-        'name', 'email', 'password', 'status', 'verify_token'
+        'name', 'email', 'password', 'status', 'verify_token', 'role'
     ];
 
     protected $hidden = [
@@ -34,6 +39,7 @@ class User extends Authenticatable
             'password' => bcrypt($password),
             'verify_token' => Str::uuid(),
             'status' => self::STATUS_WAIT,
+            'role' => self::ROLE_USER
         ]);
     }
 
@@ -44,6 +50,7 @@ class User extends Authenticatable
             'email' => $email,
             'password' => Str::uuid(),
             'status' => self::STATUS_ACTIVE,
+            'role' => self::ROLE_USER
         ]);
     }
 
@@ -54,6 +61,7 @@ class User extends Authenticatable
             'email' => $email,
             'password' => bcrypt($password),
             'status' => self::STATUS_ACTIVE,
+            'role' => self::ROLE_USER
         ]);
     }
 
@@ -81,6 +89,25 @@ class User extends Authenticatable
         ]);
     }
 
+    public function changeRole($role): void
+    {
+        if (!in_array($role, [
+            self::ROLE_USER,
+            self::ROLE_MANAGER,
+            self::ROLE_ADMIN
+        ], true)) {
+            throw new InvalidArgumentException('Undefined role "' . $role . '"');
+        }
+
+        if ($this->role === $role) {
+            throw new DomainException('Role is already assigned.');
+        }
+
+        $this->update([
+            'role' => $role
+        ]);
+    }
+
     public function isWait(): bool
     {
         return $this->status == self::STATUS_WAIT;
@@ -89,6 +116,21 @@ class User extends Authenticatable
     public function isActive(): bool
     {
         return $this->status == self::STATUS_ACTIVE;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isManager(): bool
+    {
+        return $this->role === self::ROLE_MANAGER;
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === self::ROLE_USER;
     }
 
     public static function statusesList(): array
