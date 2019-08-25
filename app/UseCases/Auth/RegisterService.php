@@ -8,6 +8,7 @@ use App\Command\CommandBus;
 use App\Entity\User\User;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Query\QueryBus;
+use App\Query\User\Find\FindUserByEmailQuery;
 use App\Query\User\Find\FindUserByIdQuery;
 use App\Query\User\Find\FindUserByVerifyTokenQuery;
 
@@ -36,5 +37,10 @@ class RegisterService
     public function findUserByToken($token): ?User
     {
         return $this->queryBus->query(new FindUserByVerifyTokenQuery($token));
+    }
+
+    public function findUserByEmail($email): ?User
+    {
+        return $this->queryBus->query(new FindUserByEmailQuery($email));
     }
 }

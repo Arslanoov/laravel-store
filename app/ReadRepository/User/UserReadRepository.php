@@ -17,4 +17,10 @@ class UserReadRepository
         $user = User::where('verify_token', $token)->first();
         return $user;
     }
+
+    public function findByEmail(string $email): ?User
+    {
+        $user = User::where('email', $email)->first();
+        return $user;
+    }
 }
