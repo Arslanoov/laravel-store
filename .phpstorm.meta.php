@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-08-24 08:14:16.
+    * Generated on 2019-08-25 14:26:29.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13,6 +13,8 @@ namespace PHPSTORM_META {
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -157,6 +159,8 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -301,6 +305,8 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -445,6 +451,8 @@ namespace PHPSTORM_META {
     override(\App::make(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -589,6 +597,8 @@ namespace PHPSTORM_META {
     override(\App::makeWith(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -733,6 +743,8 @@ namespace PHPSTORM_META {
     override(\app(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -877,6 +889,8 @@ namespace PHPSTORM_META {
     override(\resolve(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+        'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
