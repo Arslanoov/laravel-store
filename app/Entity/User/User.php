@@ -37,6 +37,16 @@ class User extends Authenticatable
         ]);
     }
 
+    public static function new(string $name, string $email): self
+    {
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Str::uuid(),
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
     public function verify(): void
     {
         if ($this->isActive()) {
