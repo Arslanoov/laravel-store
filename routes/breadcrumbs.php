@@ -2,6 +2,8 @@
 
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\User\User;
+use App\Entity\Blog\Category;
+use App\Entity\Blog\Tag;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -61,4 +63,55 @@ Breadcrumbs::register('admin.users.show', function (Crumbs $crumbs, User $user) 
 Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) {
     $crumbs->parent('admin.users.show', $user);
     $crumbs->push('Edit', route('admin.users.edit', $user));
+});
+
+// Blog //
+
+// Tags
+
+Breadcrumbs::register('admin.blog.tags.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Blog Tags', route('admin.blog.tags.index'));
+});
+
+Breadcrumbs::register('admin.blog.tags.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.blog.tags.index');
+    $crumbs->push('Create', route('admin.blog.tags.create'));
+});
+
+Breadcrumbs::register('admin.blog.tags.show', function (Crumbs $crumbs, Tag $tag) {
+    $crumbs->parent('admin.blog.tags.index');
+    $crumbs->push($tag->name, route('admin.blog.tags.show', $tag));
+});
+
+Breadcrumbs::register('admin.blog.tags.edit', function (Crumbs $crumbs, Tag $tag) {
+    $crumbs->parent('admin.blog.tags.show', $tag);
+    $crumbs->push('Edit', route('admin.blog.tags.edit', $tag));
+});
+
+// Categories
+
+Breadcrumbs::register('admin.blog.categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Categories', route('admin.blog.categories.index'));
+});
+
+Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.blog.categories.index');
+    $crumbs->push('Create', route('admin.blog.categories.create'));
+});
+
+Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Category $category) {
+    if ($parent = $category->parent) {
+        $crumbs->parent('admin.blog.categories.show', $parent);
+    } else {
+        $crumbs->parent('admin.blog.categories.index');
+    }
+
+    $crumbs->push($category->name, route('admin.blog.categories.show', $category));
+});
+
+Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
+    $crumbs->parent('admin.blog.categories.show', $category);
+    $crumbs->push('Edit', route('admin.blog.categories.edit', $category));
 });

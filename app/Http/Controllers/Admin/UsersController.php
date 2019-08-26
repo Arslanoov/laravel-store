@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\UseCases\Admin\User\UserManageService;
-use Dotenv\Exception\ValidationException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -18,6 +17,7 @@ class UsersController extends Controller
     public function __construct(UserManageService $service)
     {
         $this->service = $service;
+        $this->middleware('can:manage-users');
     }
 
     public function index(Request $request)
