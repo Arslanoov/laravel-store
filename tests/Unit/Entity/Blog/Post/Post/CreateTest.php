@@ -24,7 +24,6 @@ class CreateTest extends TestCase
         $post = Post::new(
             $authorId = $user->id,
             $categoryId = $category->id,
-            $published = time(),
             $title = 'Title',
             $slug = 'slug',
             $description = 'Description',
@@ -33,7 +32,6 @@ class CreateTest extends TestCase
 
         $this->assertEquals($user->id, $authorId);
         $this->assertEquals($category->id, $categoryId);
-        $this->assertEquals($post->published_at, $published);
         $this->assertEquals($post->title, $title);
         $this->assertEquals($post->slug, $slug);
         $this->assertEquals($post->description, $description);
