@@ -5,6 +5,7 @@ namespace App\Entity\Blog\Post;
 use App\Entity\Blog\Category;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Post extends Model
 {
@@ -33,7 +34,8 @@ class Post extends Model
             'content' => $content,
             'status' => self::STATUS_DRAFT,
             'views' => 0,
-            'comments' => 0
+            'comments' => 0,
+            'likes' => 0
         ]);
     }
 
@@ -61,6 +63,11 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id', 'post_id');
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
@@ -74,6 +81,15 @@ class Post extends Model
     public function getImageUrl(): string
     {
         return $this->photo ? '/storage/' . $this->photo : '';
+    }
+
+    public function like(): void
+    {
+        $likes = $this->likes;
+
+        $this->update([
+            'likes' => $likes + 1
+        ]);
     }
 
     public static function statusesList(): array

@@ -73,6 +73,9 @@ Route::group(
                 Route::post('/posts/{post}/verify', 'PostsController@verify')->name('posts.verify');
                 Route::post('/posts/{post}/draft', 'PostsController@draft')->name('posts.draft');
                 Route::post('/posts/{post}/photo/delete', 'PostsController@photo')->name('posts.photo');
+
+                Route::resource('comments', 'CommentsController');
+                Route::post('/comments/{comment}/activate', 'CommentsController@activate')->name('comments.activate');
             }
         );
     }

@@ -5,6 +5,7 @@ use App\Entity\User\User;
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Tag;
 use App\Entity\Blog\Post\Post;
+use App\Entity\Blog\Post\Comment;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -137,4 +138,21 @@ Breadcrumbs::register('admin.blog.posts.show', function (Crumbs $crumbs, Post $p
 Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $post) {
     $crumbs->parent('admin.blog.posts.show', $post);
     $crumbs->push('Edit', route('admin.blog.posts.edit', $post));
+});
+
+// Comments
+
+Breadcrumbs::register('admin.blog.comments.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Blog Comments', route('admin.blog.comments.index'));
+});
+
+Breadcrumbs::register('admin.blog.comments.show', function (Crumbs $crumbs, Comment $comment) {
+    $crumbs->parent('admin.blog.comments.index');
+    $crumbs->push($comment->id, route('admin.blog.comments.show', $comment));
+});
+
+Breadcrumbs::register('admin.blog.comments.edit', function (Crumbs $crumbs, Comment $comment) {
+    $crumbs->parent('admin.blog.comments.show', $comment);
+    $crumbs->push('Edit', route('admin.blog.comments.edit', $comment));
 });

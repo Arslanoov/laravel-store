@@ -77,6 +77,9 @@
         <tr>
             <th>Comments</th><td>{{ $post->comments }}</td>
         </tr>
+        <tr>
+            <th>Likes</th><td>{{ $post->likes }}</td>
+        </tr>
         <tbody>
         </tbody>
     </table>

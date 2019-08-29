@@ -63,4 +63,9 @@ class PostRepository
     {
         $post->draft();
     }
+
+    public function like(Post $post): void
+    {
+        $post->like();
+    }
 }

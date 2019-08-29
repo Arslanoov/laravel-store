@@ -63,6 +63,7 @@
             <th>Slug</th>
             <th>Views</th>
             <th>Comments</th>
+            <th>Likes</th>
             <th>Status</th>
         </tr>
         </thead>
@@ -80,6 +81,7 @@
                 <td>{{ $post->slug }}</td>
                 <td>{{ $post->views }}</td>
                 <td>{{ $post->comments }}</td>
+                <td>{{ $post->likes }}</td>
                 <td>
                     @if ($post->isDraft())
                         <span class="badge badge-secondary">Draft</span>

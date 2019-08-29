@@ -38,5 +38,6 @@ class CreateTest extends TestCase
         $this->assertEquals($post->content, $content);
         $this->assertEquals($post->views, 0);
         $this->assertEquals($post->comments, 0);
+        $this->assertEquals($post->likes, 0);
     }
 }

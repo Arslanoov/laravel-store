@@ -36,9 +36,18 @@ class CreateBlogPostsTable extends Migration
 
         Schema::create('blog_post_comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id')->nullable()->references('id')->on('regions')->onDelete('CASCADE');
+            $table->timestamps();
+            $table->integer('parent_id')->nullable()->references('id')->on('blog_post_comments')->onDelete('CASCADE');
+            $table->integer('author_id')->nullable()->references('id')->on('users')->onDelete('CASCADE');
             $table->integer('post_id')->references('id')->on('blog_posts')->onDelete('CASCADE');
-            $table->string('content', 500);
+            $table->string('text', 500);
+            $table->integer('active');
+        });
+
+        Schema::create('blog_post_likes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id')->references('id')->on('blog_posts')->onDelete('CASCADE');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
@@ -49,9 +58,9 @@ class CreateBlogPostsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('blog_post_likes');
         Schema::dropIfExists('blog_post_comments');
         Schema::dropIfExists('blog_tag_assignments');
-        Schema::dropIfExists('blog_post_photos');
         Schema::dropIfExists('blog_posts');
     }
 }
