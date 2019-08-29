@@ -8,5 +8,8 @@ class VerifyCsrfToken extends Middleware
 {
     protected $addHttpCookie = true;
 
-    protected $except = [];
+    protected $except = [
+        'filemanager/*',
+        'laravel-filemanager/*'
+    ];
 }

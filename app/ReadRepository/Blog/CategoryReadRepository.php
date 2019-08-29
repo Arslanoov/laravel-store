@@ -23,4 +23,10 @@ class CategoryReadRepository
         $parents = Category::defaultOrder()->withDepth()->get();
         return $parents;
     }
+
+    public function getTree()
+    {
+        $categoriesTree = Category::defaultOrder()->withDepth()->get()->toTree();
+        return $categoriesTree;
+    }
 }

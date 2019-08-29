@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-08-25 18:59:53.
+    * Generated on 2019-08-27 11:52:25.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -130,6 +130,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -276,6 +277,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -422,6 +424,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -568,6 +571,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -714,6 +718,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -860,6 +865,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,
@@ -1006,6 +1012,7 @@ namespace PHPSTORM_META {
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
         'memcached.connector' => \Illuminate\Cache\MemcachedConnector::class,

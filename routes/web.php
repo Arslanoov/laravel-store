@@ -5,6 +5,32 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
+Route::get('/storage/{filename}', function ($filename) {
+    $path = storage_path() . '/app/public/' . $filename;
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+Route::group(
+    [
+        'middleware' => 'auth'
+    ],
+    function () {
+        Route::get('/filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
+        Route::post('/filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
+    }
+);
+
 Route::group(
     [
         'prefix' => 'cabinet',
@@ -42,6 +68,11 @@ Route::group(
                 Route::resource('tags', 'TagsController');
 
                 Route::resource('categories', 'CategoriesController');
+
+                Route::resource('posts', 'PostsController');
+                Route::post('/posts/{post}/verify', 'PostsController@verify')->name('posts.verify');
+                Route::post('/posts/{post}/draft', 'PostsController@draft')->name('posts.draft');
+                Route::post('/posts/{post}/photo/delete', 'PostsController@photo')->name('posts.photo');
             }
         );
     }

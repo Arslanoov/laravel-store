@@ -15,7 +15,7 @@
                         @for ($i = 0; $i < $parent->depth; $i++) &mdash; @endfor
                         {{ $parent->name }}
                     </option>
-                @endforeach;
+                @endforeach
             </select>
             @if ($errors->has('parent'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('parent') }}</strong></span>

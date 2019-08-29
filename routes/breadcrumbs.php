@@ -4,6 +4,7 @@ use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\User\User;
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Tag;
+use App\Entity\Blog\Post\Post;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -114,4 +115,26 @@ Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Ca
 Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.blog.categories.show', $category);
     $crumbs->push('Edit', route('admin.blog.categories.edit', $category));
+});
+
+// Posts
+
+Breadcrumbs::register('admin.blog.posts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Blog Posts', route('admin.blog.tags.index'));
+});
+
+Breadcrumbs::register('admin.blog.posts.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.blog.tags.index');
+    $crumbs->push('Create', route('admin.blog.tags.create'));
+});
+
+Breadcrumbs::register('admin.blog.posts.show', function (Crumbs $crumbs, Post $post) {
+    $crumbs->parent('admin.blog.posts.index');
+    $crumbs->push($post->title, route('admin.blog.posts.show', $post));
+});
+
+Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $post) {
+    $crumbs->parent('admin.blog.posts.show', $post);
+    $crumbs->push('Edit', route('admin.blog.posts.edit', $post));
 });

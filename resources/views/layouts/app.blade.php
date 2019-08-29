@@ -86,10 +86,6 @@
 
         <main class="app-content py-3">
             <div class="container">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-
                 @section('breadcrumbs', Breadcrumbs::render())
                 @yield('breadcrumbs')
                 @include('layouts.partials.flash')
