@@ -78,5 +78,21 @@ Route::group(
                 Route::post('/comments/{comment}/activate', 'CommentsController@activate')->name('comments.activate');
             }
         );
+
+        Route::resource('pages', 'PagesController');
+        Route::group(
+            [
+                'prefix' => 'pages/{page}',
+                'as' => 'pages.'
+            ],
+            function () {
+                Route::post('/first', 'PagesController@first')->name('first');
+                Route::post('/up', 'PagesController@up')->name('up');
+                Route::post('/down', 'PagesController@down')->name('down');
+                Route::post('/last', 'PagesController@last')->name('last');
+            }
+        );
     }
 );
+
+Route::get('/{page_path}', 'PagesController@show')->name('page')->where('page_path', '.+');

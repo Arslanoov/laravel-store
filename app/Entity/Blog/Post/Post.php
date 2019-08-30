@@ -16,7 +16,7 @@ class Post extends Model
 
     protected $fillable = [
         'author_id', 'category_id', 'photo', 'title', 'slug',
-        'description', 'content', 'status', 'views', 'comments'
+        'description', 'content', 'status', 'views', 'comments', 'likes'
     ];
 
     public static function new(

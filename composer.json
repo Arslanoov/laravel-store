@@ -16,7 +16,8 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "unisharp/laravel-ckeditor": "4.7.*",
-        "unisharp/laravel-filemanager": "dev-master"
+        "unisharp/laravel-filemanager": "dev-master",
+        "mews/purifier": "^2.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -45,6 +46,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {

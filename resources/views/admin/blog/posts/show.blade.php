@@ -40,10 +40,10 @@
             <th>ID</th><td>{{ $post->id }}</td>
         </tr>
         <tr>
-            <th>Author</th><td>{{ $post->author->name }}</td>
+            <th>Author</th><td>{{ $post->author->name ?? 'Null' }}</td>
         </tr>
         <tr>
-            <th>Category</th><td>{{ $post->category->name ?? 'null' }}</td>
+            <th>Category</th><td>{{ $post->category->name ?? 'Null' }}</td>
         </tr>
         <tr>
             <th>Title</th><td>{{ $post->title }}</td>

@@ -6,7 +6,7 @@
     <p><a href="{{ route('admin.blog.categories.create') }}" class="btn btn-success">Add Category</a></p>
 
     <div class="card mb-3">
-        <div class="card-header">Blog Categories</div>
+        <div class="card-header">Pages</div>
         <div class="card-body">
             <form action="?" method="GET">
                 <div class="row">
@@ -49,6 +49,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Parent</th>
             <th>Name</th>
             <th>Slug</th>
             <th>Title</th>
@@ -59,12 +60,8 @@
         @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->id }}</td>
-                <td>
-                    <a href="{{ route('admin.blog.categories.show', $category) }}">
-                        @for ($i = 0; $i < $category->depth; $i++) &mdash; @endfor
-                        {{ $category->name }}
-                    </a>
-                </td>
+                <td>{{ $category->parent ? $category->parent->name : 'Null' }}</td>
+                <td>{{ $category->name }}</td>
                 <td>{{ $category->slug }}</td>
                 <td>{{ $category->title }}</td>
             </tr>

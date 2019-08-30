@@ -6,6 +6,8 @@ use App\Entity\Blog\Category;
 use App\Entity\Blog\Tag;
 use App\Entity\Blog\Post\Post;
 use App\Entity\Blog\Post\Comment;
+use App\Entity\Page;
+use App\Http\Router\PagePath;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -155,4 +157,55 @@ Breadcrumbs::register('admin.blog.comments.show', function (Crumbs $crumbs, Comm
 Breadcrumbs::register('admin.blog.comments.edit', function (Crumbs $crumbs, Comment $comment) {
     $crumbs->parent('admin.blog.comments.show', $comment);
     $crumbs->push('Edit', route('admin.blog.comments.edit', $comment));
+});
+
+// Pages
+
+Breadcrumbs::register('page', function (Crumbs $crumbs, PagePath $path) {
+    if ($parent = $path->page->parent) {
+        $crumbs->parent('page', $path->withPage($path->page->parent));
+    } else {
+        $crumbs->parent('home');
+    }
+
+    $crumbs->push($path->page->title, route('page', $path));
+});
+
+Breadcrumbs::register('admin.pages.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Pages', route('admin.pages.index'));
+});
+
+Breadcrumbs::register('admin.pages.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.pages.index');
+    $crumbs->push('Create', route('admin.pages.create'));
+});
+
+Breadcrumbs::register('admin.pages.show', function (Crumbs $crumbs, Page $page) {
+    if ($parent = $page->parent) {
+        $crumbs->parent('admin.pages.show', $parent);
+    } else {
+        $crumbs->parent('admin.pages.index');
+    }
+
+    $crumbs->push($page->title, route('admin.pages.show', $page));
+});
+
+// Pages
+
+Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) {
+    $crumbs->parent('admin.pages.show', $page);
+    $crumbs->push('Edit', route('admin.pages.edit', $page));
+});
+
+// Page frontend view
+
+Breadcrumbs::register('page.show', function (Crumbs $crumbs, PagePath $path) {
+    if ($parent = $path->page->parent) {
+        $crumbs->parent('page.show', $path->withPage($path->page->parent));
+    } else {
+        $crumbs->parent('home');
+    }
+
+    $crumbs->push($path->page->title, route('page.show', $path));
 });

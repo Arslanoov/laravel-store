@@ -26,6 +26,7 @@ class CreateBlogPostsTable extends Migration
             $table->string('status');
             $table->integer('views');
             $table->integer('comments');
+            $table->integer('likes');
         });
 
         Schema::create('blog_tag_assignments', function (Blueprint $table) {

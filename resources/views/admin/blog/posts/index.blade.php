@@ -72,8 +72,8 @@
         @foreach ($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
-                <td><a href="{{ route('admin.users.show', $post->author) }}">{{ $post->author->name }}</a></td>
-                <td>{{ $post->category->name ?? 'null' }}</td>
+                <td>{{ $post->author->name ?? 'Null' }}</td>
+                <td>{{ $post->category->name ?? 'Null' }}</td>
                 <td><img src="{{ $post->getImageUrl() }}" class="img img-responsive" width="100px" alt=""></td>
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->updated_at }}</td>
