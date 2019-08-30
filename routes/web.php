@@ -68,6 +68,18 @@ Route::group(
                 Route::resource('tags', 'TagsController');
 
                 Route::resource('categories', 'CategoriesController');
+                Route::group(
+                    [
+                        'prefix' => 'categories/{category}',
+                        'as' => 'categories.'
+                    ],
+                    function () {
+                        Route::post('/first', 'CategoriesController@first')->name('first');
+                        Route::post('/up', 'CategoriesController@up')->name('up');
+                        Route::post('/down', 'CategoriesController@down')->name('down');
+                        Route::post('/last', 'CategoriesController@last')->name('last');
+                    }
+                );
 
                 Route::resource('posts', 'PostsController');
                 Route::post('/posts/{post}/verify', 'PostsController@verify')->name('posts.verify');

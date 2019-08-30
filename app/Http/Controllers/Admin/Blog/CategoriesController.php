@@ -71,6 +71,40 @@ class CategoriesController extends Controller
         return redirect()->route('admin.blog.categories.index');
     }
 
+    public function first(Category $category)
+    {
+        $first = $this->service->getSiblings($category);
+        if ($first) {
+            $this->service->first($category, $first);
+        }
+
+        return redirect()->route('admin.blog.categories.index');
+    }
+
+    public function up(Category $category)
+    {
+        $this->service->up($category);
+
+        return redirect()->route('admin.blog.categories.index');
+    }
+
+    public function down(Category $category)
+    {
+        $this->service->down($category);
+
+        return redirect()->route('admin.blog.categories.index');
+    }
+
+    public function last(Category $category)
+    {
+        $last = $this->service->getSiblingsDesc($category);
+        if ($last) {
+            $this->service->last($category, $last);
+        }
+
+        return redirect()->route('admin.blog.categories.index');
+    }
+
     private function search(Request $request, Builder $query): Builder
     {
         if (!empty($value = $request->get('id'))) {

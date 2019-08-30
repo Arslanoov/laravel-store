@@ -13,7 +13,7 @@ class FindPageSiblingsDescQueryHandler
         $this->pages = $pages;
     }
 
-    public function __invoke(FindPageSiblingsQuery $query)
+    public function __invoke(FindCategorySiblingsQuery $query)
     {
         $siblings = $this->pages->findSiblingsDesc($query->page);
         return $siblings;

@@ -38,4 +38,24 @@ class CategoryRepository
     {
         $category->delete();
     }
+
+    public function first(Category $category, $first): void
+    {
+        $category->insertBeforeNode($first);
+    }
+
+    public function up(Category $category): void
+    {
+        $category->up();
+    }
+
+    public function down(Category $category): void
+    {
+        $category->down();
+    }
+
+    public function last(Category $category, $last): void
+    {
+        $category->insertAfterNode($last);
+    }
 }

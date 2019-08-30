@@ -53,6 +53,7 @@
             <th>Name</th>
             <th>Slug</th>
             <th>Title</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -61,9 +62,29 @@
             <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->parent ? $category->parent->name : 'Null' }}</td>
-                <td>{{ $category->name }}</td>
+                <td><a href="{{ route('admin.blog.categories.show', $category) }}">{{ $category->name }}</a></td>
                 <td>{{ $category->slug }}</td>
                 <td>{{ $category->title }}</td>
+                <td>
+                    <div class="d-flex flex-row">
+                        <form method="POST" action="{{ route('admin.blog.categories.first', $category) }}" class="mr-1">
+                            @csrf
+                            <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-up"></span></button>
+                        </form>
+                        <form method="POST" action="{{ route('admin.blog.categories.up', $category) }}" class="mr-1">
+                            @csrf
+                            <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-up"></span></button>
+                        </form>
+                        <form method="POST" action="{{ route('admin.blog.categories.down', $category) }}" class="mr-1">
+                            @csrf
+                            <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-down"></span></button>
+                        </form>
+                        <form method="POST" action="{{ route('admin.blog.categories.last', $category) }}" class="mr-1">
+                            @csrf
+                            <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-down"></span></button>
+                        </form>
+                    </div>
+                </td>
             </tr>
         @endforeach
 

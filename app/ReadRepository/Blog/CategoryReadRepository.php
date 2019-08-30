@@ -29,4 +29,16 @@ class CategoryReadRepository
         $categoriesTree = Category::defaultOrder()->withDepth()->get()->toTree();
         return $categoriesTree;
     }
+
+    public function findSiblings(Category $category)
+    {
+        $siblings = $category->siblings()->defaultOrder()->first();
+        return $siblings;
+    }
+
+    public function findSiblingsDesc(Category $category)
+    {
+        $siblings = $category->siblings()->defaultOrder('desc')->first();
+        return $siblings;
+    }
 }

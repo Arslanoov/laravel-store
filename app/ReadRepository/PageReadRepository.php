@@ -24,7 +24,6 @@ class PageReadRepository
         return $pages;
     }
 
-
     public function findSiblings(Page $page)
     {
         $siblings = $page->siblings()->defaultOrder()->first();

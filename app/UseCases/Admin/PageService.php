@@ -7,7 +7,7 @@ use App\Entity\Page;
 use App\Http\Requests\Admin\Page\CreateRequest;
 use App\Http\Requests\Admin\Page\UpdateRequest;
 use App\Query\Page\Find\FindPageByIdQuery;
-use App\Query\Page\Find\FindPageSiblingsQuery;
+use App\Query\Page\Find\FindCategorySiblingsQuery;
 use App\Query\Page\Find\FindPagesPaginateQuery;
 use App\Query\Page\Find\FindPagesQuery;
 use App\Query\QueryBus;
@@ -85,13 +85,13 @@ class PageService
 
     public function getSiblings(Page $page)
     {
-        $siblings = $this->queryBus->query(new FindPageSiblingsQuery($page));
+        $siblings = $this->queryBus->query(new FindCategorySiblingsQuery($page));
         return $siblings;
     }
 
     public function getSiblingsDesc(Page $page)
     {
-        $siblings = $this->queryBus->query(new FindPageSiblingsQuery($page));
+        $siblings = $this->queryBus->query(new FindCategorySiblingsQuery($page));
         return $siblings;
     }
 }
