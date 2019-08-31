@@ -20,6 +20,9 @@ class UpdateRequest extends FormRequest
             'description' => 'required|string',
             'text' => 'required|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png',
+            'tagsExisting' => 'array',
+            'tagsExisting.*' => 'integer|distinct',
+            'tagsNew' => 'nullable|string'
         ];
     }
 }

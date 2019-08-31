@@ -36,8 +36,9 @@ class PostsController extends Controller
     public function create()
     {
         $categories = $this->service->getCategoryTree();
+        $tags = $this->service->getTags();
 
-        return view('admin.blog.posts.create', compact('categories'));
+        return view('admin.blog.posts.create', compact('categories', 'tags'));
     }
 
     public function store(CreateRequest $request)
@@ -55,8 +56,9 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         $categories = $this->service->getCategoryTree();
+        $tags = $this->service->getTags();
 
-        return view('admin.blog.posts.edit', compact('post', 'categories'));
+        return view('admin.blog.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(UpdateRequest $request, Post $post)

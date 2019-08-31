@@ -80,6 +80,16 @@
         <tr>
             <th>Likes</th><td>{{ $post->likes }}</td>
         </tr>
+        <tr>
+            <th>Tags</th>
+            <td>
+                @foreach($post->tags as $tag)
+                    <span style="margin-right:10px;">
+                        {{ $tag->name }}@if (!$loop->last), @endif
+                    </span>
+                @endforeach
+            </td>
+        </tr>
         <tbody>
         </tbody>
     </table>

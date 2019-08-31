@@ -35,7 +35,7 @@
                                 <option value=""></option>
                                 @foreach ($statuses as $value => $label)
                                     <option value="{{ $value }}"{{ $value === request('status') ? ' selected' : '' }}>{{ $label }}</option>
-                                @endforeach;
+                                @endforeach
                             </select>
                         </div>
                     </div>

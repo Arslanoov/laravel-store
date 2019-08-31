@@ -22,6 +22,8 @@ class CommandHandler
             $command->content
         );
 
-        $this->posts->addPhoto($command->post, $command->photo);
+        if ($command->photo) {
+            $this->posts->addPhoto($command->post, $command->photo);
+        }
     }
 }

@@ -21,6 +21,27 @@
         </div>
 
         <div class="form-group">
+            <label for="tags" class="col-form-label"><b>Tags</b></label> <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="tagsExisting" class="col-form-label">Existing</label> <br>
+                    @foreach($tags as $tag)
+                        <input type="checkbox" id="tagsExisting" name="tagsExisting[]" value="{{ $tag->id }}" @if ($post->hasTag($tag->id)) checked @endif>
+
+                        <span style="margin-right: 10px;">{{ $tag->name }}</span>
+
+                    @endforeach
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="tagsNew" class="col-form-label">New</label> <br>
+                    <input id="tagsNew" class="form-control" name="tagsNew">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="photo" class="col-form-label">Photo</label>
             <input id="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo">
             <img src="{{ $post->getImageUrl() }}" width="90%" class="img img-responsive" alt="">

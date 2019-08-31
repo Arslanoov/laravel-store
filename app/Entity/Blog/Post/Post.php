@@ -3,6 +3,7 @@
 namespace App\Entity\Blog\Post;
 
 use App\Entity\Blog\Category;
+use App\Entity\Blog\Tag;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -66,6 +67,24 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'id', 'post_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'blog_tag_assignments');
+    }
+
+    public function hasTag($tagId): bool
+    {
+        $tags = $this->tags;
+
+        foreach ($tags as $tag) {
+            if ($tag->id == $tagId) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function isActive(): bool

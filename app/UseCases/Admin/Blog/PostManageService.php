@@ -7,6 +7,7 @@ use App\Entity\Blog\Post\Post;
 use App\Query\Blog\Category\Find\FindCategoriesTreeQuery;
 use App\Query\Blog\Post\Find\FindPostsQuery;
 use App\Query\Blog\Post\GetPostStatusesQuery;
+use App\Query\Blog\Tag\Find\FindTagsQuery;
 use App\Query\QueryBus;
 use App\Http\Requests\Admin\Blog\Post\CreateRequest;
 use App\Http\Requests\Admin\Blog\Post\UpdateRequest;
@@ -16,6 +17,8 @@ use App\Command\Admin\Blog\Post\Remove\Command as PostRemoveCommand;
 use App\Command\Admin\Blog\Post\Verify\Command as PostVerifyCommand;
 use App\Command\Admin\Blog\Post\Draft\Command as PostDraftCommand;
 use App\Command\Admin\Blog\Post\Photo\Command as PostUploadPhotoCommand;
+use App\Command\Admin\Blog\TagAssignment\Existing\Command as AddExistingTagsToPost;
+use App\Command\Admin\Blog\TagAssignment\Create\Command as AddNewTagsToPost;
 
 class PostManageService
 {
@@ -30,12 +33,16 @@ class PostManageService
 
     public function create(CreateRequest $request, int $userId): void
     {
-        $this->commandBus->handle(new PostCreateCommand($request, $userId));
+        $postId = $this->commandBus->handle(new PostCreateCommand($request, $userId));
+        $this->commandBus->handle(new AddExistingTagsToPost($request, $postId));
+        $this->commandBus->handle(new AddNewTagsToPost($request, $postId));
     }
 
     public function update(UpdateRequest $request, Post $post): void
     {
         $this->commandBus->handle(new PostUpdateCommand($request, $post));
+        $this->commandBus->handle(new AddExistingTagsToPost($request, $post->id));
+        $this->commandBus->handle(new AddNewTagsToPost($request, $post->id));
     }
 
     public function removePhoto(Post $post): void
@@ -62,6 +69,12 @@ class PostManageService
     {
         $posts = $this->queryBus->query(new FindPostsQuery());
         return $posts;
+    }
+
+    public function getTags()
+    {
+        $tags = ($this->queryBus->query(new FindTagsQuery()))->get();
+        return $tags;
     }
 
     public function getStatuses(): array

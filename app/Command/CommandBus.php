@@ -4,10 +4,11 @@ namespace App\Command;
 
 class CommandBus
 {
-    public function handle($command): void
+    public function handle($command)
     {
         $class = get_class($command) . 'Handler';
         $handler = app($class);
-        $handler($command);
+        $value = $handler($command);
+        return $value;
     }
 }
