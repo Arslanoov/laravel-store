@@ -91,6 +91,18 @@ Route::group(
             }
         );
 
+        Route::group(
+            [
+                'prefix' => 'shop',
+                'as' => 'shop.',
+                'namespace' => 'Shop',
+                'middleware' => ['auth', 'can:manage-shop']
+            ],
+            function () {
+                Route::resource('brands', 'BrandsController');
+            }
+        );
+
         Route::resource('pages', 'PagesController');
         Route::group(
             [

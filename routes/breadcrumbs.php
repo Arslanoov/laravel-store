@@ -8,6 +8,7 @@ use App\Entity\Blog\Post\Post;
 use App\Entity\Blog\Post\Comment;
 use App\Entity\Page;
 use App\Http\Router\PagePath;
+use App\Entity\Shop\Brand;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -191,11 +192,33 @@ Breadcrumbs::register('admin.pages.show', function (Crumbs $crumbs, Page $page) 
     $crumbs->push($page->title, route('admin.pages.show', $page));
 });
 
-// Pages
-
 Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) {
     $crumbs->parent('admin.pages.show', $page);
     $crumbs->push('Edit', route('admin.pages.edit', $page));
+});
+
+// Shop //
+
+// Brand
+
+Breadcrumbs::register('admin.shop.brands.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Brands', route('admin.shop.brands.index'));
+});
+
+Breadcrumbs::register('admin.shop.brands.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.brands.index');
+    $crumbs->push('Create', route('admin.shop.brands.create'));
+});
+
+Breadcrumbs::register('admin.shop.brands.show', function (Crumbs $crumbs, Brand $brand) {
+    $crumbs->parent('admin.shop.brands.index');
+    $crumbs->push($brand->name, route('admin.shop.brands.show', $brand));
+});
+
+Breadcrumbs::register('admin.shop.brands.edit', function (Crumbs $crumbs, Brand $brand) {
+    $crumbs->parent('admin.shop.brands.show', $brand);
+    $crumbs->push('Edit', route('admin.shop.brands.edit', $brand));
 });
 
 // Page frontend view

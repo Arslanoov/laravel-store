@@ -24,11 +24,15 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin();
         });
 
+        Gate::define('manage-pages', function (User $user) {
+            return $user->isAdmin() || $user->isManager();
+        });
+
         Gate::define('manage-blog', function (User $user) {
             return $user->isAdmin() || $user->isManager();
         });
 
-        Gate::define('manage-pages', function (User $user) {
+        Gate::define('manage-shop', function (User $user) {
             return $user->isAdmin() || $user->isManager();
         });
     }

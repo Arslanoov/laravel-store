@@ -90,7 +90,6 @@
                 @endforeach
             </td>
         </tr>
-        <tbody>
         </tbody>
     </table>
 @endsection

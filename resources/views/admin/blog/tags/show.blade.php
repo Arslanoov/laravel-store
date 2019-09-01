@@ -24,7 +24,6 @@
         <tr>
             <th>Slug</th><td>{{ $tag->slug }}</td>
         </tr>
-        <tbody>
         </tbody>
     </table>
 @endsection
