@@ -101,6 +101,18 @@ Route::group(
             function () {
                 Route::resource('brands', 'BrandsController');
 
+                Route::resource('characteristics', 'CharacteristicController');
+                Route::group(
+                    [
+                        'prefix' => 'characteristics/{characteristic}',
+                        'as' => 'characteristics.',
+                        'namespace' => 'Characteristic',
+                    ],
+                    function () {
+                        Route::resource('variants', 'VariantController');
+                    }
+                );
+
                 Route::resource('categories', 'CategoriesController');
                 Route::group(
                     [

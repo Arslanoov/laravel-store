@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Entity\Shop\Brand;
 use Faker\Generator as Faker;
+use App\Entity\Shop\Characteristic\Characteristic;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +16,18 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Brand::class, function (Faker $faker) {
-    $isExistsDescription = $faker->boolean;
+$factory->define(Characteristic::class, function (Faker $faker) {
+    $isRequired = $faker->boolean;
 
     return [
         'name' => $faker->name,
-        'slug' => $faker->unique()->slug(),
-        'description' => $isExistsDescription ? $faker->text : null
+        'type' => $faker->randomElement([
+            Characteristic::TYPE_INTEGER,
+            Characteristic::TYPE_FLOAT,
+            Characteristic::TYPE_STRING
+        ]),
+        'required' => $isRequired,
+        'default' => 0,
+        'sort' => 10
     ];
 });

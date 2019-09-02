@@ -10,6 +10,8 @@ use App\Entity\Blog\Post\Comment;
 use App\Entity\Page;
 use App\Http\Router\PagePath;
 use App\Entity\Shop\Brand;
+use App\Entity\Shop\Characteristic\Characteristic;
+use App\Entity\Shop\Characteristic\Variant;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -247,6 +249,46 @@ Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Sh
 Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, ShopCategory $category) {
     $crumbs->parent('admin.shop.categories.show', $category);
     $crumbs->push('Edit', route('admin.shop.categories.edit', $category));
+});
+
+// Characteristics //
+
+Breadcrumbs::register('admin.shop.characteristics.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Characteristics', route('admin.shop.characteristics.index'));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.characteristics.index');
+    $crumbs->push('Create', route('admin.shop.characteristics.create'));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.show', function (Crumbs $crumbs, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.characteristics.index');
+    $crumbs->push($characteristic->name, route('admin.shop.characteristics.show', $characteristic));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.edit', function (Crumbs $crumbs, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.characteristics.show', $characteristic);
+    $crumbs->push('Edit', route('admin.shop.characteristics.edit', $characteristic));
+});
+
+// Variants
+
+Breadcrumbs::register('admin.shop.characteristics.variants.create', function (Crumbs $crumbs, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.characteristics.show', $characteristic);
+    $crumbs->push('Create', route('admin.shop.characteristics.variants.create', $characteristic));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.variants.show', function (Crumbs $crumbs, Characteristic $characteristic, Variant $variant) {
+    $crumbs->parent('admin.shop.characteristics.show', $characteristic);
+    $crumbs->push($variant->name, route('admin.shop.characteristics.variants.show', compact('characteristic', 'variant')));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.variants.edit', function (Crumbs $crumbs, Characteristic $characteristic, Variant $variant) {
+    $crumbs->parent('admin.shop.characteristics.show', $characteristic);
+    $crumbs->push($variant->name, route('admin.shop.characteristics.variants.show', compact('characteristic', 'variant')));
+    $crumbs->push('Edit', route('admin.shop.characteristics.variants.edit', compact('characteristic', 'variant')));
 });
 
 // Page frontend view
