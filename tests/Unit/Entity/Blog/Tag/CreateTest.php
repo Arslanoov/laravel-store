@@ -3,10 +3,13 @@
 namespace Tests\Unit\Entity\Blog\Tag;
 
 use App\Entity\Blog\Tag;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testNew(): void
     {
         $tag = Tag::new(

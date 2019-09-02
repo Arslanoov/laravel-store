@@ -5,10 +5,13 @@ namespace Tests\Unit\Entity\Blog\Post\Post;
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Post\Post;
 use App\Entity\User\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testNew(): void
     {
         $user = factory(User::class)->make([

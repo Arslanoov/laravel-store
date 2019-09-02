@@ -3,10 +3,13 @@
 namespace Tests\Unit\Entity\Shop\Brand;
 
 use App\Entity\Shop\Brand;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testNew(): void
     {
         $brand = Brand::new(

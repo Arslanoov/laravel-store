@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Query\Shop\Find;
+namespace App\Query\Shop\Brand\Find;
 
 use App\ReadRepository\Shop\BrandReadRepository;
 

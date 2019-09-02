@@ -2,11 +2,14 @@
 
 namespace Tests\Unit\Entity\User;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Entity\User\User;
 
 class RoleTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testChangeToAdminFromUser(): void
     {
         $user = factory(User::class)->create([

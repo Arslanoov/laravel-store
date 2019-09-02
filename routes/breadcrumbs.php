@@ -2,7 +2,8 @@
 
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\User\User;
-use App\Entity\Blog\Category;
+use App\Entity\Blog\Category as BlogCategory;
+use App\Entity\Shop\Category as ShopCategory;
 use App\Entity\Blog\Tag;
 use App\Entity\Blog\Post\Post;
 use App\Entity\Blog\Post\Comment;
@@ -106,7 +107,7 @@ Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) 
     $crumbs->push('Create', route('admin.blog.categories.create'));
 });
 
-Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Category $category) {
+Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, BlogCategory $category) {
     if ($parent = $category->parent) {
         $crumbs->parent('admin.blog.categories.show', $parent);
     } else {
@@ -116,7 +117,7 @@ Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Ca
     $crumbs->push($category->name, route('admin.blog.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
+Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, BlogCategory $category) {
     $crumbs->parent('admin.blog.categories.show', $category);
     $crumbs->push('Edit', route('admin.blog.categories.edit', $category));
 });
@@ -219,6 +220,33 @@ Breadcrumbs::register('admin.shop.brands.show', function (Crumbs $crumbs, Brand 
 Breadcrumbs::register('admin.shop.brands.edit', function (Crumbs $crumbs, Brand $brand) {
     $crumbs->parent('admin.shop.brands.show', $brand);
     $crumbs->push('Edit', route('admin.shop.brands.edit', $brand));
+});
+
+// Categories
+
+Breadcrumbs::register('admin.shop.categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Categories', route('admin.shop.categories.index'));
+});
+
+Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.categories.index');
+    $crumbs->push('Create', route('admin.shop.categories.create'));
+});
+
+Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+    if ($parent = $category->parent) {
+        $crumbs->parent('admin.shop.categories.show', $parent);
+    } else {
+        $crumbs->parent('admin.shop.categories.index');
+    }
+
+    $crumbs->push($category->name, route('admin.shop.categories.show', $category));
+});
+
+Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, ShopCategory $category) {
+    $crumbs->parent('admin.shop.categories.show', $category);
+    $crumbs->push('Edit', route('admin.shop.categories.edit', $category));
 });
 
 // Page frontend view

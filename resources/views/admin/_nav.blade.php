@@ -20,6 +20,7 @@
 
     @can ('manage-shop')
         <li class="nav-item"><a class="nav-link {{ $page === 'shop-brands' ? ' active' : '' }}" href="{{ route('admin.shop.brands.index') }}">Shop Brands</a></li>
+        <li class="nav-item"><a class="nav-link {{ $page === 'shop-categories' ? ' active' : '' }}" href="{{ route('admin.shop.categories.index') }}">Shop Categories</a></li>
     @endcan
 </ul>
 

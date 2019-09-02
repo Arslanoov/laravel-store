@@ -10,7 +10,7 @@ use App\Http\Requests\Admin\Shop\Brand\UpdateRequest;
 use App\Command\Admin\Shop\Brand\Create\Command as BrandCreateCommand;
 use App\Command\Admin\Shop\Brand\Update\Command as BrandUpdateCommand;
 use App\Command\Admin\Shop\Brand\Remove\Command as BrandRemoveCommand;
-use App\Query\Shop\Find\FindBrandsQuery;
+use App\Query\Shop\Brand\Find\FindBrandsQuery;
 
 class BrandManageService
 {

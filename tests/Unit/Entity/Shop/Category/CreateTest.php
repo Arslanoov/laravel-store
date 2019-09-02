@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Entity\Blog\Category;
+namespace Tests\Unit\Entity\Shop\Category;
 
 use App\Entity\Blog\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
