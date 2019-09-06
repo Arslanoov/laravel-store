@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Entity\Shop\Characteristic\Characteristic;
+use App\Entity\Shop\Product\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +16,16 @@ use App\Entity\Shop\Characteristic\Characteristic;
 |
 */
 
-$factory->define(Characteristic::class, function (Faker $faker) {
-    $isRequired = $faker->boolean;
-
+$factory->define(Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'type' => $faker->randomElement([
-            Characteristic::TYPE_INTEGER,
-            Characteristic::TYPE_FLOAT,
-            Characteristic::TYPE_STRING
+        'category_id' => null,
+        'availability' => $faker->randomElement([
+            Product::AVAILABILITY_IN_STOCK,
+            Product::AVAILABILITY_OUT_OF_STOCK
         ]),
-        'required' => $isRequired,
-        'default' => 0,
-        'sort' => 10
+        'title' => $faker->title,
+        'slug' => $faker->slug,
+        'price' => $faker->randomNumber(),
+        'description' => $faker->text
     ];
 });

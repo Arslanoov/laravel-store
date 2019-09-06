@@ -32,6 +32,11 @@ class Characteristic extends Model
         ]);
     }
 
+    public function variants()
+    {
+        return $this->hasMany(Variant::class, 'id', 'characteristic_id');
+    }
+
     public function isRequired(): bool
     {
         return $this->required === true;

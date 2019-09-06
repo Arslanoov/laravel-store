@@ -12,6 +12,8 @@ use App\Http\Router\PagePath;
 use App\Entity\Shop\Brand;
 use App\Entity\Shop\Characteristic\Characteristic;
 use App\Entity\Shop\Characteristic\Variant;
+use App\Entity\Shop\Product\Product;
+use App\Entity\Shop\Product\Characteristic as ProductCharacteristics;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -289,6 +291,40 @@ Breadcrumbs::register('admin.shop.characteristics.variants.edit', function (Crum
     $crumbs->parent('admin.shop.characteristics.show', $characteristic);
     $crumbs->push($variant->name, route('admin.shop.characteristics.variants.show', compact('characteristic', 'variant')));
     $crumbs->push('Edit', route('admin.shop.characteristics.variants.edit', compact('characteristic', 'variant')));
+});
+
+// Products
+
+Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Brands', route('admin.shop.products.index'));
+});
+
+Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push('Create', route('admin.shop.products.create'));
+});
+
+Breadcrumbs::register('admin.shop.products.show', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push($product->title, route('admin.shop.products.show', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.edit', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push('Edit', route('admin.shop.products.edit', $product));
+});
+
+// Product Characteristics
+
+Breadcrumbs::register('admin.shop.products.characteristics.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push('Create', route('admin.shop.products.create'));
+});
+
+Breadcrumbs::register('admin.shop.products.characteristics.addVariant', function (Crumbs $crumbs, Product $product, ProductCharacteristics $productCharacteristics) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push('Edit', route('admin.shop.products.characteristics.addVariant', compact('product', 'productCharacteristics')));
 });
 
 // Page frontend view

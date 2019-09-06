@@ -8,7 +8,13 @@ class BrandReadRepository
 {
     public function findAll()
     {
-        $brands = Brand::orderByDesc('id');
+        $brands = Brand::orderByDesc('id')->get();
         return $brands;
+    }
+
+    public function findAllPaginate()
+    {
+        $brandsList = Brand::orderByDesc('id');
+        return $brandsList;
     }
 }

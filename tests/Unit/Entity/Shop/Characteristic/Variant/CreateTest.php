@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Entity\Shop\Characteristic\Value;
+namespace Tests\Unit\Entity\Shop\Characteristic\Variant;
 
 use App\Entity\Shop\Characteristic\Characteristic;
 use App\Entity\Shop\Characteristic\Variant;

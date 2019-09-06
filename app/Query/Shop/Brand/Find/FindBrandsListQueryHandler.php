@@ -4,7 +4,7 @@ namespace App\Query\Shop\Brand\Find;
 
 use App\ReadRepository\Shop\BrandReadRepository;
 
-class FindBrandsQueryHandler
+class FindBrandsListQueryHandler
 {
     private $brands;
 
@@ -13,9 +13,9 @@ class FindBrandsQueryHandler
         $this->brands = $brands;
     }
 
-    public function __invoke(FindBrandsQuery $query)
+    public function __invoke(FindBrandsListQuery $query)
     {
-        $brands = $this->brands->findAllPaginate();
+        $brands = $this->brands->findAll();
         return $brands;
     }
 }

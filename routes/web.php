@@ -126,6 +126,31 @@ Route::group(
                         Route::post('/last', 'CategoriesController@last')->name('last');
                     }
                 );
+
+                Route::resource('products', 'Product\ProductsController');
+                Route::group(
+                    [
+                        'prefix' => 'products/{product}',
+                        'as' => 'products.',
+                        'namespace' => 'Product',
+                    ],
+                    function () {
+                        Route::post('/activate', 'ProductsController@activate')->name('activate');
+                        Route::post('/draft', 'ProductsController@draft')->name('draft');
+                        Route::post('/available', 'ProductsController@available')->name('available');
+                        Route::post('/unavailable', 'ProductsController@unavailable')->name('unavailable');
+
+                        Route::post('/photos/create', 'PhotosController@store')->name('photos.store');
+                        Route::post('/photos/{photo}/remove', 'PhotosController@destroy')->name('photos.destroy');
+                        Route::post('/photos/remove-all', 'PhotosController@destroyAll')->name('photos.destroyAll');
+
+                        Route::get('/characteristics/create', 'CharacteristicsController@create')->name('characteristics.create');
+                        Route::get('/characteristics/{characteristic}/add-variant', 'CharacteristicsController@addVariant')->name('characteristics.addVariant');
+                        Route::post('/characteristics/store', 'CharacteristicsController@store')->name('characteristics.store');
+                        Route::post('/characteristics/{characteristic}/store-variant', 'CharacteristicsController@storeVariant')->name('characteristics.storeVariant');
+                        Route::post('/characteristics/{characteristic}/destroy', 'CharacteristicsController@destroy')->name('characteristics.destroy');
+                    }
+                );
             }
         );
 
