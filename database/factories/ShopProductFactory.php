@@ -4,6 +4,7 @@
 
 use Faker\Generator as Faker;
 use App\Entity\Shop\Product\Product;
+use App\Entity\Shop\Brand;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,24 @@ use App\Entity\Shop\Product\Product;
 |
 */
 
-$factory->define(Product::class, function (Faker $faker) {
+$factory->define(Product::class, function (Faker $faker) use ($factory) {
+    $brand = $factory->make(Brand::class, [
+        'id' => 1
+    ]);
+
     return [
         'category_id' => null,
+        'brand_id' => $brand->id,
         'availability' => $faker->randomElement([
-            Product::AVAILABILITY_IN_STOCK,
-            Product::AVAILABILITY_OUT_OF_STOCK
+            Product::AVAILABILITY_OUT_OF_STOCK,
+            Product::AVAILABILITY_IN_STOCK
         ]),
         'title' => $faker->title,
         'slug' => $faker->slug,
         'price' => $faker->randomNumber(),
-        'description' => $faker->text
+        'content' => $faker->text,
+        'status' => Product::STATUS_DRAFT,
+        'comments' => 0,
+        'reviews' => 0
     ];
 });

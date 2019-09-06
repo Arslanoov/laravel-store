@@ -169,7 +169,6 @@
             </tbody>
         </table>
     @else
-        <br><br>
         <p><b>The product has no characteristics</b></p>
     @endif
 

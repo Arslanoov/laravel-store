@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Entity\Blog\Post\Post;
+namespace Tests\Unit\Entity\Blog\Post;
 
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Post\Post;
