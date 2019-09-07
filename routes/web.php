@@ -151,6 +151,9 @@ Route::group(
                         Route::post('/characteristics/{characteristic}/destroy', 'CharacteristicsController@destroy')->name('characteristics.destroy');
                     }
                 );
+
+                Route::resource('comments', 'CommentsController');
+                Route::post('/comments/{comment}/activate', 'CommentsController@activate')->name('comments.activate');
             }
         );
 

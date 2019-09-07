@@ -6,7 +6,8 @@ use App\Entity\Blog\Category as BlogCategory;
 use App\Entity\Shop\Category as ShopCategory;
 use App\Entity\Blog\Tag;
 use App\Entity\Blog\Post\Post;
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Post\Comment as BlogComment;
+use App\Entity\Shop\Product\Comment as ShopComment;
 use App\Entity\Page;
 use App\Http\Router\PagePath;
 use App\Entity\Shop\Brand;
@@ -155,12 +156,12 @@ Breadcrumbs::register('admin.blog.comments.index', function (Crumbs $crumbs) {
     $crumbs->push('Blog Comments', route('admin.blog.comments.index'));
 });
 
-Breadcrumbs::register('admin.blog.comments.show', function (Crumbs $crumbs, Comment $comment) {
+Breadcrumbs::register('admin.blog.comments.show', function (Crumbs $crumbs, BlogComment $comment) {
     $crumbs->parent('admin.blog.comments.index');
     $crumbs->push($comment->id, route('admin.blog.comments.show', $comment));
 });
 
-Breadcrumbs::register('admin.blog.comments.edit', function (Crumbs $crumbs, Comment $comment) {
+Breadcrumbs::register('admin.blog.comments.edit', function (Crumbs $crumbs, BlogComment $comment) {
     $crumbs->parent('admin.blog.comments.show', $comment);
     $crumbs->push('Edit', route('admin.blog.comments.edit', $comment));
 });
@@ -325,6 +326,23 @@ Breadcrumbs::register('admin.shop.products.characteristics.create', function (Cr
 Breadcrumbs::register('admin.shop.products.characteristics.addVariant', function (Crumbs $crumbs, Product $product, ProductCharacteristics $productCharacteristics) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push('Edit', route('admin.shop.products.characteristics.addVariant', compact('product', 'productCharacteristics')));
+});
+
+// Comments
+
+Breadcrumbs::register('admin.shop.comments.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Blog Comments', route('admin.shop.comments.index'));
+});
+
+Breadcrumbs::register('admin.shop.comments.show', function (Crumbs $crumbs, ShopComment $comment) {
+    $crumbs->parent('admin.shop.comments.index');
+    $crumbs->push($comment->id, route('admin.shop.comments.show', $comment));
+});
+
+Breadcrumbs::register('admin.shop.comments.edit', function (Crumbs $crumbs, ShopComment $comment) {
+    $crumbs->parent('admin.shop.comments.show', $comment);
+    $crumbs->push('Edit', route('admin.shop.comments.edit', $comment));
 });
 
 // Page frontend view
