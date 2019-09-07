@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Shop\Comment\Activate;
 
-use App\Entity\Shop\Product\Comment;
+use App\Entity\Shop\Comment;
 
 class Command
 {

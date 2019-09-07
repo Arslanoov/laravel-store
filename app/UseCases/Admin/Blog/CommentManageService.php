@@ -3,7 +3,7 @@
 namespace App\UseCases\Admin\Blog;
 
 use App\Command\CommandBus;
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 use App\Http\Requests\Admin\Blog\Post\Comment\UpdateRequest;
 use App\Query\Blog\Post\Comment\Find\FindCommentsQuery;
 use App\Query\QueryBus;

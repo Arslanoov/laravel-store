@@ -2,7 +2,7 @@
 
 namespace App\Repository\Shop;
 
-use App\Entity\Shop\Product\Comment;
+use App\Entity\Shop\Comment;
 
 class CommentRepository
 {

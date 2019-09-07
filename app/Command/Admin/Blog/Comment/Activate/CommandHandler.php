@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Blog\Comment\Activate;
 
-use App\Repository\Blog\Post\CommentRepository;
+use App\Repository\Blog\CommentRepository;
 
 class CommandHandler
 {

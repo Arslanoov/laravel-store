@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Blog;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\Post\Comment\UpdateRequest;
 use App\UseCases\Admin\Blog\CommentManageService;

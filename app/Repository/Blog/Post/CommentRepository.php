@@ -2,7 +2,7 @@
 
 namespace App\Repository\Blog\Post;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 
 class CommentRepository
 {

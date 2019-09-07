@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Shop\Comment\Update;
 
-use App\Entity\Shop\Product\Comment;
+use App\Entity\Shop\Comment;
 use App\Http\Requests\Admin\Shop\Comment\UpdateRequest;
 
 class Command

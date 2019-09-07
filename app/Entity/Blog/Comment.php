@@ -1,28 +1,35 @@
 <?php
 
-namespace App\Entity\Shop\Product;
+namespace App\Entity\Blog;
 
+use App\Entity\Blog\Post\Post;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $table = 'shop_product_comments';
+    protected $table = 'blog_post_comments';
     protected $fillable = [
-        'author_id', 'product_id', 'parent_id', 'text', 'active'
+        'author_id', 'post_id', 'parent_id', 'text', 'active'
     ];
 
-    public static function new(
-        $authorId, $productId,
-        $parentId, $text
-    ): self
+    public static function new($authorId, $postId, $parentId, $text): self
     {
         return static::create([
             'author_id' => $authorId,
-            'product_id' => $productId,
+            'post_id' => $postId,
             'parent_id' => $parentId,
             'text' => $text,
             'active' => true
+        ]);
+    }
+
+    public function edit($parentId, $postId, $text): void
+    {
+        $this->update([
+            'parent_id' => $parentId,
+            'post_id' => $postId,
+            'text' => $text
         ]);
     }
 
@@ -62,7 +69,7 @@ class Comment extends Model
 
     public function post()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Post::class, 'post_id', 'id');
     }
 
     public function author()

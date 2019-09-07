@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Shop\Product\Comment;
+namespace App\Http\Requests\Admin\Shop\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 

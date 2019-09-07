@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Shop;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\Post\Comment\UpdateRequest;
-use App\UseCases\Admin\Blog\CommentManageService;
+use App\UseCases\Admin\Shop\CommentManageService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Entity\Blog\Post\Comment;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 use App\Entity\Blog\Post\Post;
 use App\Entity\User\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

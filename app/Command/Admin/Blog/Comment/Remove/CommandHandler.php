@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Blog\Comment\Remove;
 
-use App\Repository\Blog\Post\CommentRepository;
+use App\Repository\Blog\CommentRepository;
 
 class CommandHandler
 {

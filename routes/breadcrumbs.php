@@ -6,8 +6,8 @@ use App\Entity\Blog\Category as BlogCategory;
 use App\Entity\Shop\Category as ShopCategory;
 use App\Entity\Blog\Tag;
 use App\Entity\Blog\Post\Post;
-use App\Entity\Blog\Post\Comment as BlogComment;
-use App\Entity\Shop\Product\Comment as ShopComment;
+use App\Entity\Blog\Comment as BlogComment;
+use App\Entity\Shop\Comment as ShopComment;
 use App\Entity\Page;
 use App\Http\Router\PagePath;
 use App\Entity\Shop\Brand;
@@ -15,6 +15,7 @@ use App\Entity\Shop\Characteristic\Characteristic;
 use App\Entity\Shop\Characteristic\Variant;
 use App\Entity\Shop\Product\Product;
 use App\Entity\Shop\Product\Characteristic as ProductCharacteristics;
+use App\Entity\Shop\Review;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -332,7 +333,7 @@ Breadcrumbs::register('admin.shop.products.characteristics.addVariant', function
 
 Breadcrumbs::register('admin.shop.comments.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Blog Comments', route('admin.shop.comments.index'));
+    $crumbs->push('Shop Comments', route('admin.shop.comments.index'));
 });
 
 Breadcrumbs::register('admin.shop.comments.show', function (Crumbs $crumbs, ShopComment $comment) {
@@ -343,6 +344,23 @@ Breadcrumbs::register('admin.shop.comments.show', function (Crumbs $crumbs, Shop
 Breadcrumbs::register('admin.shop.comments.edit', function (Crumbs $crumbs, ShopComment $comment) {
     $crumbs->parent('admin.shop.comments.show', $comment);
     $crumbs->push('Edit', route('admin.shop.comments.edit', $comment));
+});
+
+// Reviews
+
+Breadcrumbs::register('admin.shop.reviews.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Reviews', route('admin.shop.reviews.index'));
+});
+
+Breadcrumbs::register('admin.shop.reviews.show', function (Crumbs $crumbs, Review $review) {
+    $crumbs->parent('admin.shop.reviews.index');
+    $crumbs->push($review->id, route('admin.shop.reviews.show', $review));
+});
+
+Breadcrumbs::register('admin.shop.reviews.edit', function (Crumbs $crumbs, Review $review) {
+    $crumbs->parent('admin.shop.reviews.show', $review);
+    $crumbs->push('Edit', route('admin.shop.reviews.edit', $review));
 });
 
 // Page frontend view

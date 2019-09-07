@@ -1,15 +1,15 @@
 <?php
 
-namespace App\UseCases\Admin\Shop\Product;
+namespace App\UseCases\Admin\Shop;
 
 use App\Command\CommandBus;
-use App\Entity\Shop\Product\Comment;
-use App\Http\Requests\Admin\Shop\Product\Comment\UpdateRequest;
-use App\Query\Shop\Product\Comment\Find\FindCommentsQuery;
+use App\Entity\Shop\Comment;
+use App\Http\Requests\Admin\Shop\Comment\UpdateRequest;
+use App\Query\Shop\Comment\Find\FindCommentsQuery;
 use App\Query\QueryBus;
-use App\Command\Admin\Shop\Product\Comment\Activate\Command as CommentActivateCommand;
-use App\Command\Admin\Shop\Product\Comment\Update\Command as CommentUpdateCommand;
-use App\Command\Admin\Shop\Product\Comment\Remove\Command as CommentRemoveCommand;
+use App\Command\Admin\Shop\Comment\Activate\Command as CommentActivateCommand;
+use App\Command\Admin\Shop\Comment\Update\Command as CommentUpdateCommand;
+use App\Command\Admin\Shop\Comment\Remove\Command as CommentRemoveCommand;
 
 class CommentManageService
 {

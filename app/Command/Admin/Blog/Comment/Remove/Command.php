@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Blog\Comment\Remove;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 
 class Command
 {

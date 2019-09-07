@@ -2,7 +2,7 @@
 
 namespace App\Command\Admin\Blog\Comment\Update;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 use App\Http\Requests\Admin\Blog\Post\Comment\UpdateRequest;
 
 class Command

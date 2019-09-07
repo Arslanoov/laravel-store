@@ -2,7 +2,7 @@
 
 namespace App\Query\Shop\Comment\Find;
 
-use App\ReadRepository\Shop\Product\CommentReadRepository;
+use App\ReadRepository\Shop\CommentReadRepository;
 
 class FindCommentsQueryHandler
 {

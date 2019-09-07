@@ -24,6 +24,7 @@ class CreateShopProductsTable extends Migration
             $table->integer('price');
             $table->text('content');
             $table->string('status');
+            $table->integer('rating')->nullable();
             $table->integer('reviews');
             $table->integer('comments');
         });

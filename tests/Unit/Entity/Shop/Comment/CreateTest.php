@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\Entity\Shop\Product\Comment;
+namespace Tests\Unit\Entity\Shop\Comment;
 
-use App\Entity\Shop\Product\Comment;
+use App\Entity\Shop\Comment;
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

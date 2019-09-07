@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ReadRepository\Blog\Post;
+namespace App\ReadRepository\Blog;
 
-use App\Entity\Blog\Post\Comment;
+use App\Entity\Blog\Comment;
 
 class CommentReadRepository
 {
