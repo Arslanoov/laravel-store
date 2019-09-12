@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command\Blog\Post\Like;
+namespace App\Command\Blog\Post\Like\Add;
 
 use App\Entity\Blog\Post\Post;
 

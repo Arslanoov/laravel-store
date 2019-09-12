@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command\Blog\Post\Like;
+namespace App\Command\Blog\Post\Like\Add;
 
 use App\Repository\Blog\Post\LikeRepository;
 use App\Repository\Blog\PostRepository;
@@ -20,5 +20,7 @@ class CommandHandler
     {
         $this->likes->create($command->userId, $command->post->id);
         $this->posts->like($command->post);
+
+        return $command->post->likes;
     }
 }

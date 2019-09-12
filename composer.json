@@ -9,15 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
+        "arrilot/laravel-widgets": "^3.13",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
         "eternicode/bootstrap-datepicker": "^1.9",
         "fideloper/proxy": "^4.0",
         "kalnoy/nestedset": "^4.3",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "mews/purifier": "^2.1",
         "unisharp/laravel-ckeditor": "4.7.*",
-        "unisharp/laravel-filemanager": "dev-master",
-        "mews/purifier": "^2.1"
+        "unisharp/laravel-filemanager": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

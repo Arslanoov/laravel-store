@@ -2,6 +2,7 @@
 
 namespace App\Entity\Blog;
 
+use App\Entity\Blog\Post\Post;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
 
@@ -34,5 +35,10 @@ class Category extends Model
     public function getSeoTitle(): string
     {
         return $this->title ?? $this->name;
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'category_id', 'id');
     }
 }

@@ -24,6 +24,12 @@ class CategoryReadRepository
         return $parents;
     }
 
+    public function findBySlug(string $slug): ?Category
+    {
+        $category = Category::where('slug', $slug)->first();
+        return $category;
+    }
+
     public function getTree()
     {
         $categoriesTree = Category::defaultOrder()->withDepth()->get()->toTree();

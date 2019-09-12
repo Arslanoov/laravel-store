@@ -126,7 +126,7 @@ body {
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  color: #777777;
+  color: #777777 !important;
   background: #fff; }
 
 html,
@@ -3673,11 +3673,13 @@ label {
     line-height: 60px; }
 
 .cat_widgets .list li {
-  margin-bottom: 13px; }
+  margin-bottom: 13px;
+}
   .cat_widgets .list li a {
     font-size: 14px;
     font-family: "Roboto", sans-serif;
-    color: #222222; }
+    color: #222222;
+  }
   .cat_widgets .list li .list {
     margin-top: 10px;
     padding-left: 35px;
@@ -5316,7 +5318,7 @@ label {
       margin-bottom: 8px;
       transition: all 0.3s ease 0s;
       color: #222222;
-      font-size: 12px; }
+      font-size: 14px; }
       .blog_right_sidebar .tag_cloud_widget ul li a:hover {
         background: #ffba00;
         color: #fff; }
@@ -5463,7 +5465,7 @@ label {
   margin-top: 50px; }
   @media (max-width: 414px) {
     .comments-area {
-      padding: 50px 8px; } }
+      padding: 10px 8px; } }
   .comments-area h4 {
     text-align: center;
     margin-bottom: 50px;
@@ -5474,12 +5476,8 @@ label {
     margin-bottom: 0px; }
   .comments-area a {
     color: #222222; }
-  .comments-area .comment-list {
+  .comment-list {
     padding-bottom: 48px; }
-    .comments-area .comment-list:last-child {
-      padding-bottom: 0px; }
-    .comments-area .comment-list.left-padding {
-      padding-left: 25px; }
     @media (max-width: 413px) {
       .comments-area .comment-list .single-comment h5 {
         font-size: 12px; }
@@ -5796,4 +5794,13 @@ label {
   .footer-text i {
     color: #ffba00; }
 
-/*# sourceMappingURL=main.css.map */
+.left-padding {
+  padding-left: 25px;
+}
+.left-padding .left-padding .left-padding .left-padding {
+  padding-left: 0;
+}
+input:focus, input[type=submit], button.search {
+  outline: none !important;
+  border: 0;
+}

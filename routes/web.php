@@ -33,6 +33,29 @@ Route::group(
 
 Route::group(
     [
+        'prefix' => 'blog',
+        'as' => 'blog.',
+        'namespace' => 'Blog',
+    ],
+    function () {
+        Route::get('/all', 'PostsController@all')->name('posts.all');
+        Route::get('/best', 'PostsController@best')->name('posts.best');
+        Route::get('/popular', 'PostsController@popular')->name('posts.popular');
+
+        Route::get('/category/{name}', 'PostsController@category')->name('posts.category');
+        Route::get('/tag/{name}', 'PostsController@tag')->name('posts.tag');
+
+        Route::get('/{id}-{slug}', 'PostsController@single')->name('posts.single');
+
+        Route::get('/search', 'PostsController@search')->name('posts.search');
+
+        Route::post('/like', 'PostsController@like')->name('posts.like');
+        Route::post('/{post}/comment/create', 'PostsController@comment')->name('posts.comment');
+    }
+);
+
+Route::group(
+    [
         'prefix' => 'cabinet',
         'as' => 'cabinet.',
         'namespace' => 'Cabinet',

@@ -13,7 +13,7 @@ class Comment extends Model
         'author_id', 'post_id', 'parent_id', 'text', 'active'
     ];
 
-    public static function new($authorId, $postId, $parentId, $text): self
+    public static function new($parentId, $postId, $authorId, $text): self
     {
         return static::create([
             'author_id' => $authorId,

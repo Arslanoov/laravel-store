@@ -3,6 +3,7 @@
 namespace App\ReadRepository\Blog\Post;
 
 use App\Entity\Blog\Post\TagAssignment;
+use App\Entity\Blog\Tag;
 
 class TagAssignmentReadRepository
 {

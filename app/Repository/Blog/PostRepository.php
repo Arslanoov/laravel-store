@@ -66,6 +66,26 @@ class PostRepository
 
     public function like(Post $post): void
     {
-        $post->like();
+        $post->addLikesCount();
+    }
+
+    public function unlike(Post $post): void
+    {
+        $post->reduceLikesCount();
+    }
+
+    public function view(Post $post): void
+    {
+        $post->addViewsCount();
+    }
+
+    public function comment(Post $post): void
+    {
+        $post->addCommentsCount();
+    }
+
+    public function deleteComment(Post $post): void
+    {
+        $post->reduceCommentsCount();
     }
 }

@@ -1,4 +1,16 @@
 <?php return array (
+  'arrilot/laravel-widgets' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Arrilot\\Widgets\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Widget' => 'Arrilot\\Widgets\\Facade',
+      'AsyncWidget' => 'Arrilot\\Widgets\\AsyncFacade',
+    ),
+  ),
   'barryvdh/laravel-debugbar' => 
   array (
     'providers' => 

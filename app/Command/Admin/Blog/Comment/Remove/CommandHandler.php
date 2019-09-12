@@ -2,14 +2,17 @@
 
 namespace App\Command\Admin\Blog\Comment\Remove;
 
-use App\Repository\Blog\CommentRepository;
+use App\Repository\Blog\Post\CommentRepository;
+use App\Repository\Blog\PostRepository;
 
 class CommandHandler
 {
+    private $posts;
     private $comments;
 
-    public function __construct(CommentRepository $comments)
+    public function __construct(PostRepository $posts, CommentRepository $comments)
     {
+        $this->posts = $posts;
         $this->comments = $comments;
     }
 
@@ -19,6 +22,7 @@ class CommandHandler
             $this->comments->draft($command->comment);
         } else {
             $this->comments->remove($command->comment);
+            $this->posts->deleteComment($command->comment->post);
         }
     }
 }

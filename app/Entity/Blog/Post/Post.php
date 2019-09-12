@@ -3,8 +3,10 @@
 namespace App\Entity\Blog\Post;
 
 use App\Entity\Blog\Category;
+use App\Entity\Blog\Comment;
 use App\Entity\Blog\Tag;
 use App\Entity\User\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -64,9 +66,9 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function comments()
+    public function commentsList()
     {
-        return $this->hasMany(Comment::class, 'id', 'post_id');
+        return $this->hasMany(Comment::class, 'post_id', 'id')->where('parent_id', '=', null);
     }
 
     public function tags()
@@ -87,6 +89,11 @@ class Post extends Model
         return false;
     }
 
+    public function scopeActive(Builder $query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
@@ -102,12 +109,48 @@ class Post extends Model
         return $this->photo ? '/storage/' . $this->photo : '';
     }
 
-    public function like(): void
+    public function addLikesCount(): void
     {
         $likes = $this->likes;
 
         $this->update([
             'likes' => $likes + 1
+        ]);
+    }
+
+    public function reduceLikesCount(): void
+    {
+        $likes = $this->likes;
+
+        $this->update([
+            'likes' => $likes - 1
+        ]);
+    }
+
+    public function addViewsCount(): void
+    {
+        $views = $this->views;
+
+        $this->update([
+            'views' => $views + 1
+        ]);
+    }
+
+    public function addCommentsCount(): void
+    {
+        $comments = $this->comments;
+
+        $this->update([
+            'comments' => $comments + 1
+        ]);
+    }
+
+    public function reduceCommentsCount(): void
+    {
+        $comments = $this->comments;
+
+        $this->update([
+            'comments' => $comments - 1
         ]);
     }
 

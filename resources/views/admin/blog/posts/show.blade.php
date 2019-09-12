@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     @include('admin.blog.posts._nav')
 
     <div class="d-flex flex-row mb-3">

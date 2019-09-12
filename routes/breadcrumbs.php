@@ -362,15 +362,3 @@ Breadcrumbs::register('admin.shop.reviews.edit', function (Crumbs $crumbs, Revie
     $crumbs->parent('admin.shop.reviews.show', $review);
     $crumbs->push('Edit', route('admin.shop.reviews.edit', $review));
 });
-
-// Page frontend view
-
-Breadcrumbs::register('page.show', function (Crumbs $crumbs, PagePath $path) {
-    if ($parent = $path->page->parent) {
-        $crumbs->parent('page.show', $path->withPage($path->page->parent));
-    } else {
-        $crumbs->parent('home');
-    }
-
-    $crumbs->push($path->page->title, route('page.show', $path));
-});
