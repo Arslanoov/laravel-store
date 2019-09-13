@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'KARMA') }}</title>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
 
     <link href="{{ asset('css/linearicons.css') }}" rel="stylesheet">
@@ -91,11 +91,19 @@
                                aria-expanded="false">User</a>
                             <ul class="dropdown-menu">
                                 @guest
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                                    <li class="nav-item {{ (request()->routeIs('login')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                                    <li class="nav-item {{ (request()->routeIs('register')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                                 @else
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('cabinet.home') }}">Cabinet</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
+                                    <li class="nav-item {{ (request()->routeIs('cabinet.home')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('cabinet.home') }}">Cabinet</a></li>
+                                    <li class="nav-item">
+                                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();" role="button" class="nav-link">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
                                 @endguest
                             </ul>
                         </li>
@@ -199,7 +207,6 @@
 <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
 <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ asset('js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('js/nouislider.min.js') }}"></script>

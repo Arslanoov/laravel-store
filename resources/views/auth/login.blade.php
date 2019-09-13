@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Login</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{{ route('home') }}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{{ route('login') }}">Login</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="login_box_area section_gap">
         <div class="container">
             <div class="row">
@@ -17,6 +31,8 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Log in to enter</h3>
+
+                        @include('layouts.partials.flash')
 
                         <form method="POST" class="row login_form" id="contactForm" novalidate="novalidate" action="{{ route('login') }}">
                             @csrf
@@ -43,9 +59,9 @@
 
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input type="checkbox" name="remember" id="remember f-option2" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label" for="remember f-option2">
                                         Keep me logged in
                                     </label>
                                 </div>
@@ -53,7 +69,7 @@
 
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" class="primary-btn">Log In</button>
-                                <a href="">Forgot Password?</a>
+                                <a href="{{ route('password.request') }}">Forgot Password?</a>
                             </div>
                         </form>
                     </div>

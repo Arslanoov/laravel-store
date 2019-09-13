@@ -40,14 +40,10 @@ $(document).ready(function(){
         $('#search_input_box').slideUp(500);
     });
 
-    /*==========================
-		javaScript for sticky header
-		============================*/
-			$(".sticky-header").sticky();
 
-    /*=================================
-    Javascript for banner area carousel
-    ==================================*/
+    $(".sticky-header").sticky();
+
+
     $(".active-banner-slider").owlCarousel({
         items:1,
         autoplay:false,
@@ -82,10 +78,7 @@ $(document).ready(function(){
       nav:false,
       dots:true
     });
-    
-    /*=================================
-    Javascript for exclusive area carousel
-    ==================================*/
+
     $(".active-exclusive-product-slider").owlCarousel({
         items:1,
         autoplay:false,
@@ -96,21 +89,16 @@ $(document).ready(function(){
         dots:false
     });
 
-    //--------- Accordion Icon Change ---------//
-
     $('.collapse').on('shown.bs.collapse', function(){
         $(this).parent().find(".lnr-arrow-right").removeClass("lnr-arrow-right").addClass("lnr-arrow-left");
     }).on('hidden.bs.collapse', function(){
         $(this).parent().find(".lnr-arrow-left").removeClass("lnr-arrow-left").addClass("lnr-arrow-right");
     });
 
-  // Select all links with hashes
   $('.main-menubar a[href*="#"]')
-    // Remove links that don't actually link to anything
     .not('[href="#"]')
     .not('[href="#0"]')
     .click(function(event) {
-      // On-page links
       if (
         location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
         && 
@@ -140,49 +128,6 @@ $(document).ready(function(){
         }
       }
     });
-
-
-
-      // -------   Mail Send ajax
-
-         $(document).ready(function() {
-            var form = $('#booking'); // contact form
-            var submit = $('.submit-btn'); // submit button
-            var alert = $('.alert-msg'); // alert div for show alert message
-
-            // form submit event
-            form.on('submit', function(e) {
-                e.preventDefault(); // prevent default form submit
-
-                $.ajax({
-                    url: 'booking.php', // form action url
-                    type: 'POST', // form submit method get/post
-                    dataType: 'html', // request type html/json/xml
-                    data: form.serialize(), // serialize form data
-                    beforeSend: function() {
-                        alert.fadeOut();
-                        submit.html('Sending....'); // change submit button text
-                    },
-                    success: function(data) {
-                        alert.html(data).fadeIn(); // fade in response data
-                        form.trigger('reset'); // reset form
-                        submit.attr("style", "display: none !important");; // reset submit button text
-                    },
-                    error: function(e) {
-                        console.log(e)
-                    }
-                });
-            });
-        });
-
-
-
-
-    $(document).ready(function() {
-        $('#mc_embed_signup').find('form').ajaxChimp();
-    });   
-
-
 
      if(document.getElementById("js-countdown")){
 
@@ -232,21 +177,13 @@ $(document).ready(function(){
 
   };
 
+  $('.quick-view-carousel-details').owlCarousel({
+      loop: true,
+      dots: true,
+      items: 1,
+  });
 
-
-      $('.quick-view-carousel-details').owlCarousel({
-          loop: true,
-          dots: true,
-          items: 1,
-      })
-
-
-
-    //----- Active No ui slider --------//
-
-
-
-    $(function(){
+    $(function() {
 
         if(document.getElementById("price-range")){
         
@@ -298,15 +235,6 @@ $(document).ready(function(){
         $('.load-product').fadeIn('slow');
         $(this).fadeOut();
     });
-    
-
-
-
-
-  //------- Start Quantity Increase & Decrease Value --------//
-
-
-
 
     var value,
         quantity = document.getElementsByClassName('quantity-container');
@@ -346,11 +274,6 @@ $(document).ready(function(){
 
   init();
 
-//------- End Quantity Increase & Decrease Value --------//
-
-  /*----------------------------------------------------*/
-  /*  Google map js
-    /*----------------------------------------------------*/
 
     if ($("#mapBox").length) {
         var $lat = $("#mapBox").data("lat");
@@ -558,8 +481,5 @@ $(document).ready(function(){
           ]
         });
       }
-
-
-  
 
  });
