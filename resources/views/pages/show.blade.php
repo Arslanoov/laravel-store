@@ -1,29 +1,36 @@
 @extends('layouts.app')
 
 @section('meta')
+    <meta name="title" content="{{ $page->title }}">
     <meta name="description" content="{{ $page->description }}">
 @endsection
 
 @section('content')
-    <section class="category-area">
+    <section class="banner-area organic-breadcrumb">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-12">
-                    <div class="row">
-                        <div class="margin-top-bottom">
-                            <h1 class="mb-3">{{ $page->title }}</h1>
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>{{ $page->title }}</h1>
 
-                            @if ($page->children)
-                                <ul class="list-unstyled">
-                                    @foreach ($page->children as $child)
-                                        <li><a href="{{ route('page', page_path($child)) }}">{{ $child->title }}</a></li>
-                                    @endforeach
-                                </ul>
-                            @endif
+                    @if ($page->children)
+                        <nav class="d-flex align-items-center">
+                            @foreach ($page->children as $child)
+                                <a href="{{ route('page', page_path($child)) }}">{{ $child->title }}@if (!$loop->last), @endif</a>
+                            @endforeach
+                        </nav>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            {!! clean($page->content) !!}
-                        </div>
-                    </div>
+    <section class="login_box_area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="mb-3">{{ $page->title }}</h1>
+
+                    {!! clean($page->content) !!}
                 </div>
             </div>
         </div>
