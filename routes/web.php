@@ -31,6 +31,9 @@ Route::group(
     }
 );
 
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::post('/contact/send', 'ContactController@send')->name('contact.send');
+
 Route::group(
     [
         'prefix' => 'blog',
