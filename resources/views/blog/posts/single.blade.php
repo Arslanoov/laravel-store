@@ -1,5 +1,10 @@
 @extends ('layouts.app')
 
+@section ('meta')
+    <meta name="title" content="{{ $post->title }}">
+    <meta name="description" content="{{ $post->description }}">
+@endsection
+
 @section ('content')
     <section class="banner-area organic-breadcrumb">
         <div class="container">

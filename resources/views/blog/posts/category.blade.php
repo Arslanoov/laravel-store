@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section ('meta')
+    <meta name="title" content="{{ $category->getSeoTitle() }}">
+    <meta name="description" content="{{ $category->description }}">
+@endsection
+
 @section ('content')
     <section class="banner-area organic-breadcrumb">
         <div class="container">

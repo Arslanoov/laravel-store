@@ -4,7 +4,7 @@
         @foreach ($categories as $category)
             <li>
                 <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}" class="d-flex justify-content-between">
-                    <p>{{ $category->name }}</p>
+                    <p>@for ($i = 0; $i < $category->depth; $i++) -- @endfor{{ $category->name }}</p>
                     <p>{{ $category->posts()->count() }}</p>
                 </a>
             </li>
