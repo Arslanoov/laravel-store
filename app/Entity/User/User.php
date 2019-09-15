@@ -20,7 +20,7 @@ class User extends Authenticatable
     public const ROLE_ADMIN = 'Admin';
 
     protected $fillable = [
-        'name', 'email', 'password', 'status', 'verify_token', 'role'
+        'name', 'email', 'password', 'photo', 'status', 'verify_token', 'role'
     ];
 
     protected $hidden = [
@@ -106,6 +106,11 @@ class User extends Authenticatable
         $this->update([
             'role' => $role
         ]);
+    }
+
+    public function getPhotoUrl(): string
+    {
+        return $this->photo ? '/storage/' . $this->photo : '';
     }
 
     public function isWait(): bool

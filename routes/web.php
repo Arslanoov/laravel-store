@@ -84,6 +84,9 @@ Route::group(
     ],
     function () {
         Route::get('/', 'HomeController@index')->name('home');
+
+        Route::get('/photo', 'PhotoController@show')->name('photo.show');
+        Route::post('/photo/upload', 'PhotoController@store')->name('photo.store');
     }
 );
 

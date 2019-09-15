@@ -15,7 +15,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Hello, {{ Auth::guard()->user()->name }}</h3>
+
+                    @include ('cabinet._nav', ['page' => 'home'])
+
+                    <h3>Hello, {{ $user->name }}</h3>
+                    <img src="{{ $user->photo }}" alt="" class="img img-responsive">
                 </div>
             </div>
         </div>

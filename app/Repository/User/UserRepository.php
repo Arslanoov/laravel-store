@@ -50,4 +50,10 @@ class UserRepository
     {
         $user->draft();
     }
+
+    public function addPhoto(User $user, $photo): void
+    {
+        $user->photo = $photo->store('users', 'public');
+        $user->update();
+    }
 }

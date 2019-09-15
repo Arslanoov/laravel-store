@@ -73,7 +73,7 @@
                         <div class="review_item">
                             <div class="media">
                                 <div class="d-flex">
-                                    <img src="/img/product/review-1.png" alt="">
+                                    <img src="{{ $review->author ? $review->author->getPhotoUrl() : '' }}" alt="" width="60px" height="60px">
                                 </div>
                                 <div class="media-body">
                                     <h4>{{ $review->author ? $review->author->name : 'Deleted' }}</h4>

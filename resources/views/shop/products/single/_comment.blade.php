@@ -1,7 +1,7 @@
 <div class="review_item" data-id="{{ $comment->id }}" data-title="{{ Str::limit($comment->text, 10) }}">
     <div class="media">
         <div class="d-flex">
-            <img src="/img/product/review-1.png" alt="">
+            <img src="{{ $comment->author ? $comment->author->getPhotoUrl() : '' }}" alt="" width="60px" height="60px">
         </div>
         <div class="media-body">
             <h4>{{ $comment->author ? $comment->author->name : 'Deleted' }}</h4>
