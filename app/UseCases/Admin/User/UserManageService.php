@@ -8,26 +8,16 @@ use App\Command\Admin\User\Remove\Command as UserRemoveCommand;
 use App\Command\Auth\Verify\Command as UserVerifyCommand;
 use App\Command\Admin\User\Draft\Command as UserDraftCommand;
 use App\Command\Admin\User\Role\Command as UserChangeRoleCommand;
-use App\Command\CommandBus;
-use App\Query\QueryBus;
 use App\Entity\User\User;
 use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Query\User\Find\FindUsersQuery;
 use App\Query\User\GetUserRolesQuery;
 use App\Query\User\GetUserStatusesQuery;
+use App\UseCases\Service;
 
-class UserManageService
+class UserManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new UserCreateCommand($request));

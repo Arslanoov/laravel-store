@@ -77,6 +77,7 @@
             <th>Title</th>
             <th>Slug</th>
             <th>Price</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -90,6 +91,7 @@
                 <td><a href="{{ route('admin.shop.products.show', $product) }}">{{ $product->title }}</a></td>
                 <td>{{ $product->slug }}</td>
                 <td>{{ $product->price }}</td>
+                <td>{{ $product->status }}</td>
             </tr>
         @endforeach
 

@@ -12,4 +12,9 @@ class Photo extends Model
     protected $fillable = [
         'product_id', 'photo'
     ];
+    
+    public function getUrl(): string
+    {
+        return '/storage/' . $this->photo;
+    }
 }

@@ -12,6 +12,12 @@ class CategoryReadRepository
         return $category;
     }
 
+    public function findBySlug(string $slug): ?Category
+    {
+        $category = Category::where('slug', $slug)->first();
+        return $category;
+    }
+
     public function findAll()
     {
         $categories = Category::orderByDesc('id');

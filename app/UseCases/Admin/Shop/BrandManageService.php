@@ -2,8 +2,6 @@
 
 namespace App\UseCases\Admin\Shop;
 
-use App\Command\CommandBus;
-use App\Query\QueryBus;
 use App\Entity\Shop\Brand;
 use App\Http\Requests\Admin\Shop\Brand\CreateRequest;
 use App\Http\Requests\Admin\Shop\Brand\UpdateRequest;
@@ -11,18 +9,10 @@ use App\Command\Admin\Shop\Brand\Create\Command as BrandCreateCommand;
 use App\Command\Admin\Shop\Brand\Update\Command as BrandUpdateCommand;
 use App\Command\Admin\Shop\Brand\Remove\Command as BrandRemoveCommand;
 use App\Query\Shop\Brand\Find\FindBrandsQuery;
+use App\UseCases\Service;
 
-class BrandManageService
+class BrandManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new BrandCreateCommand($request));

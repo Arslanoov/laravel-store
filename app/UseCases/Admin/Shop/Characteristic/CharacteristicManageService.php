@@ -2,8 +2,6 @@
 
 namespace App\UseCases\Admin\Shop\Characteristic;
 
-use App\Command\CommandBus;
-use App\Query\QueryBus;
 use App\Http\Requests\Admin\Shop\Characteristic\Characteristic\CreateRequest;
 use App\Http\Requests\Admin\Shop\Characteristic\Characteristic\UpdateRequest;
 use App\Entity\Shop\Characteristic\Characteristic;
@@ -13,18 +11,10 @@ use App\Command\Admin\Shop\Characteristic\Characteristic\Remove\Command as Chara
 use App\Query\Shop\Characteristic\Characteristic\Find\FindCharacteristicsQuery;
 use App\Query\Shop\Characteristic\Characteristic\GetTypesListQuery;
 use App\Query\Shop\Characteristic\Variant\Find\FindVariantsByCharacteristicIdQuery;
+use App\UseCases\Service;
 
-class CharacteristicManageService
+class CharacteristicManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new CharacteristicCreateCommand($request));

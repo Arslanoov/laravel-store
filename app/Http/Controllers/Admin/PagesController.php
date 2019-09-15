@@ -6,14 +6,14 @@ use App\Entity\Page;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Page\CreateRequest;
 use App\Http\Requests\Admin\Page\UpdateRequest;
-use App\UseCases\Admin\PageService;
+use App\UseCases\Admin\PageManageService;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     private $service;
 
-    public function __construct(PageService $service)
+    public function __construct(PageManageService $service)
     {
         $this->middleware('can:manage-pages');
         $this->service = $service;

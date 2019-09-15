@@ -2,13 +2,11 @@
 
 namespace App\UseCases\Admin\Blog;
 
-use App\Command\CommandBus;
 use App\Entity\Blog\Post\Post;
 use App\Query\Blog\Category\Find\FindCategoriesTreeQuery;
 use App\Query\Blog\Post\Find\FindPostsQuery;
 use App\Query\Blog\Post\GetPostStatusesQuery;
 use App\Query\Blog\Tag\Find\FindTagsQuery;
-use App\Query\QueryBus;
 use App\Http\Requests\Admin\Blog\Post\CreateRequest;
 use App\Http\Requests\Admin\Blog\Post\UpdateRequest;
 use App\Command\Admin\Blog\Post\Create\Command as PostCreateCommand;
@@ -19,18 +17,10 @@ use App\Command\Admin\Blog\Post\Draft\Command as PostDraftCommand;
 use App\Command\Admin\Blog\Post\Photo\Command as PostUploadPhotoCommand;
 use App\Command\Admin\Blog\TagAssignment\Existing\Command as AddExistingTagsToPost;
 use App\Command\Admin\Blog\TagAssignment\Create\Command as AddNewTagsToPost;
+use App\UseCases\Service;
 
-class PostManageService
+class PostManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request, int $userId): void
     {
         $postId = $this->commandBus->handle(new PostCreateCommand($request, $userId));

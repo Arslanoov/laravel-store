@@ -9,7 +9,7 @@ class Command
 {
     public $comment;
 
-    public function __construct(Post $post, Comment $comment)
+    public function __construct(Comment $comment)
     {
         $this->comment = $comment;
     }

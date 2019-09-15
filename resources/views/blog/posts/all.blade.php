@@ -22,7 +22,9 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
+
                         @include ('blog.posts._list')
+
                     </div>
                 </div>
 

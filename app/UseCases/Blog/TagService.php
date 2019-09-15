@@ -2,22 +2,12 @@
 
 namespace App\UseCases\Blog;
 
-use App\Command\CommandBus;
 use App\Query\Blog\Tag\Find\FindTagBySlugQuery;
 use App\Query\Blog\Tag\Find\FindTagsListQuery;
-use App\Query\QueryBus;
+use App\UseCases\Service;
 
-class TagService
+class TagService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function getAllTags()
     {
         $tags = $this->queryBus->query(new FindTagsListQuery());

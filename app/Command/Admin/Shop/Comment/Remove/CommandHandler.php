@@ -3,13 +3,16 @@
 namespace App\Command\Admin\Shop\Comment\Remove;
 
 use App\Repository\Shop\CommentRepository;
+use App\Repository\Shop\Product\ProductRepository;
 
 class CommandHandler
 {
+    private $products;
     private $comments;
 
-    public function __construct(CommentRepository $comments)
+    public function __construct(ProductRepository $products, CommentRepository $comments)
     {
+        $this->products = $products;
         $this->comments = $comments;
     }
 
@@ -19,6 +22,7 @@ class CommandHandler
             $this->comments->draft($command->comment);
         } else {
             $this->comments->remove($command->comment);
+            $this->products->removeComment($command->product);
         }
     }
 }

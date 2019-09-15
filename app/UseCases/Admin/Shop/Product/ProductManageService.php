@@ -2,8 +2,6 @@
 
 namespace App\UseCases\Admin\Shop\Product;
 
-use App\Command\CommandBus;
-use App\Query\QueryBus;
 use App\Entity\Shop\Product\Product;
 use App\Http\Requests\Admin\Shop\Product\Product\CreateRequest;
 use App\Http\Requests\Admin\Shop\Product\Product\UpdateRequest;
@@ -19,18 +17,10 @@ use App\Query\Shop\Category\Find\FindCategoriesTreeQuery;
 use App\Query\Shop\Product\Find\FindProductsQuery;
 use App\Query\Shop\Product\GetProductAvailabilitiesListQuery;
 use App\Query\Shop\Product\GetProductStatusesQuery;
+use App\UseCases\Service;
 
-class ProductManageService
+class ProductManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new ProductCreateCommand($request));

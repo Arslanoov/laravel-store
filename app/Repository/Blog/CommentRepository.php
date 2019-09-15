@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Blog\Post;
+namespace App\Repository\Blog;
 
 use App\Entity\Blog\Comment;
 

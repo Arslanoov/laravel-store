@@ -5,11 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'KARMA') }}</title>
+    <title>Karma Store</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
 
+    <link rel="shortcut icon" href="/img/fav.png">
     <link href="{{ asset('css/linearicons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
@@ -43,15 +44,7 @@
 
                         <li class="nav-item {{ (request()->routeIs('home')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
 
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="category.html">All products</a></li>
-                                <li class="nav-item"><a class="nav-link" href="product.html">Best products</a></li>
-                                <li class="nav-item"><a class="nav-link" href="product.html">Popular products</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item {{ (request()->routeIs('shop.products.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('shop.products.index') }}">Shop</a></li>
 
                         <li class="nav-item submenu dropdown {{ (request()->routeIs('blog.posts.all')) ? 'active' : '' }}">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -201,17 +194,19 @@
 </footer>
 <!-- End footer Area -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-<script src="{{ asset('js/gmaps.min.js') }}"></script>
-
 <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
 <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ asset('js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('js/nouislider.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="{{ asset('js/gmaps.min.js') }}"></script>
 
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/like.js') }}"></script>

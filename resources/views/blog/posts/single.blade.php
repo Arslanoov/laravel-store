@@ -69,3 +69,16 @@
         </div>
     </section>
 @endsection
+
+@section ('script')
+    <script>
+        $(document).on("click", "#comments .reply-btn", function () {
+            var link = $(this);
+            var form = $("#reply-block");
+            var comment = link.closest(".comment-list");
+            $("#parent").val(comment.data("id"));
+            form.detach().appendTo(comment.find(".reply-block:first"));
+            return false;
+        });
+    </script>
+@endsection

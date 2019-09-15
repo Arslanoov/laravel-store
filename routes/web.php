@@ -36,6 +36,24 @@ Route::post('/contact/send', 'ContactController@send')->name('contact.send');
 
 Route::group(
     [
+        'prefix' => 'shop',
+        'as' => 'shop.',
+        'namespace' => 'Shop',
+    ],
+    function () {
+        Route::get('/products', 'ProductsController@index')->name('products.index');
+        Route::get('/product/{id}/{slug}', 'ProductsController@single')->name('products.single');
+
+        Route::get('/products/category/{slug}', 'ProductsController@category')->name('products.category');
+        Route::get('/products/brand/{slug}', 'ProductsController@brand')->name('products.brand');
+
+        Route::post('/product/{product}/comment/create', 'ProductsController@comment')->name('products.comment');
+        Route::post('/product/{product}/review/create', 'ProductsController@review')->name('products.review');
+    }
+);
+
+Route::group(
+    [
         'prefix' => 'blog',
         'as' => 'blog.',
         'namespace' => 'Blog',
@@ -48,7 +66,7 @@ Route::group(
         Route::get('/category/{name}', 'PostsController@category')->name('posts.category');
         Route::get('/tag/{name}', 'PostsController@tag')->name('posts.tag');
 
-        Route::get('/{id}-{slug}', 'PostsController@single')->name('posts.single');
+        Route::get('/{id}/{slug}', 'PostsController@single')->name('posts.single');
 
         Route::get('/search', 'PostsController@search')->name('posts.search');
 
@@ -179,6 +197,7 @@ Route::group(
                 );
 
                 Route::resource('comments', 'CommentsController');
+                Route::post('/{product}/comment/{comment}/remove', 'CommentsController@destroy')->name('comments.remove');
                 Route::post('/comments/{comment}/activate', 'CommentsController@activate')->name('comments.activate');
 
                 Route::resource('reviews', 'ReviewsController');

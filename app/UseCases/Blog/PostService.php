@@ -2,34 +2,22 @@
 
 namespace App\UseCases\Blog;
 
-use App\Entity\Blog\Tag;
 use App\Query\Blog\Post\Find\FindAllPostsQuery;
 use App\Query\Blog\Post\Find\FindPopularPostsQuery;
 use App\Query\Blog\Post\Find\FindBestPostsQuery;
-use App\Command\CommandBus;
 use App\Entity\Blog\Post\Post;
 use App\Query\Blog\Post\Find\FindPostByIdQuery;
 use App\Query\Blog\Post\Find\FindPostBySlugQuery;
 use App\Query\Blog\Post\Like\FindLikeQuery;
-use App\Query\Blog\Post\Find\FindPostsByTagQuery;
 use App\Query\Blog\Post\Search\PostsSearchQuery;
-use App\Query\QueryBus;
 use App\Command\Blog\Post\View\Command as PostViewCommand;
 use App\Command\Blog\Post\Like\Remove\Command as LikeRemoveCommand;
 use App\Command\Blog\Post\Like\Add\Command as LikeAddCommand;
+use App\UseCases\Service;
 
-class PostService
+class PostService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
-    public function like(int $postId, int $userId)
+    public function like(int $postId, int $userId): int
     {
         $post = $this->queryBus->query(new FindPostByIdQuery($postId));
         $like = $this->queryBus->query(new FindLikeQuery($post->id, $userId));

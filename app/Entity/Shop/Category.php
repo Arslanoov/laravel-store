@@ -2,6 +2,7 @@
 
 namespace App\Entity\Shop;
 
+use App\Entity\Shop\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
 
@@ -29,6 +30,11 @@ class Category extends Model
             'title' => $title,
             'description' => $description
         ]);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
     public function getSeoTitle(): string

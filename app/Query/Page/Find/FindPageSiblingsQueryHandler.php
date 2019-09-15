@@ -13,7 +13,7 @@ class FindPageSiblingsQueryHandler
         $this->pages = $pages;
     }
 
-    public function __invoke(FindCategorySiblingsQuery $command)
+    public function __invoke(FindPageSiblingsQuery $command)
     {
         $this->pages->findSiblings($command->page);
     }

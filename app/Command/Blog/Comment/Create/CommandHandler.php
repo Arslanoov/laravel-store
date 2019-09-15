@@ -3,7 +3,7 @@
 namespace App\Command\Blog\Comment\Create;
 
 use App\Repository\Blog\PostRepository;
-use App\Repository\Blog\Post\CommentRepository;
+use App\Repository\Blog\CommentRepository;
 
 class CommandHandler
 {

@@ -7,7 +7,7 @@
         <a href="{{ route('admin.shop.comments.edit', $comment) }}" class="btn btn-primary mr-1">Edit</a>
 
         @if($comment->isActive())
-            <form method="POST" action="{{ route('admin.shop.comments.destroy', $comment) }}" class="mr-1">
+            <form method="POST" action="{{ route('admin.shop.comments.destroy', compact('comment')) }}" class="mr-1">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger">Delete</button>

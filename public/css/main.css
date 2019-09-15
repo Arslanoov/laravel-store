@@ -5796,6 +5796,7 @@ label {
 
 .left-padding {
   padding-left: 25px;
+  margin-bottom: 17px;
 }
 .left-padding .left-padding .left-padding .left-padding {
   padding-left: 0;

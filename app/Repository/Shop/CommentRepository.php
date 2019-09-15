@@ -6,6 +6,19 @@ use App\Entity\Shop\Comment;
 
 class CommentRepository
 {
+    public function create(
+        $userId, $productId,
+        $parentId, $text
+    ): Comment
+    {
+        $comment = Comment::new(
+            $userId, $productId,
+            $parentId, $text
+        );
+
+        return $comment;
+    }
+
     public function edit(Comment $comment, $parentId, $text): void
     {
         $comment->update([

@@ -2,13 +2,11 @@
 
 namespace App\UseCases\Admin\Blog;
 
-use App\Command\CommandBus;
 use App\Query\Blog\Category\Find\FindCategoriesQuery;
 use App\Query\Blog\Category\Find\FindCategoryParentQuery;
 use App\Query\Blog\Category\Find\FindCategoryParentsQuery;
 use App\Query\Blog\Category\Find\FindCategorySiblingsDescQuery;
 use App\Query\Blog\Category\Find\FindCategorySiblingsQuery;
-use App\Query\QueryBus;
 use App\Entity\Blog\Category;
 use App\Http\Requests\Admin\Blog\Category\CreateRequest;
 use App\Http\Requests\Admin\Blog\Category\UpdateRequest;
@@ -19,18 +17,10 @@ use App\Command\Admin\Blog\Category\First\Command as CategoryFirstCommand;
 use App\Command\Admin\Blog\Category\Up\Command as CategoryUpCommand;
 use App\Command\Admin\Blog\Category\Down\Command as CategoryDownCommand;
 use App\Command\Admin\Blog\Category\Last\Command as CategoryLastCommand;
+use App\UseCases\Service;
 
-class CategoryManageService
+class CategoryManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new CategoryCreateCommand($request));

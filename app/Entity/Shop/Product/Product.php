@@ -4,6 +4,9 @@ namespace App\Entity\Shop\Product;
 
 use App\Entity\Shop\Brand;
 use App\Entity\Shop\Category;
+use App\Entity\Shop\Comment;
+use App\Entity\Shop\Review;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Entity\Shop\Product\Characteristic as ProductCharacteristic;
 
@@ -18,7 +21,7 @@ class Product extends Model
     protected $table = 'shop_products';
     protected $fillable = [
         'category_id', 'brand_id', 'availability', 'title', 'slug', 'price',
-        'content', 'status', 'reviews', 'comments'
+        'content', 'status', 'reviews', 'comments', 'rating'
     ];
 
     public static function new(
@@ -36,7 +39,8 @@ class Product extends Model
             'content' => $content,
             'status' => self::STATUS_DRAFT,
             'reviews' => 0,
-            'comments' => 0
+            'comments' => 0,
+            'rating' => null
         ]);
     }
 
@@ -129,6 +133,21 @@ class Product extends Model
         return $photoUrl ? '/storage/' . $photoUrl : '';
     }
 
+    public function recountRating(): void
+    {
+        $sum = 0;
+
+        foreach ($this->reviews()->get() as $review) {
+            $sum += $review->rating;
+        }
+
+        $rating = round($sum / $this->reviews()->count());
+
+        $this->update([
+            'rating' => $rating
+        ]);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -147,6 +166,26 @@ class Product extends Model
     public function photos()
     {
         return $this->hasMany(Photo::class, 'product_id', 'id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'product_id', 'id')->where('parent_id', '=', null);
+    }
+
+    public function reviewWhere(int $rating)
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id')->where('rating', $rating);
+    }
+
+    public function scopeActive(Builder $query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
     }
 
     public static function availabilitiesList(): array

@@ -61,4 +61,29 @@ class ProductRepository
     {
         $product->makeUnavailable();
     }
+
+    public function comment(Product $product): void
+    {
+        $product->addCommentsCount();
+    }
+
+    public function review(Product $product): void
+    {
+        $product->addReviewsCount();
+    }
+
+    public function removeComment(Product $product): void
+    {
+        $product->reduceCommentsCount();
+    }
+
+    public function removeReview(Product $product): void
+    {
+        $product->reduceReviewsCount();
+    }
+
+    public function recountRating(Product $product): void
+    {
+        $product->recountRating();
+    }
 }

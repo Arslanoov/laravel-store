@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Shop;
 
+use App\Entity\Shop\Product\Product;
 use App\Entity\Shop\Review;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Review\UpdateRequest;
@@ -45,9 +46,9 @@ class ReviewsController extends Controller
         return redirect()->route('admin.shop.reviews.show', $review);
     }
 
-    public function destroy(Review $review)
+    public function destroy(Product $product, Review $review)
     {
-        $this->service->remove($review);
+        $this->service->remove($product, $review);
 
         return redirect()->route('admin.shop.reviews.index');
     }

@@ -2,8 +2,6 @@
 
 namespace App\UseCases\Admin\Blog;
 
-use App\Command\CommandBus;
-use App\Query\QueryBus;
 use App\Http\Requests\Admin\Blog\Tag\UpdateRequest;
 use App\Http\Requests\Admin\Blog\Tag\CreateRequest;
 use App\Command\Admin\Blog\Tag\Create\Command as TagCreateCommand;
@@ -11,18 +9,10 @@ use App\Command\Admin\Blog\Tag\Update\Command as TagUpdateCommand;
 use App\Command\Admin\Blog\Tag\Remove\Command as TagRemoveCommand;
 use App\Query\Blog\Tag\Find\FindTagsQuery;
 use App\Entity\Blog\Tag;
+use App\UseCases\Service;
 
-class TagManageService
+class TagManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new TagCreateCommand($request));

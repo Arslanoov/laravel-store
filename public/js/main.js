@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+$(document).ready(function() {
 	"use strict";
 
 	var window_width 	 = $(window).width(),
@@ -13,8 +13,6 @@ $(document).ready(function(){
     $(".fitscreen").css("height", fitscreen);
 
   //------- Active Nice Select --------//
-
-    $('select').niceSelect();
 
 
     $('.navbar-nav li.dropdown').hover(function() {
@@ -40,9 +38,7 @@ $(document).ready(function(){
         $('#search_input_box').slideUp(500);
     });
 
-
     $(".sticky-header").sticky();
-
 
     $(".active-banner-slider").owlCarousel({
         items:1,
@@ -54,9 +50,7 @@ $(document).ready(function(){
         dots:false
     });
 
-    /*=================================
-    Javascript for product area carousel
-    ==================================*/
+
     $(".active-product-area").owlCarousel({
         items:1,
         autoplay:false,
@@ -67,9 +61,7 @@ $(document).ready(function(){
         dots:false
     });
 
-    /*=================================
-    Javascript for single product area carousel
-    ==================================*/
+
     $(".s_Product_carousel").owlCarousel({
       items:1,
       autoplay:false,
@@ -78,6 +70,7 @@ $(document).ready(function(){
       nav:false,
       dots:true
     });
+
 
     $(".active-exclusive-product-slider").owlCarousel({
         items:1,
@@ -95,10 +88,13 @@ $(document).ready(function(){
         $(this).parent().find(".lnr-arrow-left").removeClass("lnr-arrow-left").addClass("lnr-arrow-right");
     });
 
+  // Select all links with hashes
   $('.main-menubar a[href*="#"]')
+    // Remove links that don't actually link to anything
     .not('[href="#"]')
     .not('[href="#0"]')
     .click(function(event) {
+      // On-page links
       if (
         location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
         && 
@@ -128,6 +124,8 @@ $(document).ready(function(){
         }
       }
     });
+
+
 
      if(document.getElementById("js-countdown")){
 
@@ -177,13 +175,21 @@ $(document).ready(function(){
 
   };
 
-  $('.quick-view-carousel-details').owlCarousel({
-      loop: true,
-      dots: true,
-      items: 1,
-  });
 
-    $(function() {
+
+      $('.quick-view-carousel-details').owlCarousel({
+          loop: true,
+          dots: true,
+          items: 1,
+      })
+
+
+
+    //----- Active No ui slider --------//
+
+
+
+    $(function(){
 
         if(document.getElementById("price-range")){
         
@@ -236,6 +242,15 @@ $(document).ready(function(){
         $(this).fadeOut();
     });
 
+
+
+
+
+  //------- Start Quantity Increase & Decrease Value --------//
+
+
+
+
     var value,
         quantity = document.getElementsByClassName('quantity-container');
 
@@ -274,6 +289,11 @@ $(document).ready(function(){
 
   init();
 
+//------- End Quantity Increase & Decrease Value --------//
+
+  /*----------------------------------------------------*/
+  /*  Google map js
+    /*----------------------------------------------------*/
 
     if ($("#mapBox").length) {
         var $lat = $("#mapBox").data("lat");
@@ -481,5 +501,4 @@ $(document).ready(function(){
           ]
         });
       }
-
  });

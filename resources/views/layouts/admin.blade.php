@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Admin Panel') }}</title>
+    <title>Karma Store | Admin Panel</title>
     @yield('meta')
 
     <!-- Scripts -->

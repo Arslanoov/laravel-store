@@ -2,13 +2,11 @@
 
 namespace App\UseCases\Admin\Shop;
 
-use App\Command\CommandBus;
 use App\Query\Shop\Category\Find\FindCategoriesQuery;
 use App\Query\Shop\Category\Find\FindCategoryParentQuery;
 use App\Query\Shop\Category\Find\FindCategoryParentsQuery;
 use App\Query\Shop\Category\Find\FindCategorySiblingsDescQuery;
 use App\Query\Shop\Category\Find\FindCategorySiblingsQuery;
-use App\Query\QueryBus;
 use App\Entity\Shop\Category;
 use App\Http\Requests\Admin\Shop\Category\CreateRequest;
 use App\Http\Requests\Admin\Shop\Category\UpdateRequest;
@@ -19,18 +17,10 @@ use App\Command\Admin\Shop\Category\First\Command as CategoryFirstCommand;
 use App\Command\Admin\Shop\Category\Up\Command as CategoryUpCommand;
 use App\Command\Admin\Shop\Category\Down\Command as CategoryDownCommand;
 use App\Command\Admin\Shop\Category\Last\Command as CategoryLastCommand;
+use App\UseCases\Service;
 
-class CategoryManageService
+class CategoryManageService extends Service
 {
-    private $commandBus;
-    private $queryBus;
-
-    public function __construct(CommandBus $commandBus, QueryBus $queryBus)
-    {
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
-    }
-
     public function create(CreateRequest $request): void
     {
         $this->commandBus->handle(new CategoryCreateCommand($request));

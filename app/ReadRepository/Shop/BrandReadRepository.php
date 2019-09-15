@@ -17,4 +17,10 @@ class BrandReadRepository
         $brandsList = Brand::orderByDesc('id');
         return $brandsList;
     }
+
+    public function findBySlug(string $slug): ?Brand
+    {
+        $brand = Brand::where('slug', $slug)->first();
+        return $brand;
+    }
 }
