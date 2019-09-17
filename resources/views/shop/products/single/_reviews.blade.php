@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-6">
                     <div class="rating_list">
-                        <h3>Based on 3 Reviews</h3>
+                        <h3>Based on {{ $product->reviews()->count() }} Reviews</h3>
                         <ul class="list">
                             <li>
                                 <a href="javascript:void(0)">

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.like').on('click', function () {
-        var postId = $(this).data('id');
+        let postId = $(this).data('id');
 
         $.ajax({
             'url': '/blog/like',

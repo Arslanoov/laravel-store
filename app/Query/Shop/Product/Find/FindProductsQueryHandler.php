@@ -15,7 +15,7 @@ class FindProductsQueryHandler
 
     public function __invoke(FindProductsQuery $query)
     {
-        $products = $this->products->findLatest();
+        $products = $this->products->findAll();
         return $products;
     }
 }

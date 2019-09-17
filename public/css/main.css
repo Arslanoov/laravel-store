@@ -4245,8 +4245,6 @@ label {
   color: #222222;
   text-transform: uppercase;
   font-weight: 500; }
-.cart_inner .table tbody tr.bottom_button td:last-child {
-  width: 60px; }
 .cart_inner .table tbody tr.bottom_button td .cupon_text {
   margin-left: -446px; }
   .cart_inner .table tbody tr.bottom_button td .cupon_text input {
