@@ -21,12 +21,12 @@ class Product extends Model
     protected $table = 'shop_products';
     protected $fillable = [
         'category_id', 'brand_id', 'availability', 'title', 'slug', 'price',
-        'content', 'status', 'reviews', 'comments', 'rating'
+        'content', 'status', 'reviews', 'comments', 'rating', 'weight'
     ];
 
     public static function new(
         $categoryId, $brandId, $title,
-        $slug, $price, $content
+        $slug, $price, $content, $weight
     ): self
     {
         return static::create([
@@ -37,6 +37,7 @@ class Product extends Model
             'slug' => $slug,
             'price' => $price,
             'content' => $content,
+            'weight' => $weight,
             'status' => self::STATUS_DRAFT,
             'reviews' => 0,
             'comments' => 0,

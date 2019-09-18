@@ -39,22 +39,36 @@
                     <h2>${{ $product->price }}</h2>
                     <ul class="list">
                         <li><a class="active" href="{{ $product->category ? route('shop.products.category', ['slug' => $product->category->slug]) : 'None' }}"><span>Category</span> : {{ $product->category ? $product->category->name : '' }}</a></li>
-                        <li><a href="#"><span>Availability</span> : {{ $product->availability }}</a></li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span>Availability</span> :
+                                @if ($product->isAvailable())
+                                    In Stock
+                                @endif
+
+                                @if ($product->isUnavailable())
+                                    Out Of Stock
+                                @endif
+                            </a>
+                        </li>
+                        <li><a href="javascript:void(0)"><span>Weight</span> : {{ $product->weight }}</a></li>
                     </ul>
                     <p>
                         {{ $product->description }}
                     </p>
-                    <div class="product_count">
-                        <label for="qty">Quantity:</label>
-                        <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                    </div>
-                    <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn add-to-cart" href="javascript:void(0)" data-product-id="{{ $product->id }}">Add to Cart</a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                    </div>
+                    @if ($product->isAvailable())
+                        <div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                            <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        </div>
+                            <div class="card_area d-flex align-items-center">
+                                <a class="primary-btn add-to-cart" href="javascript:void(0)" data-product-id="{{ $product->id }}">Add to Cart</a>
+                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                            </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -135,6 +149,7 @@
 
         $(document).on("click", ".add-to-cart", function () {
             let productId = $(this).data("product-id");
+            let quantity = $("#qty").val();
 
             $.ajax({
                 'headers': {
@@ -144,12 +159,12 @@
                 "method": "POST",
                 "data": {
                     productId: productId,
-                    quantity: 1
+                    quantity: quantity
                 },
                 "success": function () {
                     let cartItemsCount = $("#cart-items-count");
                     let count = cartItemsCount.text();
-                    cartItemsCount.text(+ count + quantity);
+                    cartItemsCount.text(parseInt(count) + parseInt(quantity));
                 }
             });
         });

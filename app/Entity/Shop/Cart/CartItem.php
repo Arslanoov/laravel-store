@@ -38,12 +38,12 @@ class CartItem extends Model
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
-    public function increaseProductsCount(): void
+    public function increaseProductsCount(int $quantity): void
     {
-        $qty = $this->quantity;
+        $currentQty = $this->quantity;
 
         $this->update([
-            'quantity' => $qty + 1
+            'quantity' => $currentQty + $quantity
         ]);
     }
 

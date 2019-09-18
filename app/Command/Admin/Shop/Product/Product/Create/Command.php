@@ -12,6 +12,7 @@ class Command
     public $slug;
     public $price;
     public $text;
+    public $weight;
     
     public function __construct(CreateRequest $request)
     {
@@ -21,5 +22,6 @@ class Command
         $this->slug = $request->slug;
         $this->price = $request->price;
         $this->text = $request->text;
+        $this->weight = $request->weight;
     }
 }

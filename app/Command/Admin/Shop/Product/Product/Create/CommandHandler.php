@@ -18,7 +18,8 @@ class CommandHandler
         $this->products->create(
             $command->categoryId, $command->brandId,
             $command->title, $command->slug,
-            $command->price, $command->text
+            $command->price, $command->text,
+            $command->weight
         );
     }
 }

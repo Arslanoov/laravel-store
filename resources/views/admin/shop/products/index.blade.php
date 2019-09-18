@@ -77,6 +77,7 @@
             <th>Title</th>
             <th>Slug</th>
             <th>Price</th>
+            <th>Weight</th>
             <th>Status</th>
         </tr>
         </thead>
@@ -87,10 +88,19 @@
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->category ? $product->category->name : 'Null' }}</td>
                 <td>{{ $product->brand ? $product->brand->name : 'Null' }}</td>
-                <td>{{ $product->availability }}</td>
+                <td>
+                    @if ($product->isAvailable())
+                        In Stock
+                    @endif
+
+                    @if ($product->isUnavailable())
+                        Out Of Stock
+                    @endif
+                </td>
                 <td><a href="{{ route('admin.shop.products.show', $product) }}">{{ $product->title }}</a></td>
                 <td>{{ $product->slug }}</td>
                 <td>{{ $product->price }}</td>
+                <td>{{ $product->weight }}</td>
                 <td>{{ $product->status }}</td>
             </tr>
         @endforeach

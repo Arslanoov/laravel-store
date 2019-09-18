@@ -58,6 +58,14 @@
         </div>
 
         <div class="form-group">
+            <label for="weight" class="col-form-label">Weight</label>
+            <input id="weight" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ old('weight', $product->weight) }}" required>
+            @if ($errors->has('weight'))
+                <span class="invalid-feedback"><strong>{{ $errors->first('weight') }}</strong></span>
+            @endif
+        </div>
+
+        <div class="form-group">
             <label for="text" class="col-form-label">Content</label>
             <textarea id="text" class="form-control {{ $errors->has('text') ? ' is-invalid' : '' }}" name="text" rows="10">{{ old('text', $product->content) }}</textarea>
             @if ($errors->has('text'))

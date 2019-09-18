@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Entity\Shop\Cart\CartItem;
+use App\Entity\Shop\Product\Product;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use App\UseCases\Shop\ProductService;
@@ -38,8 +39,11 @@ class CartController extends Controller
             $productId = request()->post('productId');
             $quantity = request()->post('quantity');
 
+            /** @var Product $product */
             $product = $this->productService->findProductById($productId);
-            $this->cartService->addItem($quantity, $product, Auth::guard()->id());
+            if ($product->isAvailable()) {
+                $this->cartService->addItem($quantity, $product, Auth::guard()->id());
+            }
         }
     }
 

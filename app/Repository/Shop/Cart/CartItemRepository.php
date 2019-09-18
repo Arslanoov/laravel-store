@@ -25,9 +25,9 @@ class CartItemRepository
         $cartItem->delete();
     }
 
-    public function increaseProductsCount(CartItem $cartItem): void
+    public function increaseProductsCount(CartItem $cartItem, int $quantity = 1): void
     {
-        $cartItem->increaseProductsCount();
+        $cartItem->increaseProductsCount($quantity);
     }
 
     public function recountTotal(CartItem $cartItem): void

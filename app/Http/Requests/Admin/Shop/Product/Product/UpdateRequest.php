@@ -19,7 +19,8 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:shop_products,id,' . $this->product->id,
             'price' => 'required|integer',
-            'text' => 'required|string'
+            'text' => 'required|string',
+            'weight' => 'required|integer|min:0'
         ];
     }
 }

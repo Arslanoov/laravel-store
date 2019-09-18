@@ -18,7 +18,8 @@ class CommandHandler
         $this->products->update(
             $command->product, $command->categoryId,
             $command->title, $command->slug,
-            $command->price, $command->content
+            $command->price, $command->content,
+            $command->weight
         );
     }
 }

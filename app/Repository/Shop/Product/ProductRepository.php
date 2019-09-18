@@ -9,13 +9,13 @@ class ProductRepository
     public function create(
         $categoryId, $brandId,
         $title, $slug,
-        $price, $content
+        $price, $content, $weight
     ): Product
     {
         $product = Product::new(
             $categoryId, $brandId,
             $title, $slug,
-            $price, $content
+            $price, $content, $weight
         );
 
         return $product;
@@ -25,7 +25,7 @@ class ProductRepository
         Product $product,
         $categoryId,
         $title, $slug,
-        $price, $content
+        $price, $content, $weight
     ): void
     {
         $product->update([
@@ -33,7 +33,8 @@ class ProductRepository
             'title' => $title,
             'slug' => $slug,
             'price' => $price,
-            'content' => $content
+            'content' => $content,
+            'weight' => $weight
         ]);
     }
 

@@ -16,7 +16,7 @@ class CartService extends Service
         $cartItem = $this->queryBus->query(new FindCartItemByUserAndProductQuery($userId, $product->id));
 
         if ($cartItem) {
-            $this->commandBus->handle(new IncreaseProductsCountCommand($cartItem));
+            $this->commandBus->handle(new IncreaseProductsCountCommand($cartItem, $quantity));
         } else {
             $this->commandBus->handle(new AddProductToCartCommand($quantity, $product, $userId));
         }

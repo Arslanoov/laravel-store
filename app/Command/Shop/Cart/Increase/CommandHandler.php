@@ -15,7 +15,7 @@ class CommandHandler
 
     public function __invoke(Command $command)
     {
-        $this->carts->increaseProductsCount($command->cartItem);
+        $this->carts->increaseProductsCount($command->cartItem, $command->quantity);
         $this->carts->recountTotal($command->cartItem);
     }
 }
