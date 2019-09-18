@@ -19,6 +19,8 @@ class RegisterTest extends TestCase
 
     public function testErrors(): void
     {
+        $this->withoutMiddleware();
+
         $response = $this->post('/register', [
             'name' => '',
             'email' => '',
@@ -33,6 +35,8 @@ class RegisterTest extends TestCase
 
     public function testSuccess(): void
     {
+        $this->withoutMiddleware();
+
         $user = factory(User::class)->make();
 
         $response = $this->post('/register', [
@@ -51,6 +55,7 @@ class RegisterTest extends TestCase
     public function testVerifyIncorrect(): void
     {
         $response = $this->get('/verify/' . Str::uuid());
+
         $response
             ->assertStatus(302)
             ->assertRedirect('/login')

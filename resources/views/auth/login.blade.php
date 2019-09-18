@@ -59,7 +59,7 @@
 
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
-                                    <input type="checkbox" name="remember" id="remember f-option2" {{ old('remember') ? 'checked' : '' }}>
+                                    <input type="checkbox" name="remember" id="remember f-option2" {{ old('remember') ? 'checked' : '' }} checked>
 
                                     <label class="form-check-label" for="remember f-option2">
                                         Keep me logged in

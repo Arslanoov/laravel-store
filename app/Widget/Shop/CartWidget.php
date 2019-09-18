@@ -20,8 +20,10 @@ class CartWidget extends AbstractWidget
 
     public function run()
     {
-        $productsCount = $this->service->findCartItemsCountByUserId(Auth::guard()->id());
+        if (!Auth::guard()->guest()) {
+            $productsCount = $this->service->findCartItemsCountByUserId(Auth::guard()->id());
 
-        return view('widgets.shop.cart', compact('productsCount'));
+            return view('widgets.shop.cart', compact('productsCount'));
+        }
     }
 }

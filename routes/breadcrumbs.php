@@ -16,6 +16,7 @@ use App\Entity\Shop\Characteristic\Variant;
 use App\Entity\Shop\Product\Product;
 use App\Entity\Shop\Product\Characteristic as ProductCharacteristics;
 use App\Entity\Shop\Review;
+use App\Entity\Shop\DeliveryMethod;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -361,4 +362,26 @@ Breadcrumbs::register('admin.shop.reviews.show', function (Crumbs $crumbs, Revie
 Breadcrumbs::register('admin.shop.reviews.edit', function (Crumbs $crumbs, Review $review) {
     $crumbs->parent('admin.shop.reviews.show', $review);
     $crumbs->push('Edit', route('admin.shop.reviews.edit', $review));
+});
+
+// Delivery Methods
+
+Breadcrumbs::register('admin.shop.deliveryMethods.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Delivery Methods', route('admin.shop.deliveryMethods.index'));
+});
+
+Breadcrumbs::register('admin.shop.deliveryMethods.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.deliveryMethods.index');
+    $crumbs->push('Create', route('admin.shop.deliveryMethods.create'));
+});
+
+Breadcrumbs::register('admin.shop.deliveryMethods.show', function (Crumbs $crumbs, DeliveryMethod $deliveryMethod) {
+    $crumbs->parent('admin.shop.deliveryMethods.index');
+    $crumbs->push($deliveryMethod->name, route('admin.shop.deliveryMethods.show', $deliveryMethod));
+});
+
+Breadcrumbs::register('admin.shop.deliveryMethods.edit', function (Crumbs $crumbs, DeliveryMethod $deliveryMethod) {
+    $crumbs->parent('admin.shop.deliveryMethods.show', $deliveryMethod);
+    $crumbs->push('Edit', route('admin.shop.deliveryMethods.edit', $deliveryMethod));
 });

@@ -17,7 +17,7 @@ class CreateTest extends TestCase
         $user = factory(User::class)->make([
             'id' => 1,
             'status' => User::STATUS_ACTIVE,
-            'verify_token' => null,
+            'verify_token' => null
         ]);
 
         $post = Post::new(
@@ -26,8 +26,8 @@ class CreateTest extends TestCase
         );
 
         $comment = Comment::new(
-            $user->id, $post->id,
-            null, $text = 'Text'
+            null, $post->id,
+            $user->id, $text = 'Text'
         );
 
         $this->assertEquals($comment->author_id, $user->id);

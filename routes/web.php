@@ -209,6 +209,8 @@ Route::group(
                 Route::post('/comments/{comment}/activate', 'CommentsController@activate')->name('comments.activate');
 
                 Route::resource('reviews', 'ReviewsController');
+
+                Route::resource('deliveryMethods', 'DeliveryMethodsController');
             }
         );
 
