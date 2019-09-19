@@ -35,5 +35,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-shop', function (User $user) {
             return $user->isAdmin() || $user->isManager();
         });
+
+        Gate::define('manage-regions', function (User $user) {
+            return $user->isAdmin() || $user->isManager();
+        });
     }
 }

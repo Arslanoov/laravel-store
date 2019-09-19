@@ -109,6 +109,8 @@ Route::group(
         Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
         Route::post('/users/{user}/draft', 'UsersController@draft')->name('users.draft');
 
+        Route::resource('regions', 'RegionsController');
+
         Route::group(
             [
                 'prefix' => 'blog',

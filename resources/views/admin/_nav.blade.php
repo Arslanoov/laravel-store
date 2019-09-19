@@ -11,6 +11,10 @@
         <li class="nav-item"><a class="nav-link{{ $page === 'pages' ? ' active' : '' }}" href="{{ route('admin.pages.index') }}">Pages</a></li>
     @endcan
 
+    @can ('manage-regions')
+        <li class="nav-item"><a class="nav-link {{ $page === 'regions' ? ' active' : '' }}" href="{{ route('admin.regions.index') }}">Regions</a></li>
+    @endcan
+
     @can ('manage-blog')
         <li class="nav-item"><a class="nav-link {{ $page === 'blog-posts' ? ' active' : '' }}" href="{{ route('admin.blog.posts.index') }}">Blog Posts</a></li>
         <li class="nav-item"><a class="nav-link {{ $page === 'blog-categories' ? ' active' : '' }}" href="{{ route('admin.blog.categories.index') }}">Blog Categories</a></li>

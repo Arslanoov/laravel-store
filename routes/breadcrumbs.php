@@ -17,6 +17,7 @@ use App\Entity\Shop\Product\Product;
 use App\Entity\Shop\Product\Characteristic as ProductCharacteristics;
 use App\Entity\Shop\Review;
 use App\Entity\Shop\DeliveryMethod;
+use App\Entity\Region;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -78,6 +79,28 @@ Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) 
     $crumbs->push('Edit', route('admin.users.edit', $user));
 });
 
+// Regions
+
+Breadcrumbs::register('admin.regions.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Regions', route('admin.regions.index'));
+});
+
+Breadcrumbs::register('admin.regions.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.regions.index');
+    $crumbs->push('Create', route('admin.regions.create'));
+});
+
+Breadcrumbs::register('admin.regions.show', function (Crumbs $crumbs, Region $region) {
+    $crumbs->parent('admin.regions.index');
+    $crumbs->push($region->name, route('admin.regions.show', $region));
+});
+
+Breadcrumbs::register('admin.regions.edit', function (Crumbs $crumbs, Region $region) {
+    $crumbs->parent('admin.regions.show', $region);
+    $crumbs->push('Edit', route('admin.regions.edit', $region));
+});
+
 // Blog //
 
 // Tags
@@ -106,7 +129,7 @@ Breadcrumbs::register('admin.blog.tags.edit', function (Crumbs $crumbs, Tag $tag
 
 Breadcrumbs::register('admin.blog.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Categories', route('admin.blog.categories.index'));
+    $crumbs->push('Blog Categories', route('admin.blog.categories.index'));
 });
 
 Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) {
@@ -233,7 +256,7 @@ Breadcrumbs::register('admin.shop.brands.edit', function (Crumbs $crumbs, Brand 
 
 Breadcrumbs::register('admin.shop.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Categories', route('admin.shop.categories.index'));
+    $crumbs->push('Shop Categories', route('admin.shop.categories.index'));
 });
 
 Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) {
