@@ -38,7 +38,7 @@
                     <h3>{{ $product->title }}</h3>
                     <h2>${{ $product->price }}</h2>
                     <ul class="list">
-                        <li><a class="active" href="{{ $product->category ? route('shop.products.category', ['slug' => $product->category->slug]) : 'None' }}"><span>Category</span> : {{ $product->category ? $product->category->name : '' }}</a></li>
+                        <li><a class="active" href="{{ $product->category ? route('shop.products.category', ['slug' => $product->category->slug]) : "javascript:void(0)" }}"><span>Category</span> : {{ $product->category ? $product->category->name : 'None' }}</a></li>
                         <li>
                             <a href="javascript:void(0)">
                                 <span>Availability</span> :
@@ -63,12 +63,17 @@
                             <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                             <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                         </div>
-                            <div class="card_area d-flex align-items-center">
-                                <a class="primary-btn add-to-cart" href="javascript:void(0)" data-product-id="{{ $product->id }}">Add to Cart</a>
-                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                            </div>
+                    @else
+                        <p>This product is currently out of stock and unavailable.</p>
                     @endif
+
+                    <div class="card_area d-flex align-items-center">
+                        @if ($product->isAvailable())
+                            <a class="primary-btn add-to-cart" href="javascript:void(0)" data-product-id="{{ $product->id }}">Add to Cart</a>
+                        @endif
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
