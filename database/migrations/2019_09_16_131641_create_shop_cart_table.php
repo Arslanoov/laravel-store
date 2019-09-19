@@ -18,7 +18,8 @@ class CreateShopCartTable extends Migration
             $table->integer('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->integer('product_id')->references('id')->on('shop_products')->onDelete('CASACDE');
             $table->integer('quantity');
-            $table->integer('total');
+            $table->integer('total_price');
+            $table->integer('total_weight');
         });
     }
 

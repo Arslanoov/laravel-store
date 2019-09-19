@@ -7,8 +7,8 @@
                 <div class="col-first">
                     <h1>Shopping Cart</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Cart</a>
+                        <a href="{{ route('home') }}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{{ route('shop.cart.index') }}">Cart</a>
                     </nav>
                 </div>
             </div>
@@ -25,7 +25,8 @@
                             <th scope="col">Product</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Total Weight</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -52,7 +53,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$<span class="price">{{ $cartItem->total }}</span></h5>
+                                    <h5>$<span class="price">{{ $cartItem->total_price }}</span></h5>
+                                </td>
+                                <td>
+                                    <h5><span class="weight">{{ $cartItem->total_weight }}</span></h5>
                                 </td>
                                 <td>
                                     <form id="form" action="{{ route('shop.cart.destroy', compact('cartItem')) }}" method="POST">
@@ -80,13 +84,42 @@
 
                             </td>
                             <td>
-                                <h5>Subtotal</h5>
+
                             </td>
                             <td>
-                                <h5>$<span id="total">0</span></h5>
+
+                            </td>
+                            <td>
+                                <h5>Subtotal price</h5>
+                            </td>
+                            <td>
+                                <h5>$<span id="total_price">0</span></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <h5>Subtotal weight</h5>
+                            </td>
+                            <td>
+                                <h5><span id="total_weight">0</span> g</h5>
                             </td>
                         </tr>
                         <tr class="shipping_area">
+                            <td>
+
+                            </td>
                             <td>
 
                             </td>
@@ -99,12 +132,14 @@
                             <td>
                                 <div class="shipping_box">
                                     <ul class="list">
-                                        <li><a href="#">Flat Rate: $5.00</a></li>
-                                        <li><a href="#">Free Shipping</a></li>
-                                        <li><a href="#">Flat Rate: $10.00</a></li>
-                                        <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                        @foreach ($deliveryMethods as $method)
+                                            <li class="checkbox_delivery" data-name="{{ $method->name }}">
+                                                <a href="javascript:void(0)">{{ $method->name }}: ${{ $method->cost }}</a>
+                                                <input type="checkbox" name="method" id="method_{{ $method->name }}" style="display: none">
+                                            </li>
+                                        @endforeach
                                     </ul>
-                                    <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
+
                                     <select class="shipping_select">
                                         <option value="1">Bangladesh</option>
                                         <option value="2">India</option>
@@ -131,6 +166,12 @@
 
                             </td>
                             <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
                                 <div class="checkout_btn_inner d-flex align-items-center">
                                     <a class="gray_btn" href="{{ route('shop.products.index') }}">Continue Shopping</a>
                                     <a class="primary-btn" href="#">Proceed to checkout</a>
@@ -147,12 +188,39 @@
 
 @section ('script')
     <script>
-        let total = 0;
+        let totalPrice = 0;
 
         $('.price').each(function (index, value) {
-            total += + $(this).text();
+            totalPrice += + $(this).text();
         });
 
-        $("#total").text(total);
+        $("#total_price").text(totalPrice);
+    </script>
+
+    <script>
+        let totalWeight = 0;
+
+        $('.weight').each(function (index, value) {
+            totalWeight += + $(this).text();
+        });
+
+        $("#total_weight").text(totalWeight);
+    </script>
+
+    <script>
+        $('.checkbox_delivery').on('click', function () {
+
+            $('.checkbox_delivery').each(function (index, value) {
+                let el = $(this);
+                $("#method_" + el.data('name')).prop('checked', false);
+                el.removeClass('active');
+            });
+
+            let li = $(this);
+            let methodName = li.data('name');
+
+            $("#method_" + methodName).prop("checked", true);
+            li.addClass('active');
+        });
     </script>
 @endsection

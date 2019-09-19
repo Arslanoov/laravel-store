@@ -300,7 +300,7 @@ Breadcrumbs::register('admin.shop.characteristics.variants.edit', function (Crum
 
 Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Shop Brands', route('admin.shop.products.index'));
+    $crumbs->push('Shop Products', route('admin.shop.products.index'));
 });
 
 Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {

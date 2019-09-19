@@ -51,4 +51,15 @@ class CartService extends Service
 
         return $sum;
     }
+
+    public function countTotalWeightByCartItems($cartItems)
+    {
+        $totalWeight = 0;
+
+        foreach ($cartItems as $cartItem) {
+            $totalWeight += $cartItem->total_weight;
+        }
+
+        return $totalWeight;
+    }
 }

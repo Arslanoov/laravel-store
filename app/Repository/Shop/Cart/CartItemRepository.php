@@ -14,7 +14,8 @@ class CartItemRepository
     {
         $cartItem = CartItem::new(
             $userId, $product->id,
-            $product->price, $quantity
+            $product->price, $product->weight,
+            $quantity
         );
 
         return $cartItem;
@@ -30,8 +31,13 @@ class CartItemRepository
         $cartItem->increaseProductsCount($quantity);
     }
 
-    public function recountTotal(CartItem $cartItem): void
+    public function recountTotalPrice(CartItem $cartItem): void
     {
-        $cartItem->recountTotal();
+        $cartItem->recountTotalPrice();
+    }
+
+    public function recountTotalWeight(CartItem $cartItem): void
+    {
+        $cartItem->recountTotalWeight();
     }
 }

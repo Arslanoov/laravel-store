@@ -12,19 +12,20 @@ class CartItem extends Model
 
     protected $table = 'shop_cart';
     protected $fillable = [
-        'user_id', 'product_id', 'quantity', 'total'
+        'user_id', 'product_id', 'quantity', 'total_price', 'total_weight'
     ];
 
     public static function new(
         int $userId, int $productId,
-        int $price, int $quantity
+        int $price, int $weight, int $quantity
     )
     {
         return static::create([
             'user_id' => $userId,
             'product_id' => $productId,
             'quantity' => $quantity,
-            'total' => $quantity * $price
+            'total_price' => $quantity * $price,
+            'total_weight' => $quantity * $weight
         ]);
     }
 
@@ -47,10 +48,17 @@ class CartItem extends Model
         ]);
     }
 
-    public function recountTotal()
+    public function recountTotalPrice()
     {
         $this->update([
-            'total' => $this->quantity * $this->product->price
+            'total_price' => $this->quantity * $this->product->price
+        ]);
+    }
+
+    public function recountTotalWeight()
+    {
+        $this->update([
+            'total_weight' => $this->quantity * $this->product->weight
         ]);
     }
 }

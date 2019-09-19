@@ -6,6 +6,7 @@ use App\Entity\Shop\Cart\CartItem;
 use App\Entity\Shop\Product\Product;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
+use App\UseCases\Shop\DeliveryService;
 use App\UseCases\Shop\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +15,27 @@ class CartController extends Controller
 {
     private $cartService;
     private $productService;
+    private $deliveryService;
 
-    public function __construct(CartService $cartService, ProductService $productService)
+    public function __construct(
+        CartService $cartService,
+        ProductService $productService,
+        DeliveryService $deliveryService
+    )
     {
         $this->middleware('auth');
         $this->cartService = $cartService;
         $this->productService = $productService;
+        $this->deliveryService = $deliveryService;
     }
 
     public function index()
     {
         $cartItems = $this->cartService->findCartItemsByUserId(Auth::guard()->id());
+        $totalWeight = $this->cartService->countTotalWeightByCartItems($cartItems);
+        $deliveryMethods = $this->deliveryService->findDeliveryMethodsByWeight($totalWeight);
 
-        return view('shop.cart.index', compact('cartItems'));
+        return view('shop.cart.index', compact('cartItems', 'deliveryMethods'));
     }
 
     public function store(Request $request)
