@@ -29,7 +29,8 @@ class CreateTest extends TestCase
             $slug = 'slug',
             $price = 300,
             $content = 'Content',
-            $weight = 20
+            $weight = 20,
+            $quantity = 30
         );
 
         $this->assertEquals($product->category_id, $categoryId);
@@ -40,6 +41,7 @@ class CreateTest extends TestCase
         $this->assertEquals($product->content, $content);
         $this->assertEquals($product->availability, Product::AVAILABILITY_OUT_OF_STOCK);
         $this->assertEquals($product->weight, $weight);
+        $this->assertEquals($product->quantity, $quantity);
         $this->assertEquals($product->comments, 0);
         $this->assertEquals($product->reviews, 0);
     }

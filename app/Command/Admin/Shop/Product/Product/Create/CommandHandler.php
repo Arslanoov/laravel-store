@@ -19,7 +19,7 @@ class CommandHandler
             $command->categoryId, $command->brandId,
             $command->title, $command->slug,
             $command->price, $command->text,
-            $command->weight
+            $command->weight, $command->quantity
         );
     }
 }

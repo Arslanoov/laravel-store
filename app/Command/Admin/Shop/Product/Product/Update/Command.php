@@ -15,6 +15,7 @@ class Command
     public $price;
     public $content;
     public $weight;
+    public $quantity;
 
     public $product;
     
@@ -27,6 +28,7 @@ class Command
         $this->price = $request->price;
         $this->content = $request->text;
         $this->weight = $request->weight;
+        $this->quantity = $request->quantity;
         $this->product = $product;
     }
 }

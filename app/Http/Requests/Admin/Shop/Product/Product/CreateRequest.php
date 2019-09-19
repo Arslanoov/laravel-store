@@ -20,7 +20,8 @@ class CreateRequest extends FormRequest
             'slug' => 'required|string|max:255|unique:shop_products',
             'price' => 'required|integer',
             'text' => 'required|string',
-            'weight' => 'required|integer|min:0'
+            'weight' => 'required|integer|min:0',
+            'quantity' => 'nullable|integer|min:0'
         ];
     }
 }

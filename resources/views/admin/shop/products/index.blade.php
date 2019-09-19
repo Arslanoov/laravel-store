@@ -78,6 +78,7 @@
             <th>Slug</th>
             <th>Price</th>
             <th>Weight</th>
+            <th>Quantity</th>
             <th>Status</th>
         </tr>
         </thead>
@@ -101,6 +102,7 @@
                 <td>{{ $product->slug }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->weight }}</td>
+                <td>{{ $product->quantity }}</td>
                 <td>{{ $product->status }}</td>
             </tr>
         @endforeach

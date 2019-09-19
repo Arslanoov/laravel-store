@@ -87,6 +87,9 @@
             <th>Weight</th><td>{{ $product->weight }}</td>
         </tr>
         <tr>
+            <th>Quantity</th><td>{{ $product->quantity }}</td>
+        </tr>
+        <tr>
             <th>Status</th><td>{{ $product->status }}</td>
         </tr>
         </tbody>

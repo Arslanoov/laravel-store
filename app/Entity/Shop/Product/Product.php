@@ -21,12 +21,13 @@ class Product extends Model
     protected $table = 'shop_products';
     protected $fillable = [
         'category_id', 'brand_id', 'availability', 'title', 'slug', 'price',
-        'content', 'status', 'reviews', 'comments', 'rating', 'weight'
+        'content', 'status', 'reviews', 'comments', 'rating', 'weight', 'quantity'
     ];
 
     public static function new(
         $categoryId, $brandId, $title,
-        $slug, $price, $content, $weight
+        $slug, $price, $content, $weight,
+        $quantity
     ): self
     {
         return static::create([
@@ -38,6 +39,7 @@ class Product extends Model
             'price' => $price,
             'content' => $content,
             'weight' => $weight,
+            'quantity' => $quantity,
             'status' => self::STATUS_DRAFT,
             'reviews' => 0,
             'comments' => 0,
@@ -106,6 +108,15 @@ class Product extends Model
 
         $this->update([
             'reviews' => $reviewsCount - 1
+        ]);
+    }
+
+    public function reduceQuantity(): void
+    {
+        $quantity = $this->quantity;
+
+        $this->update([
+            'quantity' => $quantity + 1
         ]);
     }
 

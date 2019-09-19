@@ -8,14 +8,14 @@ class ProductRepository
 {
     public function create(
         $categoryId, $brandId,
-        $title, $slug,
-        $price, $content, $weight
+        $title, $slug, $price,
+        $content, $weight, $quantity
     ): Product
     {
         $product = Product::new(
             $categoryId, $brandId,
-            $title, $slug,
-            $price, $content, $weight
+            $title, $slug, $price,
+            $content, $weight, $quantity
         );
 
         return $product;
@@ -23,9 +23,9 @@ class ProductRepository
 
     public function update(
         Product $product,
-        $categoryId,
-        $title, $slug,
-        $price, $content, $weight
+        $categoryId, $title,
+        $slug, $price, $content,
+        $weight, $quantity
     ): void
     {
         $product->update([
@@ -34,7 +34,8 @@ class ProductRepository
             'slug' => $slug,
             'price' => $price,
             'content' => $content,
-            'weight' => $weight
+            'weight' => $weight,
+            'quantity' => $quantity
         ]);
     }
 

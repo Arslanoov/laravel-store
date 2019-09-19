@@ -13,6 +13,7 @@ class Command
     public $price;
     public $text;
     public $weight;
+    public $quantity;
     
     public function __construct(CreateRequest $request)
     {
@@ -23,5 +24,6 @@ class Command
         $this->price = $request->price;
         $this->text = $request->text;
         $this->weight = $request->weight;
+        $this->quantity = $request->quantity;
     }
 }
