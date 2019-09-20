@@ -54,6 +54,7 @@ Route::group(
         Route::post('/cart/add', 'CartController@store')->name('cart.store');
         Route::post('/cart/remove/{cartItem}', 'CartController@destroy')->name('cart.destroy');
         Route::post('/cart/remove-all', 'CartController@destroyAll')->name('cart.destroyAll');
+        Route::post('/cart/region', 'CartController@region')->name('cart.region');
     }
 );
 
@@ -92,6 +93,10 @@ Route::group(
 
         Route::get('/photo', 'PhotoController@show')->name('photo.show');
         Route::post('/photo/upload', 'PhotoController@store')->name('photo.store');
+
+        Route::get('/profile', 'ProfileController@index')->name('profile.index');
+        Route::get('/profile/fill', 'ProfileController@fillForm')->name('profile.fillForm');
+        Route::post('/profile/fill', 'ProfileController@fill')->name('profile.fill');
     }
 );
 

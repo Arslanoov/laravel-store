@@ -157,7 +157,7 @@
             let quantity = $("#qty").val();
 
             $.ajax({
-                'headers': {
+                "headers": {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 "url": "/shop/cart/add",

@@ -36,6 +36,13 @@ class UserRepository
         ]);
     }
 
+    public function rename(User $user, string $name): void
+    {
+        $user->update([
+            'name' => $name
+        ]);
+    }
+
     public function remove(User $user): void
     {
         $user->delete();

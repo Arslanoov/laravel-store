@@ -127,7 +127,7 @@
 
                             </td>
                             <td>
-                                <h5>Shipping</h5>
+
                             </td>
                             <td>
                                 <div class="shipping_box">
@@ -140,16 +140,15 @@
                                         @endforeach
                                     </ul>
 
+                                    <p>Location</p>
+
                                     <select class="shipping_select">
-                                        <option value="1">Bangladesh</option>
-                                        <option value="2">India</option>
-                                        <option value="4">Pakistan</option>
+                                        <option class="not_selected" selected>Not Selected</option>
+                                        @foreach ($regions as $region)
+                                            <option data-value="{{ $region->id }}">{{ $region->name }}</option>
+                                        @endforeach
                                     </select>
-                                    <select class="shipping_select">
-                                        <option value="1">Select a State</option>
-                                        <option value="2">Select a State</option>
-                                        <option value="4">Select a State</option>
-                                    </select>
+
                                     <input type="text" placeholder="Postcode/Zipcode">
                                     <a class="gray_btn" href="#">Update Details</a>
                                 </div>
@@ -221,6 +220,38 @@
 
             $("#method_" + methodName).prop("checked", true);
             li.addClass('active');
+        });
+    </script>
+
+    <script>
+        $('.shipping_select').on('change', function () {
+            let select = this;
+            let optionSelected = $("option:selected", this);
+            let regionId = optionSelected.data('value');
+
+            let isReset = $(optionSelected).hasClass('reset');
+            let isNotSelected = $(optionSelected).hasClass('not_selected');
+
+            isReset ? isReset = 1 : isReset = 0;
+
+            if (!isNotSelected) {
+                $.ajax({
+                    "headers": {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    "url": "/shop/cart/region",
+                    "method": "POST",
+                    "data": {
+                        regionId: regionId,
+                        isReset: isReset
+                    },
+                    "success": function (data) {
+                        if (data) {
+                            $(select).html(data);
+                        }
+                    }
+                });
+            }
         });
     </script>
 @endsection

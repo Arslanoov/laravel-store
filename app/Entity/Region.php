@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
@@ -26,6 +27,11 @@ class Region extends Model
     public function parent()
     {
         return $this->belongsTo(static::class, 'parent_id', 'id');
+    }
+
+    public function scopeRoots(Builder $query)
+    {
+        return $query->where('parent_id', null);
     }
 
     public function children()

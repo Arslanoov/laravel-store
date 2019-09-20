@@ -108,6 +108,11 @@ class User extends Authenticatable
         ]);
     }
 
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class, 'id', 'user_id');
+    }
+
     public function getPhotoUrl(): string
     {
         return $this->photo ? '/storage/' . $this->photo : '';

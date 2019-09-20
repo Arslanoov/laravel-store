@@ -13,7 +13,6 @@ class PhotoController extends Controller
 
     public function __construct(PhotoService $service)
     {
-        $this->middleware('auth');
         $this->service = $service;
     }
 
