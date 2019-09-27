@@ -18,6 +18,8 @@
 
                     @include ('cabinet._nav', ['page' => 'profile'])
 
+                    @include ('layouts.partials.flash')
+
                     <table class="table table-bordered table-striped table-responsive">
                         <tr>
                             <th>ID</th><td>{{ $user->id }}</td>

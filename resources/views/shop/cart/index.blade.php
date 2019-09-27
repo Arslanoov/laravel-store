@@ -113,45 +113,7 @@
                                 <h5>Subtotal weight</h5>
                             </td>
                             <td>
-                                <h5><span id="total_weight">0</span> g</h5>
-                            </td>
-                        </tr>
-                        <tr class="shipping_area">
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                <div class="shipping_box">
-                                    <ul class="list">
-                                        @foreach ($deliveryMethods as $method)
-                                            <li class="checkbox_delivery" data-name="{{ $method->name }}">
-                                                <a href="javascript:void(0)">{{ $method->name }}: ${{ $method->cost }}</a>
-                                                <input type="checkbox" name="method" id="method_{{ $method->name }}" style="display: none">
-                                            </li>
-                                        @endforeach
-                                    </ul>
-
-                                    <p>Location</p>
-
-                                    <select class="shipping_select">
-                                        <option class="not_selected" selected>Not Selected</option>
-                                        @foreach ($regions as $region)
-                                            <option data-value="{{ $region->id }}">{{ $region->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <input type="text" placeholder="Postcode/Zipcode">
-                                    <a class="gray_btn" href="#">Update Details</a>
-                                </div>
+                                <h5><span id="total_weight">{{ $totalWeight }}</span> g</h5>
                             </td>
                         </tr>
                         <tr class="out_button_area">
@@ -173,7 +135,7 @@
                             <td>
                                 <div class="checkout_btn_inner d-flex align-items-center">
                                     <a class="gray_btn" href="{{ route('shop.products.index') }}">Continue Shopping</a>
-                                    <a class="primary-btn" href="#">Proceed to checkout</a>
+                                    <a class="primary-btn" href="{{ route('shop.orders.checkout') }}">Proceed to checkout</a>
                                 </div>
                             </td>
                         </tr>
@@ -220,38 +182,6 @@
 
             $("#method_" + methodName).prop("checked", true);
             li.addClass('active');
-        });
-    </script>
-
-    <script>
-        $('.shipping_select').on('change', function () {
-            let select = this;
-            let optionSelected = $("option:selected", this);
-            let regionId = optionSelected.data('value');
-
-            let isReset = $(optionSelected).hasClass('reset');
-            let isNotSelected = $(optionSelected).hasClass('not_selected');
-
-            isReset ? isReset = 1 : isReset = 0;
-
-            if (!isNotSelected) {
-                $.ajax({
-                    "headers": {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    "url": "/shop/cart/region",
-                    "method": "POST",
-                    "data": {
-                        regionId: regionId,
-                        isReset: isReset
-                    },
-                    "success": function (data) {
-                        if (data) {
-                            $(select).html(data);
-                        }
-                    }
-                });
-            }
         });
     </script>
 @endsection

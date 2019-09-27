@@ -4291,19 +4291,19 @@ label {
     padding: 0px 40px; }
 .cart_inner .table tbody tr.shipping_area td:nth-child(3) {
   vertical-align: top; }
-.cart_inner .table tbody tr.shipping_area .shipping_box {
-  margin-left: -250px;
-  text-align: right; }
-  .cart_inner .table tbody tr.shipping_area .shipping_box .list li {
+.shipping_box .list {
+  margin-left: 10px;
+}
+  .shipping_box .list li {
     margin-bottom: 12px; }
-    .cart_inner .table tbody tr.shipping_area .shipping_box .list li:last-child {
+    .shipping_box .list li:last-child {
       margin-bottom: 0px; }
-    .cart_inner .table tbody tr.shipping_area .shipping_box .list li a {
+    .shipping_box .list li a {
       padding-right: 30px;
       font-size: 14px;
       color: #777777;
       position: relative; }
-      .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:before {
+      .shipping_box .list li a:before {
         content: "";
         height: 16px;
         width: 16px;
@@ -4314,7 +4314,7 @@ label {
         right: 0px;
         top: 50%;
         transform: translateY(-50%); }
-      .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:after {
+      .shipping_box .list li a:after {
         content: "";
         height: 10px;
         width: 10px;
@@ -4326,33 +4326,33 @@ label {
         top: 50%;
         transform: translateY(-50%);
         opacity: 0; }
-    .cart_inner .table tbody tr.shipping_area .shipping_box .list li.active a:after {
+    .shipping_box .list li.active a:after {
       opacity: 1; }
-  .cart_inner .table tbody tr.shipping_area .shipping_box h6 {
+  .shipping_box h6 {
     font-size: 14px;
     font-weight: normal;
     color: #222222;
     font-family: "Roboto", sans-serif;
     margin-top: 20px;
     margin-bottom: 20px; }
-    .cart_inner .table tbody tr.shipping_area .shipping_box h6 i {
+    .shipping_box h6 i {
       color: #777777;
       padding-left: 5px; }
-  .cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select {
+  .shipping_box .shipping_select {
     display: block;
     width: 100%;
     background: #e8f0f2;
     border: 1px solid #eeeeee;
     height: 40px;
     margin-bottom: 20px; }
-    .cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list {
+    .shipping_box .shipping_select .list {
       width: 100%;
       border-radius: 0px; }
-      .cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list li {
+      .shipping_box .shipping_select .list li {
         font-size: 14px;
         font-weight: normal;
         color: #777777; }
-  .cart_inner .table tbody tr.shipping_area .shipping_box input {
+  .shipping_box input {
     height: 40px;
     outline: none;
     border: 1px solid #eeeeee;

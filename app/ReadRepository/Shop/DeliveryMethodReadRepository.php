@@ -12,6 +12,12 @@ class DeliveryMethodReadRepository
         return $methods;
     }
 
+    public function findById(int $id): ?DeliveryMethod
+    {
+        $method = DeliveryMethod::findOrFail($id);
+        return $method;
+    }
+
     public function findByWeight(int $weight)
     {
         $methods = DeliveryMethod::orderBy('sort')

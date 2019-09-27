@@ -84,6 +84,11 @@ class ProductRepository
         $product->reduceReviewsCount();
     }
 
+    public function reduceQuantity(Product $product): void
+    {
+        $product->reduceQuantity();
+    }
+
     public function recountRating(Product $product): void
     {
         $product->recountRating();

@@ -2,6 +2,8 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\Cart\CartItem;
+use App\Entity\Shop\Order\Order;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
@@ -111,6 +113,25 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->belongsTo(Profile::class, 'id', 'user_id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
+    public function cart()
+    {
+        return $this->belongsTo(CartItem::class, 'id', 'user_id');
+    }
+
+    public function hasFilledProfile(): bool
+    {
+        return
+            !empty($this->profile->surname) &&
+            !empty($this->profile->patronymic) &&
+            !empty($this->profile->phone) &&
+            !empty($this->profile->code);
     }
 
     public function getPhotoUrl(): string

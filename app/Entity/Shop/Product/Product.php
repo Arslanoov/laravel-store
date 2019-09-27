@@ -116,7 +116,7 @@ class Product extends Model
         $quantity = $this->quantity;
 
         $this->update([
-            'quantity' => $quantity + 1
+            'quantity' => $quantity - 1
         ]);
     }
 
@@ -143,6 +143,12 @@ class Product extends Model
     public function getImageUrl($photoUrl): string
     {
         return $photoUrl ? '/storage/' . $photoUrl : '';
+    }
+
+    public function canBeOrdered(): bool
+    {
+        return $this->quantity > 0
+            && $this->availability == self::AVAILABILITY_IN_STOCK;
     }
 
     public function recountRating(): void
@@ -198,6 +204,11 @@ class Product extends Model
     public function scopeActive(Builder $query)
     {
         return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    public function scopeAvailable(Builder $query)
+    {
+        return $query->where('availability', self::AVAILABILITY_IN_STOCK);
     }
 
     public static function availabilitiesList(): array

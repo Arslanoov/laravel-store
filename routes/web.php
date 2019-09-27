@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\FilledProfile;
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
@@ -54,7 +56,17 @@ Route::group(
         Route::post('/cart/add', 'CartController@store')->name('cart.store');
         Route::post('/cart/remove/{cartItem}', 'CartController@destroy')->name('cart.destroy');
         Route::post('/cart/remove-all', 'CartController@destroyAll')->name('cart.destroyAll');
-        Route::post('/cart/region', 'CartController@region')->name('cart.region');
+
+        Route::group(
+        [
+            'prefix' => 'order',
+            'as' => 'orders.',
+            'middleware' => FilledProfile::class
+        ], function () {
+            Route::get('/checkout', 'OrdersController@checkout')->name('checkout');
+            Route::post('/region', 'OrdersController@region')->name('region');
+            Route::post('/checkout-form', 'OrdersController@checkoutForm')->name('checkoutForm');
+        });
     }
 );
 
@@ -97,6 +109,9 @@ Route::group(
         Route::get('/profile', 'ProfileController@index')->name('profile.index');
         Route::get('/profile/fill', 'ProfileController@fillForm')->name('profile.fillForm');
         Route::post('/profile/fill', 'ProfileController@fill')->name('profile.fill');
+
+        Route::get('/orders', 'OrdersController@index')->name('orders.index');
+        Route::get('/orders/{order}', 'OrdersController@show')->name('orders.show');
     }
 );
 

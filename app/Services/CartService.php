@@ -62,4 +62,15 @@ class CartService extends Service
 
         return $totalWeight;
     }
+
+    public function countTotalPriceByCartItems($cartItems)
+    {
+        $totalPrice = 0;
+
+        foreach ($cartItems as $cartItem) {
+            $totalPrice += $cartItem->total_price;
+        }
+
+        return $totalPrice;
+    }
 }

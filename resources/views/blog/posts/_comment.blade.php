@@ -1,4 +1,4 @@
-<div class="comment-list" data-id="<?= $comment->id ?>" id="comment_<?= $comment->id ?>">
+<div class="comment-list" data-id="{{ $comment->id }}" id="comment_{{ $comment->id }}">
     <div class="single-comment justify-content-between d-flex">
         <div class="user justify-content-between d-flex">
             <div class="thumb">

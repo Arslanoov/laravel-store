@@ -12,7 +12,8 @@ class CartItem extends Model
 
     protected $table = 'shop_cart';
     protected $fillable = [
-        'user_id', 'product_id', 'quantity', 'total_price', 'total_weight'
+        'user_id', 'product_id', 'quantity',
+        'total_price', 'total_weight'
     ];
 
     public static function new(

@@ -17,32 +17,25 @@ class CartController extends Controller
     private $cartService;
     private $productService;
     private $deliveryService;
-    private $regionService;
 
     public function __construct(
         CartService $cartService,
         ProductService $productService,
-        DeliveryService $deliveryService,
-        RegionService $regionService
+        DeliveryService $deliveryService
     )
     {
         $this->middleware('auth');
         $this->cartService = $cartService;
         $this->productService = $productService;
         $this->deliveryService = $deliveryService;
-        $this->regionService = $regionService;
     }
 
     public function index()
     {
         $cartItems = $this->cartService->findCartItemsByUserId(Auth::guard()->id());
-
         $totalWeight = $this->cartService->countTotalWeightByCartItems($cartItems);
-        $deliveryMethods = $this->deliveryService->findDeliveryMethodsByWeight($totalWeight);
 
-        $regions = $this->regionService->getRootRegions();
-
-        return view('shop.cart.index', compact('cartItems', 'deliveryMethods', 'regions'));
+        return view('shop.cart.index', compact('cartItems', 'totalWeight'));
     }
 
     public function store(Request $request)
@@ -60,29 +53,6 @@ class CartController extends Controller
             if ($product->isAvailable()) {
                 $this->cartService->addItem($quantity, $product, Auth::guard()->id());
             }
-        }
-    }
-
-    public function region()
-    {
-        if (request()->ajax()) {
-            $regionId = request()->post('regionId');
-            $isReset = request()->post('isReset');
-
-            if ($isReset) {
-                $regions = $this->regionService->getRootRegions();
-            } else {
-                $selectedRegion = $this->regionService->findById($regionId);
-                if ($selectedRegion->children()->exists()) {
-                    $regions = $selectedRegion->children;
-                } else {
-                    return;
-                }
-            }
-
-            return view('shop.cart.region', [
-                'regions' => $regions
-            ]);
         }
     }
 

@@ -29,4 +29,9 @@ class ProductReadRepository
         $product = Product::where('id', $id)->where('slug', $slug)->active()->first();
         return $product;
     }
+
+    public function checkIsAvailable(Product $product): bool
+    {
+        return $product->canBeOrdered();
+    }
 }
