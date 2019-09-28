@@ -47,6 +47,6 @@ class OrderRepository
 
     public function cancel(Order $order, $reason): void
     {
-        $order->cancel($reason);
+        $order->cancelByUser($reason);
     }
 }

@@ -87,20 +87,31 @@ class Order extends Model
         $this->addStatus(Status::COMPLETED);
     }
 
+    public function cancelByAdmin($reason): void
+    {
+        $this->cancel($reason);
+        $this->addStatus(Status::CANCELLED);
+    }
+
+    public function cancelByUser($reason): void
+    {
+        if (!$this->canBeCanceled()) {
+            throw new DomainException('Order cannot be canceled.');
+        }
+
+        $this->cancel($reason);
+        $this->addStatus(Status::CANCELLED_BY_CUSTOMER);
+    }
+
     public function cancel($reason): void
     {
         if ($this->isCancelled()) {
             throw new DomainException('Order is already cancelled.');
         }
-        if (!$this->canBeCanceled()) {
-            throw new DomainException('Order cannot be canceled.');
-        }
 
         $this->update([
             'cancel_reason' => $reason
         ]);
-
-        $this->addStatus(Status::CANCELLED);
     }
 
     public function getTotalCost(): int
