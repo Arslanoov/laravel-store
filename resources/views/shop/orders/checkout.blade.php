@@ -106,8 +106,8 @@
                                     <label for="f-option4">I’ve read and accept the </label>
                                     <a href="#">terms & conditions*</a>
                                 </div>
-                                <button class="primary-btn" type="submit">Proceed to payment</button>
-                                <a class="primary-btn" href="#" role="button">Proceed to payment</a>
+
+                                <button class="primary-btn" type="submit" style="outline:none;width: 100%;border:0">Proceed to payment</button>
                             </div>
                         </div>
                     </div>

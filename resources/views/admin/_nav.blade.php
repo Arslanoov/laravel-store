@@ -30,6 +30,7 @@
         <li class="nav-item"><a class="nav-link {{ $page === 'shop-comments' ? ' active' : '' }}" href="{{ route('admin.shop.comments.index') }}">Shop Comments</a></li>
         <li class="nav-item"><a class="nav-link {{ $page === 'shop-reviews' ? ' active' : '' }}" href="{{ route('admin.shop.reviews.index') }}">Shop Reviews</a></li>
         <li class="nav-item"><a class="nav-link {{ $page === 'shop-delivery-methods' ? ' active' : '' }}" href="{{ route('admin.shop.deliveryMethods.index') }}">Shop Delivery Methods</a></li>
+        <li class="nav-item"><a class="nav-link {{ $page === 'shop-orders' ? ' active' : '' }}" href="{{ route('admin.shop.orders.index') }}">Shop Orders</a></li>
     @endcan
 </ul>
 

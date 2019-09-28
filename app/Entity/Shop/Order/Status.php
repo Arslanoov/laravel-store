@@ -22,4 +22,40 @@ class Status extends Model
             'value' => $value
         ]);
     }
+
+    public function isNew(): bool
+    {
+        return $this->value == self::NEW;
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->value == self::PAID;
+    }
+
+    public function isSent(): bool
+    {
+        return $this->value == self::SENT;
+    }
+
+    public function isCompleted(): bool
+    {
+        return $this->value == self::COMPLETED;
+    }
+
+    public function isCancelled(): bool
+    {
+        return $this->value == self::CANCELLED
+            || $this->value == self::CANCELLED_BY_CUSTOMER;
+    }
+
+    public function isCancelledByCustomer(): bool
+    {
+        return $this->value == self::CANCELLED_BY_CUSTOMER;
+    }
+
+    public function isCancelledByAdmin(): bool
+    {
+        return $this->value == self::CANCELLED;
+    }
 }

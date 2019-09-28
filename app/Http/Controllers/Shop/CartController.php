@@ -32,10 +32,12 @@ class CartController extends Controller
 
     public function index()
     {
+        $user = Auth::guard()->user();
+
         $cartItems = $this->cartService->findCartItemsByUserId(Auth::guard()->id());
         $totalWeight = $this->cartService->countTotalWeightByCartItems($cartItems);
 
-        return view('shop.cart.index', compact('cartItems', 'totalWeight'));
+        return view('shop.cart.index', compact('cartItems', 'totalWeight', 'user'));
     }
 
     public function store(Request $request)

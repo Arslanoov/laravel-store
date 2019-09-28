@@ -49,7 +49,7 @@ class OrderService extends Service
 
     public function findOwn(int $userId, int $id): ?Order
     {
-        $order = $this->queryBus->query(new FindByUserIdAndIdQuery($userId, $id));
+        $order = $this->queryBus->query(new FindByUserIdAndIdQuery($id, $userId));
         return $order;
     }
 

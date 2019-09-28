@@ -38,10 +38,13 @@ class Order extends Model
 
     public function setDeliveryMethodInfo(int $id, string $name, int $cost): void
     {
+        $costWithoutDelivery = $this->cost;
+
         $this->update([
             'delivery_method_id' => $id,
             'delivery_method_name' => $name,
-            'delivery_method_cost' => $cost
+            'delivery_method_cost' => $cost,
+            'cost' => $costWithoutDelivery + $cost
         ]);
     }
 
@@ -103,7 +106,7 @@ class Order extends Model
         $this->addStatus(Status::CANCELLED_BY_CUSTOMER);
     }
 
-    public function cancel($reason): void
+    private function cancel($reason): void
     {
         if ($this->isCancelled()) {
             throw new DomainException('Order is already cancelled.');
@@ -129,6 +132,16 @@ class Order extends Model
         return $this->isNew();
     }
 
+    public function canBeSent(): bool
+    {
+        return $this->isPaid();
+    }
+
+    public function canBeCompleted(): bool
+    {
+        return $this->isSent();
+    }
+
     public function isNew(): bool
     {
         return $this->current_status == Status::NEW;
@@ -151,6 +164,17 @@ class Order extends Model
 
     public function isCancelled(): bool
     {
+        return $this->current_status == Status::CANCELLED
+            || $this->current_status == Status::CANCELLED_BY_CUSTOMER;
+    }
+
+    public function isCancelledByCustomer(): bool
+    {
+        return $this->current_status == Status::CANCELLED_BY_CUSTOMER;
+    }
+
+    public function isCancelledByAdmin(): bool
+    {
         return $this->current_status == Status::CANCELLED;
     }
 
@@ -161,6 +185,7 @@ class Order extends Model
         ]);
 
         $this->statuses()->create([
+            'order_id' => $this->id,
             'value' => $value
         ]);
     }
@@ -187,7 +212,7 @@ class Order extends Model
 
     public function statuses()
     {
-        return $this->hasMany(Status::class, 'id', 'order_id');
+        return $this->hasMany(Status::class, 'order_id', 'id');
     }
 
     public function items()

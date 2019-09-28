@@ -31,6 +31,7 @@ class CreateShopOrdersTable extends Migration
 
         Schema::create('shop_order_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('order_id')->references('id')->on('shop_orders')->onDelete('CASCADE');
             $table->timestamps();
             $table->string('value', 255);
         });

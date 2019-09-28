@@ -6,47 +6,54 @@ use App\Entity\Shop\Order\Order;
 
 class OrderRepository
 {
-    public function create(
-        $userId, $note,
-        $totalPrice
-    ): Order
+    public function create($userId, $note, $totalPrice): Order
     {
-        $order = Order::new(
-            $userId, $note,
-            $totalPrice
-        );
-
+        $order = Order::new($userId, $note, $totalPrice);
         return $order;
     }
 
-    public function setDeliveryMethodInfo(
-        Order $order,
-        int $id,
-        string $name,
-        int $cost
-    ): void
+    public function setDeliveryMethodInfo(Order $order, int $id, string $name, int $cost): void
     {
-        $order->setDeliveryMethodInfo(
-            $id, $name, $cost
-        );
+        $order->setDeliveryMethodInfo($id, $name, $cost);
     }
 
-    public function setCustomerDataInfo(
-        Order $order, int $customerDataId
-    ): void
+    public function setCustomerDataInfo(Order $order, int $customerDataId): void
     {
         $order->setCustomerDataInfo($customerDataId);
     }
 
-    public function setDeliveryDataInfo(
-        Order $order, int $deliveryDataId
-    ): void
+    public function setDeliveryDataInfo(Order $order, int $deliveryDataId): void
     {
         $order->setDeliveryDataInfo($deliveryDataId);
     }
 
-    public function cancel(Order $order, $reason): void
+    public function payByAdmin(Order $order): void
+    {
+        $order->pay('Paid by Admin');
+    }
+
+    public function makeSent(Order $order): void
+    {
+        $order->send();
+    }
+
+    public function makeCompleted(Order $order): void
+    {
+        $order->complete();
+    }
+
+    public function cancelByAdmin(Order $order, $reason): void
+    {
+        $order->cancelByAdmin($reason);
+    }
+
+    public function cancelByUser(Order $order, $reason): void
     {
         $order->cancelByUser($reason);
+    }
+
+    public function remove(Order $order): void
+    {
+        $order->delete();
     }
 }

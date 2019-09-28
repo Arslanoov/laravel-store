@@ -234,6 +234,23 @@ Route::group(
                 Route::resource('reviews', 'ReviewsController');
 
                 Route::resource('deliveryMethods', 'DeliveryMethodsController');
+
+                Route::group(
+                    [
+                        'prefix' => 'orders',
+                        'as' => 'orders.',
+                        'namespace' => 'Order',
+                    ],
+                    function () {
+                        Route::get('/', 'OrdersController@index')->name('index');
+                        Route::get('/{order}', 'OrdersController@show')->name('show');
+                        Route::post('/{order}/cancel', 'OrdersController@cancel')->name('cancel');
+                        Route::post('/{order}/pay', 'OrdersController@pay')->name('pay');
+                        Route::post('/{order}/send', 'OrdersController@sent')->name('sent');
+                        Route::post('/{order}/complete', 'OrdersController@complete')->name('complete');
+                        Route::post('/{order}/remove', 'OrdersController@destroy')->name('destroy');
+                    }
+                );
             }
         );
 

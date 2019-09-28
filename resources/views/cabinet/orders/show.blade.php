@@ -62,19 +62,23 @@
                                     @endif
 
                                     @if ($order->isPaid())
-                                        <span class="badge badge-info">Paid</span>
+                                        <span class="badge badge-primary">Paid</span>
                                     @endif
 
                                     @if ($order->isSent())
-                                        <span class="badge badge-info">Sent</span>
+                                        <span class="badge badge-primary">Sent</span>
                                     @endif
 
                                     @if ($order->isCompleted())
                                         <span class="badge badge-success">Completed</span>
                                     @endif
 
-                                    @if ($order->isCancelled())
-                                        <span class="badge badge-danger">Cancelled</span>
+                                    @if ($order->isCancelledByCustomer())
+                                        <span class="badge badge-danger">Cancelled by customer</span>
+                                    @endif
+
+                                    @if ($order->isCancelledByAdmin())
+                                        <span class="badge badge-danger">Cancelled by Admin</span>
                                     @endif
                                 </td>
                             </tr>
@@ -82,7 +86,7 @@
                     </table>
 
                     <h5>Note</h5>
-                    <p>{{ $order->note }}</p>
+                    <p>{{ $order->note ?: 'Empty' }}</p>
 
                     <table class="table table-bordered table-striped table-responsive">
                         <thead>
@@ -103,6 +107,52 @@
                                 <td>{{ $orderItem->product_price }}</td>
                                 <td>{{ $orderItem->product_quantity }}</td>
                                 <td>{{ $orderItem->total_price }}</td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+
+                    <h5>Statuses History</h5>
+
+                    <table class="table table-bordered table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <th><span class="badge badge-danger">New</span></th>
+                            <td>{{ date('d-M h:i', strtotime($order->created_at)) }}</td>
+                        </tr>
+
+                        @foreach ($order->statuses as $status)
+                            <tr>
+                                <td>
+                                    @if ($status->isPaid())
+                                        <span class="badge badge-primary">Paid</span>
+                                    @endif
+
+                                    @if ($status->isSent())
+                                        <span class="badge badge-primary">Sent</span>
+                                    @endif
+
+                                    @if ($status->isCompleted())
+                                        <span class="badge badge-success">Completed</span>
+                                    @endif
+
+                                    @if ($status->isCancelledByCustomer())
+                                        <span class="badge badge-danger">Cancelled by customer</span>
+                                    @endif
+
+                                    @if ($status->isCancelledByAdmin())
+                                        <span class="badge badge-danger">Cancelled by Admin</span>
+                                    @endif
+                                </td>
+                                <td>{{ date('d-M h:i', strtotime($status->created_at)) }}</td>
                             </tr>
                         @endforeach
 

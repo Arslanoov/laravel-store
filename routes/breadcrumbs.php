@@ -18,6 +18,7 @@ use App\Entity\Shop\Product\Characteristic as ProductCharacteristics;
 use App\Entity\Shop\Review;
 use App\Entity\Shop\DeliveryMethod;
 use App\Entity\Region;
+use App\Entity\Shop\Order\Order;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
@@ -407,4 +408,16 @@ Breadcrumbs::register('admin.shop.deliveryMethods.show', function (Crumbs $crumb
 Breadcrumbs::register('admin.shop.deliveryMethods.edit', function (Crumbs $crumbs, DeliveryMethod $deliveryMethod) {
     $crumbs->parent('admin.shop.deliveryMethods.show', $deliveryMethod);
     $crumbs->push('Edit', route('admin.shop.deliveryMethods.edit', $deliveryMethod));
+});
+
+// Orders
+
+Breadcrumbs::register('admin.shop.orders.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Shop Orders', route('admin.shop.orders.index'));
+});
+
+Breadcrumbs::register('admin.shop.orders.show', function (Crumbs $crumbs, Order $order) {
+    $crumbs->parent('admin.shop.orders.index');
+    $crumbs->push($order->id, route('admin.shop.orders.show', $order));
 });

@@ -34,8 +34,13 @@ class OrdersController extends Controller
 
     public function checkout()
     {
+        /** @var User $user */
         $user = Auth::guard()->user();
         $regions = $this->regionService->getRootRegions();
+
+        if (!$user->cartItems()->exists()) {
+            abort(403, 'Cart is empty');
+        }
 
         $cartItems = $this->cartService->findCartItemsByUserId($user->id);
         $totalWeight = $this->cartService->countTotalWeightByCartItems($cartItems);

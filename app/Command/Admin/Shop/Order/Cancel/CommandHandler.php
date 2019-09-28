@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command\Cabinet\Order\Cancel;
+namespace App\Command\Admin\Shop\Order\Cancel;
 
 use App\Repository\Shop\Order\OrderRepository;
 
@@ -12,14 +12,9 @@ class CommandHandler
     {
         $this->orders = $orders;
     }
-
+    
     public function __invoke(Command $command)
     {
-        if ($command->order->user->id == $command->userId) {
-            $this->orders->cancelByUser(
-                $command->order,
-                $command->reason
-            );
-        }
+        $this->orders->cancelByAdmin($command->order, $command->reason);
     }
 }
