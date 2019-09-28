@@ -67,6 +67,8 @@ Route::group(
             Route::post('/region', 'OrdersController@region')->name('region');
             Route::post('/checkout-form', 'OrdersController@checkoutForm')->name('checkoutForm');
         });
+
+        Route::get('/freekassa/result', 'Payment\FreeKassaController@handlePayment');
     }
 );
 

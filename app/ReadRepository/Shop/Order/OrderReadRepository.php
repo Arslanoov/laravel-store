@@ -12,6 +12,12 @@ class OrderReadRepository
         return $orders;
     }
 
+    public function findById(int $id): ?Order
+    {
+        $order = Order::findOrFail($id);
+        return $order;
+    }
+
     public function findByUserIdAndId(int $userId, int $id): ?Order
     {
         $order = Order::where('id', $id)

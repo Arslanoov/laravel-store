@@ -32,6 +32,11 @@ class OrderRepository
         $order->pay('Paid by Admin');
     }
 
+    public function payByCustomer(Order $order, $method): void
+    {
+        $order->pay($method);
+    }
+
     public function makeSent(Order $order): void
     {
         $order->send();

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.34 on 2019-09-11 15:43:49.
+ * Generated for Laravel 5.8.34 on 2019-09-28 11:21:18.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15556,6 +15556,206 @@ namespace Intervention\Image\Facades {
  
 }
 
+namespace Maksa988\FreeKassa\Facades { 
+
+    /**
+     * 
+     *
+     * @see \Maksa988\FreeKassa\FreeKassa
+     */ 
+    class FreeKassa {
+        
+        /**
+         * 
+         *
+         * @param $amount
+         * @param $order_id
+         * @param null $phone
+         * @param null $email
+         * @param array $user_parameters
+         * @return string 
+         * @static 
+         */ 
+        public static function getPayUrl($amount, $order_id, $phone = null, $email = null, $user_parameters = array())
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->getPayUrl($amount, $order_id, $phone, $email, $user_parameters);
+        }
+        
+        /**
+         * 
+         *
+         * @param $amount
+         * @param $order_id
+         * @param null $phone
+         * @param null $email
+         * @param array $user_parameters
+         * @return \Illuminate\Http\RedirectResponse 
+         * @static 
+         */ 
+        public static function redirectToPayUrl($amount, $order_id, $phone = null, $email = null, $user_parameters = array())
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->redirectToPayUrl($amount, $order_id, $phone, $email, $user_parameters);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $ip
+         * @return bool 
+         * @static 
+         */ 
+        public static function allowIP($ip)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->allowIP($ip);
+        }
+        
+        /**
+         * 
+         *
+         * @param $project_id
+         * @param $amount
+         * @param $secret
+         * @param $order_id
+         * @return string 
+         * @static 
+         */ 
+        public static function getFormSignature($project_id, $amount, $secret, $order_id)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->getFormSignature($project_id, $amount, $secret, $order_id);
+        }
+        
+        /**
+         * 
+         *
+         * @param $project_id
+         * @param $amount
+         * @param $secret
+         * @param $order_id
+         * @return string 
+         * @static 
+         */ 
+        public static function getSignature($project_id, $amount, $secret, $order_id)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->getSignature($project_id, $amount, $secret, $order_id);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @return string 
+         * @throws Exceptions\InvalidPaidOrder
+         * @throws Exceptions\InvalidSearchOrder
+         * @static 
+         */ 
+        public static function handle($request)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->handle($request);
+        }
+        
+        /**
+         * 
+         *
+         * @param $error
+         * @return string 
+         * @static 
+         */ 
+        public static function responseError($error)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->responseError($error);
+        }
+        
+        /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function responseYES()
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->responseYES();
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */ 
+        public static function validate($request)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->validate($request);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */ 
+        public static function validateSignature($request)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->validateSignature($request);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */ 
+        public static function validateOrderFromHandle($request)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->validateOrderFromHandle($request);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @return mixed 
+         * @throws InvalidSearchOrder
+         * @static 
+         */ 
+        public static function callSearchOrder($request)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->callSearchOrder($request);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Request $request
+         * @param $order
+         * @return mixed 
+         * @throws InvalidPaidOrder
+         * @static 
+         */ 
+        public static function callPaidOrder($request, $order)
+        {
+                        /** @var \Maksa988\FreeKassa\FreeKassa $instance */
+                        return $instance->callPaidOrder($request, $order);
+        }
+         
+    }
+ 
+}
+
 namespace Mews\Purifier\Facades { 
 
     /**
@@ -18398,6 +18598,8 @@ namespace  {
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
 
     class Image extends \Intervention\Image\Facades\Image {}
+
+    class FreeKassa extends \Maksa988\FreeKassa\Facades\FreeKassa {}
 
     class Purifier extends \Mews\Purifier\Facades\Purifier {}
  

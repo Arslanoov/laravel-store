@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-09-11 15:44:01.
+    * Generated on 2019-09-28 11:21:30.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -133,6 +133,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -286,6 +287,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -439,6 +441,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -592,6 +595,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -745,6 +749,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -898,6 +903,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,
@@ -1051,6 +1057,7 @@ namespace PHPSTORM_META {
         'files' => \Illuminate\Filesystem\Filesystem::class,
         'filesystem' => \Illuminate\Filesystem\FilesystemManager::class,
         'filesystem.disk' => \Illuminate\Filesystem\FilesystemAdapter::class,
+        'freekassa' => \Maksa988\FreeKassa\FreeKassa::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'image' => \Intervention\Image\ImageManager::class,

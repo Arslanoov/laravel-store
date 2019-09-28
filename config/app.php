@@ -177,7 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
-
+        Maksa988\FreeKassa\FreeKassaServiceProvider::class,
     ],
 
     /*

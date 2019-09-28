@@ -79,6 +79,17 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
+  'maksa988/laravel-freekassa' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Maksa988\\FreeKassa\\FreeKassaServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'FreeKassa' => 'Maksa988\\FreeKassa\\Facades\\FreeKassa',
+    ),
+  ),
   'mews/purifier' => 
   array (
     'providers' => 
