@@ -26,8 +26,8 @@ class CreateTest extends TestCase
 
         $order = Order::new(
             $userId = $user->id,
-            $cost = 500,
-            $note = 'Note'
+            $note = 'Note',
+            $cost = 500
         );
 
         $deliveryMethod = DeliveryMethod::new(
@@ -38,11 +38,13 @@ class CreateTest extends TestCase
             $sort = 0
         );
 
-        $order->setDeliveryMethodInfo($deliveryMethod);
+        $order->setDeliveryMethodInfo(
+            $deliveryMethod->id,
+            $deliveryMethod->name,
+            $deliveryMethod->cost
+        );
 
         $customerData = CustomerData::new(
-            $orderId = $order->id,
-            $userId = $user->id,
             $name = 'Name',
             $surname = 'Surname',
             $patronymic = 'Patronymic',
@@ -57,13 +59,11 @@ class CreateTest extends TestCase
         ]);
 
         $deliveryData = DeliveryData::new(
-            $userId = $user->id,
-            $orderId = $order->id,
             $regionId = $region->id,
             $code = 400000
         );
 
-        $order->setPaymentMethod($paymentMethod = 'QIWI');
+        $order->setPaymentMethod($paymentMethod = 'FreeKassa');
 
         $order->setDeliveryDataInfo($deliveryData->id);
 
@@ -74,6 +74,7 @@ class CreateTest extends TestCase
         $this->assertEquals($order->delivery_method_name, $deliveryMethod->name);
         $this->assertEquals($order->delivery_cost, $deliveryMethod->cost);
         $this->assertEquals($order->payment_method, $paymentMethod);
+        $this->assertEquals($order->note, $note);
         $this->assertEquals($order->current_status, Status::NEW);
         $this->assertEmpty($order->cancel_reason);
     }

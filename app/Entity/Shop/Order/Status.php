@@ -14,11 +14,14 @@ class Status extends Model
     public const CANCELLED_BY_CUSTOMER = 6;
 
     protected $table = 'shop_order_statuses';
-    protected $fillable = ['value'];
+    protected $fillable = [
+        'order_id', 'value'
+    ];
 
-    public static function new($value)
+    public static function new($orderId, $value)
     {
         return static::create([
+            'order_id' => $orderId,
             'value' => $value
         ]);
     }

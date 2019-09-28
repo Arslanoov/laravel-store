@@ -12,7 +12,7 @@ class CreateTest extends TestCase
 
     public function testNew(): void
     {
-        $customerData = new CustomerData(
+        $customerData = CustomerData::new(
             $name = 'Name',
             $surname = 'Surname',
             $patronymic = 'Patronymic',

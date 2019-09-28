@@ -16,32 +16,16 @@ class CreateTest extends TestCase
 
     public function testNew()
     {
-        $user = factory(User::class)->make([
-            'id' => 1,
-            'status' => User::STATUS_ACTIVE,
-            'verify_token' => null
-        ]);
-
         $region = factory(Region::class)->make([
             'id' => 1
         ]);
 
-        $order = Order::new(
-            $userId = $user->id,
-            $paymentMethod = 'QIWI',
-            $cost = 500,
-            $currentStatus = Status::NEW,
-            $cancelReason = null
-        );
-
         $deliveryData = DeliveryData::new(
-            $userId = $user->id,
-            $orderId = $order->id,
             $regionId = $region->id,
             $code = 400000
         );
 
-        $this->assertEquals($deliveryData->regionId, $regionId);
+        $this->assertEquals($deliveryData->region_id, $regionId);
         $this->assertEquals($deliveryData->code, $code);
     }
 }
