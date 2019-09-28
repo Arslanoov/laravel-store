@@ -25,7 +25,9 @@
                         @endif
 
                         @if ($order->canBeCanceled())
-                            <a href="#" class="btn btn-danger">Cancel</a>
+                            <a href="#" id="cancel" class="btn btn-danger">Cancel</a>
+
+                            @include ('cabinet.orders.cancel-form', $order)
                         @endif
                     </p>
 
@@ -72,7 +74,7 @@
                                     @endif
 
                                     @if ($order->isCancelled())
-                                        <span class="badge badge-danger">Canceled</span>
+                                        <span class="badge badge-danger">Cancelled</span>
                                     @endif
                                 </td>
                             </tr>
@@ -110,4 +112,26 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section ('script')
+    <script>
+        $(document).on("click", "#cancel", function () {
+            let cancelForm = $("#cancel-form");
+            let cancelButton = $("#cancel");
+            let isActiveForm = cancelButton.hasClass("form-active");
+
+            if (isActiveForm) {
+                cancelForm.css("display", "none");
+                cancelButton.removeClass("form-active");
+                cancelButton.text("Cancel");
+            } else {
+                cancelForm.css("display", "block");
+                cancelButton.addClass("form-active");
+                cancelButton.text("Remove form");
+            }
+
+            return false;
+        });
+    </script>
 @endsection

@@ -112,6 +112,7 @@ Route::group(
 
         Route::get('/orders', 'OrdersController@index')->name('orders.index');
         Route::get('/orders/{order}', 'OrdersController@show')->name('orders.show');
+        Route::post('/order/{order}/cancel', 'OrdersController@cancel')->name('orders.cancel');
     }
 );
 

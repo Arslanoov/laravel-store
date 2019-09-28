@@ -5,6 +5,7 @@ namespace App\UseCases\Shop;
 use App\Entity\Shop\DeliveryMethod;
 use App\Entity\Shop\Order\Order;
 use App\Entity\User\User;
+use App\Http\Requests\Cabinet\Order\CancelRequest;
 use App\Http\Requests\Shop\Order\CheckoutRequest;
 use App\Query\Cabinet\Order\Find\FindByUserIdAndIdQuery;
 use App\UseCases\Service;
@@ -13,6 +14,7 @@ use App\Command\Shop\Order\DeliveryMethod\Set\Command as SetDeliveryMethodComman
 use App\Command\Shop\Order\CustomerData\Set\Command as SetCustomerDataCommand;
 use App\Command\Shop\Order\DeliveryData\Set\Command as SetDeliveryDataCommand;
 use App\Command\Shop\Order\OrderItem\Create\Command as CreateOrderItemCommand;
+use App\Command\Cabinet\Order\Cancel\Command as CancelOrderCommand;
 use App\Query\Shop\Product\Check\CheckIsAvailableQuery;
 
 class OrderService extends Service
@@ -38,6 +40,11 @@ class OrderService extends Service
                 $this->commandBus->handle(new CreateOrderItemCommand($orderItem, $orderId));
             }
         }
+    }
+
+    public function cancel(Order $order, User $user, CancelRequest $request): void
+    {
+        $this->commandBus->handle(new CancelOrderCommand($order, $user, $request));
     }
 
     public function findOwn(int $userId, int $id): ?Order

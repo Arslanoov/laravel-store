@@ -92,6 +92,9 @@ class Order extends Model
         if ($this->isCancelled()) {
             throw new DomainException('Order is already cancelled.');
         }
+        if (!$this->canBeCanceled()) {
+            throw new DomainException('Order cannot be canceled.');
+        }
 
         $this->update([
             'cancel_reason' => $reason
@@ -142,7 +145,11 @@ class Order extends Model
 
     private function addStatus($value): void
     {
-        $this->statuses->create([
+        $this->update([
+            'current_status' => $value
+        ]);
+
+        $this->statuses()->create([
             'value' => $value
         ]);
     }

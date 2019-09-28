@@ -44,4 +44,9 @@ class OrderRepository
     {
         $order->setDeliveryDataInfo($deliveryDataId);
     }
+
+    public function cancel(Order $order, $reason): void
+    {
+        $order->cancel($reason);
+    }
 }
