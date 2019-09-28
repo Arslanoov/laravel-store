@@ -110,6 +110,11 @@ class Order extends Model
         return $this->isNew();
     }
 
+    public function canBeCanceled(): bool
+    {
+        return $this->isNew();
+    }
+
     public function isNew(): bool
     {
         return $this->current_status == Status::NEW;

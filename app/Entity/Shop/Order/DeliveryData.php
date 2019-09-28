@@ -2,6 +2,7 @@
 
 namespace App\Entity\Shop\Order;
 
+use App\Entity\Region;
 use Illuminate\Database\Eloquent\Model;
 
 class DeliveryData extends Model
@@ -21,5 +22,10 @@ class DeliveryData extends Model
             'region_id' => $regionId,
             'code' => $code
         ]);
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 }

@@ -20,7 +20,7 @@
 
                     <h3>My Orders</h3>
                     @foreach ($user->orders as $order)
-                        <p>{{ $order->id }}</p>
+                        <h4><a href="{{ route('cabinet.orders.show', $order) }}" style="color:black">Order №{{ $order->id }} ({{ date('d-M h:i', strtotime($order->created_at)) }})</a></h4>
                     @endforeach
                 </div>
             </div>
