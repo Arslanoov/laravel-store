@@ -25,7 +25,7 @@ class WishlistController extends Controller
 
         $items = $query->paginate(10);
 
-        return view('cabinet.wishlist.index', $items);
+        return view('cabinet.wishlist.index', compact('items', 'user'));
     }
 
     public function create()
@@ -33,7 +33,7 @@ class WishlistController extends Controller
         if (request()->ajax()) {
             /** @var User $user */
             $user = Auth::guard()->user();
-            $productId = request()->post('postId');
+            $productId = request()->post('productId');
 
             $this->service->create($user, $productId);
         }

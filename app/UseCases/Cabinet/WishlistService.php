@@ -4,6 +4,7 @@ namespace App\UseCases\Cabinet;
 
 use App\Entity\User\User;
 use App\Entity\User\WishlistItem;
+use App\Query\User\Wishlist\Exists\WishlistItemExistsQuery;
 use App\UseCases\Service;
 use App\Command\Cabinet\Wishlist\Create\Command as CreateWishlistItemCommand;
 use App\Command\Cabinet\Wishlist\Remove\Command as RemoveWishlistItemCommand;
@@ -13,7 +14,10 @@ class WishlistService extends Service
 {
     public function create(User $user, int $productId)
     {
-        $this->commandBus->handle(new CreateWishlistItemCommand($user, $productId));
+        $exists = $this->queryBus->query(new WishlistItemExistsQuery($user, $productId));
+        if (!$exists) {
+            $this->commandBus->handle(new CreateWishlistItemCommand($user, $productId));
+        }
     }
 
     public function remove(WishlistItem $item)

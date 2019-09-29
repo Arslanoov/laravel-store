@@ -115,6 +115,10 @@ Route::group(
         Route::get('/orders', 'OrdersController@index')->name('orders.index');
         Route::get('/orders/{order}', 'OrdersController@show')->name('orders.show');
         Route::post('/order/{order}/cancel', 'OrdersController@cancel')->name('orders.cancel');
+
+        Route::get('/wishlist', 'WishlistController@index')->name('wishlist.index');
+        Route::post('/wishlist/item/create', 'WishlistController@create')->name('wishlist.create');
+        Route::post('/wishlist/item/remove', 'WishlistController@remove')->name('wishlist.remove');
     }
 );
 

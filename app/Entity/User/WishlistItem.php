@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class WishlistItem extends Model
@@ -21,5 +22,15 @@ class WishlistItem extends Model
             'user_id' => $userId,
             'product_id' => $productId
         ]);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

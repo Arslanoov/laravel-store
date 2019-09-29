@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row s_product_inner">
             <div class="col-lg-6">
-                <div class="s_Product_carousel">
+                <div class="s_Product_carousel owl-carousel">
                     @foreach ($product->photos as $photo)
                         <div class="single-prd-item">
                             <img class="img-fluid" src="{{ $photo->getUrl() }}" alt="">
@@ -71,8 +71,7 @@
                         @if ($product->isAvailable())
                             <a class="primary-btn add-to-cart" href="javascript:void(0)" data-product-id="{{ $product->id }}">Add to Cart</a>
                         @endif
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                        <a class="icon_btn add-to-wishlist" href="#" data-id="{{ $product->id }}"><i class="lnr lnr lnr-heart"></i></a>
                     </div>
                 </div>
             </div>
@@ -172,6 +171,31 @@
                     cartItemsCount.text(parseInt(count) + parseInt(quantity));
                 }
             });
+        });
+    </script>
+
+    <script>
+        $(document).on("click", ".add-to-wishlist", function () {
+            let productId = $(this).data("id");
+
+            $.ajax({
+                "headers": {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                "url": "/cabinet/wishlist/item/create",
+                "method": "POST",
+                'data': {
+                    productId: productId
+                },
+                "success": function (data) {
+                    alert("Item successfully added to wishlist");
+                },
+                "error": function (e) {
+                    console.log(e);
+                }
+            });
+
+            return false;
         });
     </script>
 @endsection

@@ -15,7 +15,7 @@ class FindWishlistItemsByUserQueryHandler
 
     public function __invoke(FindWishlistItemsByUserQuery $query)
     {
-        $item = $this->items->findByUserId($query->userId);
-        return $item;
+        $items = $this->items->findByUserId($query->userId);
+        return $items;
     }
 }

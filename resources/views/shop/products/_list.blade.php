@@ -12,11 +12,7 @@
                                 <h6>${{ $product->price }}</h6>
                             </div>
                             <div class="prd-bottom">
-                                <a href="javascript:void(0)" class="social-info add-to-cart" data-product-id="{{ $product->id }}">
-                                    <span class="ti-bag"></span>
-                                    <p class="hover-text">Add to bag</p>
-                                </a>
-                                <a href="" class="social-info">
+                                <a href="#" class="social-info add-to-wishlist" data-id="{{ $product->id }}">
                                     <span class="lnr lnr-heart"></span>
                                     <p class="hover-text">Wishlist</p>
                                 </a>
@@ -47,7 +43,7 @@
             let quantity = 1;
 
             $.ajax({
-                'headers': {
+                "headers": {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 "url": "/shop/cart/add",
@@ -62,6 +58,31 @@
                     cartItemsCount.text(+ count + quantity);
                 }
             });
+        });
+    </script>
+
+    <script>
+        $(document).on("click", ".add-to-wishlist", function () {
+            let productId = $(this).data("id");
+
+            $.ajax({
+                "headers": {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                "url": "/cabinet/wishlist/item/create",
+                "method": "POST",
+                'data': {
+                    productId: productId
+                },
+                "success": function (data) {
+                    alert("Item successfully added to wishlist");
+                },
+                "error": function (e) {
+                    console.log(e);
+                }
+            });
+
+            return false;
         });
     </script>
 @endsection

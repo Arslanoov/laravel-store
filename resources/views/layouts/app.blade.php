@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/img/fav.png">
     <link href="{{ asset('css/linearicons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" rel="stylesheet">
     <link href="{{ asset('css/nouislider.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ion.rangeSlider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ion.rangeSlider.skinFlat.css') }}" rel="stylesheet">
@@ -203,7 +203,7 @@
 <script src="{{ asset('js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('js/nouislider.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{{ asset('js/gmaps.min.js') }}"></script>
