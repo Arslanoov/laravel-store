@@ -40,7 +40,7 @@ class ProductsController extends Controller
     public function index()
     {
         $query = $this->productService->getAllProducts();
-        $products = $query->paginate(6);
+        $products = $query->paginate(10);
 
         return view('shop.products.index', compact('products'));
     }

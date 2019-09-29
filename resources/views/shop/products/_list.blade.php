@@ -1,24 +1,4 @@
 <div class="col-xl-9 col-lg-8 col-md-7">
-    <div class="filter-bar d-flex flex-wrap align-items-center">
-        <div class="sorting">
-            <select class="select">
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-            </select>
-        </div>
-        <div class="sorting mr-auto">
-            <select class="select">
-                <option value="10">Show 10</option>
-                <option value="20">Show 20</option>
-                <option value="30">Show 30</option>
-            </select>
-        </div>
-        <div class="pagination">
-            {{ $products->links() }}
-        </div>
-    </div>
-
     <section class="lattest-product-area pb-40 category-list">
         <div class="row">
 
@@ -54,6 +34,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="pagination">
+            {{ $products->links() }}
+        </div>
     </section>
 </div>
 
@@ -77,9 +60,6 @@
                     let cartItemsCount = $("#cart-items-count");
                     let count = cartItemsCount.text();
                     cartItemsCount.text(+ count + quantity);
-                },
-                "error": function (e) {
-                    console.log(e);
                 }
             });
         });
