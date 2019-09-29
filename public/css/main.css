@@ -5802,3 +5802,28 @@ input:focus, input[type=submit], button.search {
   outline: none !important;
   border: 0;
 }
+
+.owl-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.owl-prev {
+  margin-right: 10px;
+  outline: none;
+  border: 0;
+}
+
+.owl-prev, .owl-prev:focus {
+  border: 0;
+  outline: none;
+}
+
+.owl-next, .owl-next:focus {
+  border: 0;
+  outline: none;
+}
+
+.own-next {
+  margin-left: 10px;
+}
