@@ -36,6 +36,8 @@ Route::group(
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact/send', 'ContactController@send')->name('contact.send');
 
+Route::post('/newsletter/email/add', 'Newsletter\EmailController@add')->name('newsletter.email.add');
+
 Route::group(
     [
         'prefix' => 'shop',

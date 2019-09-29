@@ -130,6 +130,8 @@
 </header>
 <!-- End Header Area -->
 
+@include ('layouts.partials.flash')
+
 @yield('content')
 
 <!-- start footer Area -->
@@ -152,9 +154,10 @@
                     <p>Stay update with our latest</p>
 
                     <div id="mc_embed_signup">
-                        <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                        <form novalidate="true" method="POST" action="{{ route('newsletter.email.add') }}" class="form-inline">
+                            @csrf
                             <div class="d-flex flex-row">
-                                <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+                                <input class="form-control" name="email" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
                                 <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                             </div>
                             <div class="info"></div>
