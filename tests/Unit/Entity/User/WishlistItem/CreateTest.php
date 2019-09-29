@@ -4,6 +4,7 @@ namespace Tests\Unit\Entity\User\WishlistItem;
 
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\User;
+use App\Entity\User\WishlistItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -20,7 +21,7 @@ class CreateTest extends TestCase
         $product = factory(Product::class)->make([
             'id' => 1
         ]);
-        
+
         $wishlistItem = WishlistItem::new(
             $userId = $user->id,
             $productId = $product->id
