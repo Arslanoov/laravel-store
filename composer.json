@@ -19,7 +19,8 @@
         "maksa988/laravel-freekassa": "^1.0",
         "mews/purifier": "^2.1",
         "unisharp/laravel-ckeditor": "4.7.*",
-        "unisharp/laravel-filemanager": "dev-master"
+        "unisharp/laravel-filemanager": "dev-master",
+        "elasticsearch/elasticsearch": "^6.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
