@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.35 on 2019-09-30 15:37:20.
+ * Generated for Laravel 5.8.35 on 2019-09-30 16:01:13.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15656,6 +15656,18 @@ namespace Intervention\Image\Facades {
  
 }
 
+namespace Laravel\Horizon { 
+
+    /**
+     * 
+     *
+     */ 
+    class Horizon {
+         
+    }
+ 
+}
+
 namespace Maksa988\FreeKassa\Facades { 
 
     /**
@@ -18700,6 +18712,8 @@ namespace  {
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
 
     class Image extends \Intervention\Image\Facades\Image {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
 
     class FreeKassa extends \Maksa988\FreeKassa\Facades\FreeKassa {}
 
