@@ -19,9 +19,12 @@ class ComparisonController extends Controller
 
     public function index()
     {
+        /** @var User $user */
         $user = Auth::guard()->user();
 
-        return view('cabinet.comparison.index', compact('user'));
+        $characteristics = $this->service->getUniqueCharacteristics($user->comparisonItems);
+
+        return view('cabinet.comparison.index', compact('user', 'characteristics'));
     }
 
     public function add()

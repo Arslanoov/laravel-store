@@ -16,7 +16,7 @@
                                     <span class="lnr lnr-heart"></span>
                                     <p class="hover-text">Wishlist</p>
                                 </a>
-                                <a href="" class="social-info">
+                                <a href="#" class="social-info add-to-comparison" data-id="{{ $product->id }}">
                                     <span class="lnr lnr-sync"></span>
                                     <p class="hover-text">Compare</p>
                                 </a>
@@ -76,9 +76,28 @@
                 },
                 "success": function (data) {
                     alert("Item successfully added to wishlist");
+                }
+            });
+
+            return false;
+        });
+    </script>
+
+    <script>
+        $(document).on("click", ".add-to-comparison", function () {
+            let productId = $(this).data("id");
+
+            $.ajax({
+                "headers": {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                "error": function (e) {
-                    console.log(e);
+                "url": "/cabinet/comparison/item/add",
+                "method": "POST",
+                'data': {
+                    productId: productId
+                },
+                "success": function (data) {
+                    alert("Item successfully added to comparison");
                 }
             });
 

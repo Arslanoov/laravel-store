@@ -125,6 +125,11 @@ class User extends Authenticatable
         return $this->hasMany(CartItem::class, 'user_id', 'id');
     }
 
+    public function comparisonItems()
+    {
+        return $this->hasMany(ComparisonItem::class, 'user_id', 'id');
+    }
+
     public function hasFilledProfile(): bool
     {
         return

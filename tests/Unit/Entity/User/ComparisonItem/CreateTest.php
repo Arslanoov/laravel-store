@@ -5,10 +5,13 @@ namespace Tests\Unit\Entity\User\ComparisonItem;
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\ComparisonItem;
 use App\Entity\User\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testNew(): void
     {
         $user = factory(User::class)->make([

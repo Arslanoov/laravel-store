@@ -3346,6 +3346,14 @@ label {
       position: relative;
       padding-left: 28px; }
 
+.red {
+  background-color: #FF4040; !important
+}
+
+.green {
+  background-color: #8BF13C; !important
+}
+
 .filter-list {
   line-height: 30px; }
   .filter-list i {

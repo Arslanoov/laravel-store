@@ -3,6 +3,7 @@
 namespace App\Entity\Shop\Product;
 
 use App\Entity\Shop\Characteristic\Variant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Entity\Shop\Characteristic\Characteristic as ShopCharacteristic;
 

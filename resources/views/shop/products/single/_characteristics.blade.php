@@ -9,7 +9,7 @@
                             <h5>{{ $productCharacteristic->characteristic->name }}</h5>
                         </td>
                         <td>
-                            <h5>{{ $productCharacteristic->variant->name }}</h5>
+                            <h5>{{ $productCharacteristic->variant ? $productCharacteristic->variant->name : $productCharacteristic->characteristic->default }}</h5>
                         </td>
                     </tr>
                 @endforeach

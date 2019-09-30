@@ -31,7 +31,7 @@ class CharacteristicsController extends Controller
 
         return redirect()->route('admin.shop.products.show', [
             'product' => $product,
-            '#characteristcs'
+            '#characteristics'
         ]);
     }
 

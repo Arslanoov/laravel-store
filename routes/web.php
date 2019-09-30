@@ -123,6 +123,10 @@ Route::group(
         Route::get('/wishlist', 'WishlistController@index')->name('wishlist.index');
         Route::post('/wishlist/item/create', 'WishlistController@create')->name('wishlist.create');
         Route::post('/wishlist/item/remove', 'WishlistController@remove')->name('wishlist.remove');
+
+        Route::get('/comparison', 'ComparisonController@index')->name('comparison.index');
+        Route::post('/comparison/item/add', 'ComparisonController@add')->name('comparison.create');
+        Route::post('/comparison/item/remove', 'ComparisonController@remove')->name('comparison.remove');
     }
 );
 
