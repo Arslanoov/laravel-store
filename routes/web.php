@@ -54,6 +54,8 @@ Route::group(
         Route::post('/product/{product}/comment/create', 'ProductsController@comment')->name('products.comment');
         Route::post('/product/{product}/review/create', 'ProductsController@review')->name('products.review');
 
+        Route::get('/products/search', 'SearchController@search')->name('products.search');
+
         Route::get('/cart', 'CartController@index')->name('cart.index');
         Route::post('/cart/add', 'CartController@store')->name('cart.store');
         Route::post('/cart/remove/{cartItem}', 'CartController@destroy')->name('cart.destroy');

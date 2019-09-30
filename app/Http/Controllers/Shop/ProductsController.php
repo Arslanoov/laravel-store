@@ -21,6 +21,7 @@ class ProductsController extends Controller
     private $reviewService;
     private $categoryService;
     private $brandService;
+    private $searchService;
 
     public function __construct(
         ProductService $productService,
