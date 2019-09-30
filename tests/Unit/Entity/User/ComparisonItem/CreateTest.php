@@ -3,6 +3,7 @@
 namespace Tests\Unit\Entity\User\ComparisonItem;
 
 use App\Entity\Shop\Product\Product;
+use App\Entity\User\ComparisonItem;
 use App\Entity\User\User;
 use Tests\TestCase;
 
@@ -18,7 +19,7 @@ class CreateTest extends TestCase
             'id' => 1
         ]);
 
-        $item = CompairsonItem::new(
+        $item = ComparisonItem::new(
             $userId = $user->id,
             $productId = $product->id
         );
