@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Entity\User\CompairsonItem;
+namespace Tests\Unit\Entity\User\ComparisonItem;
 
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\User;
