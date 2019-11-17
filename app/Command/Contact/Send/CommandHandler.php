@@ -9,7 +9,7 @@ class CommandHandler
 {
     private $mailer;
 
-    public function __construct(Mailer $mailer)
+    public function __construct(Mailer $mailer, string $toEmail)
     {
         $this->mailer = $mailer;
     }

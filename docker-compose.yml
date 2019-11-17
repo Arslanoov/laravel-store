@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+
+  app:
+    build:
+      context: ./
+      target: developer
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./:/app
+    ports:
+      - 8080:8080
+
+  redis:
+    image: redis
+
+#  elasticsearc:
+#    image: elasticsearc

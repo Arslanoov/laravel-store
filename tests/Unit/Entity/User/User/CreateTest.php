@@ -10,27 +10,6 @@ class CreateTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testNew(): void
-    {
-        $user = User::new(
-            $name = 'name',
-            $email = 'email'
-        );
-
-        $this->assertEquals($user->name, $name);
-        $this->assertEquals($user->email, $email);
-
-        $this->assertNotEmpty($user->password);
-        $this->assertEmpty($user->verify_token);
-
-        $this->assertTrue($user->isActive());
-        $this->assertFalse($user->isWait());
-
-        $this->assertTrue($user->isUser());
-        $this->assertFalse($user->isManager());
-        $this->assertFalse($user->isAdmin());
-    }
-
     public function testRegister(): void
     {
         $user = User::register(
