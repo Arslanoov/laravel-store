@@ -37,11 +37,9 @@ class RegisterTest extends TestCase
     {
         $this->withoutMiddleware();
 
-        $user = factory(User::class)->make();
-
         $response = $this->post('/register', [
-            'name' => $user->name,
-            'email' => $user->email,
+            'name' => 'smpl',
+            'email' => 'kuvshinovee@gmail',
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ]);

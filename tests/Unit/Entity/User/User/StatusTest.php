@@ -29,9 +29,10 @@ class StatusTest extends TestCase
 
     public function testDraft(): void
     {
-        $user = User::new(
-            $name = 'name',
-            $email = 'email'
+        $user = User::newActive(
+            'name',
+            'email',
+            'secret'
         );
 
         $this->assertTrue($user->isActive());
