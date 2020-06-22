@@ -12,7 +12,8 @@ class SearchService
 {
     public function search(SearchRequest $request, int $perPage, int $page): LengthAwarePaginator
     {
-        $query = Product::orderBy('id', 'DESC');
+        $query = Product::orderBy('id', 'DESC')
+            ->where('status', Product::STATUS_ACTIVE);
 
         if ($request->has('q')) {
             $query->where('title', $request->get('q'));
