@@ -12,9 +12,26 @@ class SearchService
 {
     public function search(SearchRequest $request, int $perPage, int $page): LengthAwarePaginator
     {
-        $items = Product::active()
-            ->get();
+        $query = Product::orderBy('id', 'DESC');
 
-        return new LengthAwarePaginator($items, 1, $perPage, $page);
+        if ($request->has('q')) {
+            $query->where('title', $request->get('q'));
+        }
+
+        if ($request->has('title')) {
+            $query->where('title', $request->get('title'));
+        }
+
+        if ($request->has('weight')) {
+            $query->where('weight', $request->get('weight'));
+        }
+
+        if ($request->has('availability')) {
+            $query->where('availability', $request->get('availability'));
+        }
+
+        $items = $query->get();
+
+        return new LengthAwarePaginator($items, $query->count(), $perPage, $page);
     }
 }

@@ -34,7 +34,10 @@ $factory->define(Product::class, function (Faker $faker) use ($factory) {
         'price' => $faker->randomNumber(),
         'content' => $faker->text,
         'weight' => $faker->randomNumber(),
-        'status' => Product::STATUS_DRAFT,
+        'status' => $faker->randomElement([
+            Product::STATUS_ACTIVE,
+            Product::STATUS_DRAFT
+        ]),
         'quantity' => $faker->randomNumber(),
         'comments' => 0,
         'reviews' => 0

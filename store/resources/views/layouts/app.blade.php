@@ -112,7 +112,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         {{ Widget::run(\App\Widget\Shop\CartWidget::class) }}
                         <li class="nav-item">
-                            <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                            <button class="search">
+                                <span class="lnr lnr-magnifier" id="search"></span>
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -121,7 +123,7 @@
     </div>
     <div class="search_input" id="search_input_box">
         <div class="container">
-            <form class="d-flex justify-content-between" method="GET" action="">
+            <form class="d-flex justify-content-between" method="GET" action="{{ route('shop.products.search') }}">
                 <input type="text" class="form-control" id="search_input" placeholder="Search Here" name="q">
                 <button type="submit" class="btn"></button>
                 <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>

@@ -30,7 +30,7 @@
                 <div class="col-lg-12">
                     <h1 class="mb-3">{{ $page->title }}</h1>
 
-                    {!! clean($page->content) !!}
+                    {!! $page->content !!}
                 </div>
             </div>
         </div>

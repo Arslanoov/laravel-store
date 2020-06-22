@@ -22,7 +22,7 @@ class PostsController extends Controller
     private $tagService;
     private $categoryService;
     private $commentService;
-    
+
     public function __construct(
         PostService $postService,
         CommentService $commentService,
