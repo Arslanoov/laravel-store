@@ -1,28 +1,72 @@
-version: '3.7'
+version: '3'
 services:
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
+    store-nginx:
+        build:
+            context: ./store/docker/dev
+            dockerfile: nginx.docker
+        volumes:
+            - ./store:/app
+        depends_on:
+            - store-php-fpm
+        ports:
+            - "8080:80"
 
-  app:
-    build:
-      context: ./
-      target: developer
-    depends_on:
-      - db
-      - redis
-    volumes:
-      - ./:/app
-    ports:
-      - 8080:8080
+    store-php-fpm:
+        build:
+            context: ./store/docker/dev
+            dockerfile: php-fpm.docker
+        volumes:
+            - ./store:/app
+        depends_on:
+            - store-mysql
+            - store-storage
+            - store-mailer
 
-  redis:
-    image: redis
+    store-php-cli:
+        build:
+            context: ./store/docker/dev
+            dockerfile: php-cli.docker
+        volumes:
+            - ./store:/app
+            - composer:/root/.composer/cache
+        depends_on:
+            - store-mysql
+            - store-storage
+            - store-mailer
+        tty: true
 
-#  elasticsearc:
-#    image: elasticsearc
+    store-mysql:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_USER: app
+            MYSQL_ROOT_PASSWORD: secret
+
+    store-mailer:
+        image: mailhog/mailhog
+        ports:
+            - "8082:8025"
+
+    store-storage:
+        build:
+            context: ./store/docker/dev
+            dockerfile: nginx.docker
+        volumes:
+            - ./storage:/app
+        ports:
+            - "8081:80"
+
+    store-storage-ftp:
+        image: stilliard/pure-ftpd
+        environment:
+            FTP_USER_NAME: app
+            FTP_USER_PASS: secret
+            FTP_USER_HOME: /app
+        volumes:
+            - ./storage/public:/app
+
+volumes:
+    storage-mysql:
+    composer:

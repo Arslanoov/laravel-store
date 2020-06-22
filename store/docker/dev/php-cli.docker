@@ -1,0 +1,12 @@
+FROM php:7.4-cli
+
+RUN apt-get update && apt-get install -y libpq-dev unzip \
+    && pecl install xdebug-2.9.5 \
+    && docker-php-ext-enable xdebug \
+    && docker-php-ext-install pdo_mysql mysqli
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+WORKDIR /app
