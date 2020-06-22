@@ -1,4 +1,4 @@
-init: build up composer-install migarte
+init: build up composer-install migrate vendor-publish
 restart: down up
 
 up:
@@ -19,4 +19,5 @@ composer-update:
 migrate:
 	docker-compose run --rm store-php-cli php artisan migrate
 
-docker-compose run --rm store-php-cli php artisan vendor:publish
+vendor-publish:
+	docker-compose run --rm store-php-cli php artisan vendor:publish

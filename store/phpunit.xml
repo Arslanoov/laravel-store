@@ -23,7 +23,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="DB_DATABASE" value="test_laravel_store"/>
+        <env name="DB_DATABASE" value="app"/>
         <server name="APP_ENV" value="mysql_testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
