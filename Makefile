@@ -1,4 +1,4 @@
-init: build up composer-install migrate vendor-publish
+init: build up composer-install composer-update migrate vendor-publish
 restart: down up
 
 up:
