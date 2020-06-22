@@ -88,6 +88,6 @@
 <hr>
 
 <p>
-    Если Вам нужен специалист для создания сайтов на Yii2/Laravel, напишите мне:
+    Если Вам нужен специалист для создания сайтов на Laravel/Symfony, напишите мне:
     <a href="mailto:rasularslanoov@gmail.com">rasularslanoov@gmail.com</a>
 </p>
