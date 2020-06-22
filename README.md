@@ -98,16 +98,6 @@
 <hr>
 
 <p>
-    Elastic Search — поисковый движок с JSON REST API, использующий Lucene и написанный на Java. Описание всех преимуществ этого движка доступно на <a href="https://www.elastic.co/products/elasticsearch">официальном сайте</a>
-</p>
-
-<p align="center">
-    <img src="https://i.ibb.co/Jmjp3tg/image.png">
-</p>
-
-<hr>
-
-<p>
     Если Вам нужен специалист для создания сайтов на Yii2/Laravel, напишите мне:
     <a href="mailto:rasularslanoov@gmail.com">rasularslanoov@gmail.com</a>
 </p>
