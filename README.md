@@ -50,28 +50,6 @@
     </ul>
 </p>
 
-<hr>
-
-<p align="center"><b>Блог</b></p>
-<p align="center">
-    <img src="https://i.ibb.co/n8n5QSZ/image.png">
-</p>
-
-<p align="center"><b>Страница регистрации</b></p>
-<p align="center">
-    <img src="https://i.ibb.co/854dCX3/image.png">
-</p>
-
-<p align="center"><b>Просмотр товара</b></p>
-<p align="center">
-    <img src="https://i.ibb.co/LQ1Y1yT/image.png">
-</p>
-
-<p align="center"><b>Просмотр заказа</b></p>
-<p align="center">
-    <img src="https://i.ibb.co/kSDSGKW/image.png">
-</p>
-
 <br>
 
 <hr>
