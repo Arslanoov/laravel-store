@@ -3,60 +3,58 @@
 </p>
 
 <p align="center">
-    <b>Интернет Магазин на Laravel</b>
+    <b>Online Store</b>
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+    <b>Written on Laravel 5.9</b> <br /><br />
+    <img align="center" style="margin-right: 15px" height="45px" src="https://www.php.net/images/logos/new-php-logo.svg" />
+    <img align="center" style="margin-right: 15px" width="45px" src="https://i.ibb.co/VLsnPb1/1200px-Laravel-svg.png" />
+    <img align="center" style="margin-right: 15px" width="50px" src="https://cdn.worldvectorlogo.com/logos/redis.svg" />
+    <img align="center" style="margin-right: 15px" width="50px" src="https://plugins.jetbrains.com/files/14512/226396/icon/pluginIcon.png" />
+    <img align="center" style="margin-right: 15px" width="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" />
+    <img align="center" width="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" />
+</p>
+
+<p align="center">
+    <a href="https://youtu.be/36KlSTM4uSA">Project Code Review video on YouTube</a>
 </p>
 
 <p>
-    Работа над магазином завершена 30 сентября 2019 года, версия фреймворка 5.9
-</p>
-
-<hr>
-
-<p>
-    <b>Почему именно Laravel?</b> <br>
+    <b>Functionality:</b>
     <ul>
-        <li>Большая экосистема с мгновенным разворачиванием своей платформы. Официальный сайт предоставляет множество мануалов и информации для ознакомления</li>
-        <li>Возможность реализовать абсолютно любой функционал</li>
-        <li>Очень высокая производительность</li>
+        <li>Product Card</li>
+        <li>Blog</li>
+        <li>Integrated payment system (Free-Kassa)</li>
+        <li>Admin Panel with rich functionality</li>
+        <li>Products compare</li>
+        <li>Reviews and comments for products</li>
+        <li>Advanced role system</li>
+        <li>Wishlist</li>
+        <li>Newsletter</li>
     </ul>
 </p>
 
 <hr>
-
-<p>
-    <b>Основной функционал магазина:</b>
-    <ul>
-        <li>Корзина</li>
-        <li>Блог</li>
-        <li>Подключена Free-Kassa. Это означает, что в магазине доступно более 100 способов оплаты платежей, больше просто не существует! </li>
-        <li>Удобная панель администратора</li>
-        <li>Сравнение товаров</li>
-        <li>Отзывы и комментарии для товаров</li>
-        <li>Подключен Redis</li>
-        <li>Продвинутая система ролей</li>
-        <li>Список желаний</li>
-        <li>Рассылка новостей</li>
-    </ul>
-</p>
 
 <br>
 
-<hr>
-
-<p>
-    В проекте используется Redis <br>
-    <a href="https://ru.wikipedia.org/wiki/Redis">Redis</a> — это нереляционная высокопроизводительная СУБД. Redis хранит все данные в памяти, доступ к данным осуществляется по ключу. Опционально копия данных может храниться на диске. Этот подход обеспечивает производительность, в десятки раз превосходящую производительность реляционных СУБД, а также упрощает секционирование данных.
-</p>
-
+<p align="center"><b>Blog</b></p>
 <p align="center">
-    <img src="https://i.ibb.co/k69C9w3/redis-database-intervista-sanfilippo-1.png">
+    <img src="https://i.ibb.co/n8n5QSZ/image.png">
 </p>
 
-<hr>
+<p align="center"><b>Sign up page</b></p>
+<p align="center">
+    <img src="https://i.ibb.co/854dCX3/image.png">
+</p>
+
+<p align="center"><b>Product view</b></p>
+<p align="center">
+    <img src="https://i.ibb.co/LQ1Y1yT/image.png">
+</p>
+
+<p align="center"><b>Order view</b></p>
+<p align="center">
+    <img src="https://i.ibb.co/kSDSGKW/image.png">
+</p>
