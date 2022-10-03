@@ -11,7 +11,7 @@
     <img align="center" style="margin-right: 15px" height="45px" src="https://www.php.net/images/logos/new-php-logo.svg" />
     <img align="center" style="margin-right: 15px" width="45px" src="https://i.ibb.co/VLsnPb1/1200px-Laravel-svg.png" />
     <img align="center" style="margin-right: 15px" width="50px" src="https://cdn.worldvectorlogo.com/logos/redis.svg" />
-    <img align="center" style="margin-right: 15px" width="50px" src="https://plugins.jetbrains.com/files/14512/226396/icon/pluginIcon.png" />
+    <img align="center" style="margin-right: 15px" height="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Elasticsearch_logo.svg/800px-Elasticsearch_logo.svg.png" />
     <img align="center" style="margin-right: 15px" width="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" />
     <img align="center" width="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" />
 </p>
